@@ -45,6 +45,7 @@ body {
 }
 
 section { padding: 40px 0; }
+section[hidden] { display: none; }
 section + section { border-top: 1px solid var(--border); }
 
 h1, h2, h3 { line-height: 1.35; margin: 0 0 16px; }
@@ -166,7 +167,11 @@ a { color: var(--primary); }
     margin-top: 24px;
 }
 
-.promises { padding-left: 1.4em; font-weight: 700; }
+.promise-band { background: var(--surface); padding: 20px 0; }
+.band-title { font-size: 0.95rem; color: var(--muted); margin-bottom: 8px; letter-spacing: 0.04em; }
+.promises { list-style: none; padding: 0; margin: 0; font-weight: 700; }
+.promises li { padding: 6px 0 6px 1.4em; position: relative; margin: 0; }
+.promises li::before { content: "·"; position: absolute; left: 0.3em; color: var(--primary); font-weight: 800; }
 
 .fine { font-size: 0.95rem; color: var(--muted); }
 
