@@ -3,7 +3,7 @@
   "packages": [
     {
       "id": "academy", "name": "정기 일정 안내형", "audience": "일정 안내가 매달 필요한 곳",
-      "price": 360000, "monthlyPosts": 9,
+      "price": 360000, "listPrice": 410000, "monthlyPosts": 9,
       "items": [
         "블로그 4건 (일정 공지 1건 포함)",
         "플레이스 월 관리 (소식 4건 + 정보 갱신)",
@@ -16,7 +16,7 @@
     },
     {
       "id": "naver", "name": "네이버 집중", "audience": "검색 유입이 중요한 곳",
-      "price": 420000, "monthlyPosts": 8,
+      "price": 420000, "listPrice": 460000, "monthlyPosts": 8,
       "items": [
         "블로그 6건",
         "플레이스 월 관리 (소식 4건 + 정보 갱신)",
@@ -27,7 +27,7 @@
     },
     {
       "id": "insta", "name": "인스타·영상 집중", "audience": "인스타·영상이 중요한 곳",
-      "price": 490000, "monthlyPosts": 10,
+      "price": 490000, "listPrice": 540000, "monthlyPosts": 10,
       "items": [
         "인스타 피드 4건",
         "카드뉴스 2건 (5장)",
@@ -38,7 +38,7 @@
     },
     {
       "id": "allin_basic", "name": "올인원 베이직", "audience": "채널 전체를 맡기고 싶은 곳",
-      "price": 600000, "monthlyPosts": 16,
+      "price": 600000, "listPrice": 680000, "monthlyPosts": 16,
       "items": [
         "블로그 4건",
         "플레이스 월 관리 (소식 4건 + 정보 갱신)",
@@ -52,7 +52,7 @@
     },
     {
       "id": "allin_premium", "name": "올인원 프리미엄", "audience": "전 채널, 게시물 많게",
-      "price": 900000, "monthlyPosts": 20,
+      "price": 900000, "listPrice": 1030000, "monthlyPosts": 20,
       "items": [
         "블로그 6건",
         "플레이스 월 관리 (소식 4건 + 정보 갱신)",
@@ -67,7 +67,7 @@
   ],
   "allInOnePlan": {
     "title": "올인원 3개월 플랜",
-    "text": "3개월 이용 시 세팅비를 면제합니다. 3개월 미만 해지 시 면제된 세팅비를 이용 개월 비례로 정산합니다.",
+    "text": "3개월분을 선결제하며 세팅비를 면제합니다. 중간에 해지하면 이용한 기간을 월 단위 정상가(월 금액 + 세팅비)로 다시 계산하고, 차액을 환불합니다.",
     "waiver": { "allin_basic": 180000, "allin_premium": 240000 },
     "waiverDetail": {
       "allin_basic": "스마트플레이스 정밀 정비 · 인스타 계정 세팅 · 당근 비즈프로필 세팅 · 멀티링크 제작",

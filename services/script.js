@@ -3,6 +3,7 @@
 
     var PRICING_URL = 'data/pricing.json';
     var WON_PER_MAN = 10000;
+    var PLAN_MONTHS = 3; // 올인원 플랜 선결제 개월 수
 
     // 원 단위 정수 → "36만원", "1.5만원"
     function formatMoney(won) {
@@ -46,9 +47,17 @@
         summary.appendChild(info);
 
         var price = el('span', 'pkg-price');
+        if (pkg.listPrice > pkg.price) {
+            price.appendChild(el('s', 'list-price', '정가 ' + formatMoney(pkg.listPrice)));
+        }
         var value = el('span', 'price-value', formatMoney(pkg.price));
         price.appendChild(value);
         price.appendChild(el('span', 'price-unit', ' / 월'));
+        if (pkg.listPrice > pkg.price) {
+            var saved = pkg.listPrice - pkg.price;
+            var percent = Math.round(saved / pkg.listPrice * 100);
+            price.appendChild(el('span', 'discount', formatMoney(saved) + ' · ' + percent + '% 할인'));
+        }
         price.appendChild(el('span', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
         summary.appendChild(price);
         row.appendChild(summary);
@@ -82,6 +91,24 @@
 
         host.appendChild(el('h3', null, plan.title));
         host.appendChild(el('p', null, plan.text));
+
+        // 중도 해지 예시: 월 금액·세팅비는 JSON 값으로 계산
+        var examples = el('ul', 'examples');
+        Object.keys(plan.waiver).forEach(function (id) {
+            var pkg = data.packages.filter(function (p) { return p.id === id; })[0];
+            if (!pkg) return;
+            var setupFee = plan.waiver[id];
+            var paid = pkg.price * PLAN_MONTHS;
+            var parts = [];
+            for (var used = 1; used < PLAN_MONTHS; used++) {
+                var settled = pkg.price * used + setupFee;
+                parts.push(used + '개월 이용 후 해지 시 ' + formatMoney(settled) + ' 정산, ' + formatMoney(paid - settled) + ' 환불');
+            }
+            var line = pkg.name + '(월 ' + formatMoney(pkg.price) + ', 세팅비 ' + formatMoney(setupFee) + '): '
+                + PLAN_MONTHS + '개월분 ' + formatMoney(paid) + ' 결제 → ' + parts.join(' / ');
+            examples.appendChild(el('li', null, line));
+        });
+        host.appendChild(examples);
 
         var list = el('ul', 'waivers');
         Object.keys(plan.waiver).forEach(function (id) {
