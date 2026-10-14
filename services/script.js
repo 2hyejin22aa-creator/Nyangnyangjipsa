@@ -28,30 +28,51 @@
         return null;
     }
 
+    // 패키지 그룹 (id 기준 분류. 금액·구성은 JSON에서만 가져옴)
+    var PACKAGE_GROUPS = {
+        'packages-pick': ['academy', 'naver', 'insta'],
+        'packages-all': ['allin_basic', 'allin_premium']
+    };
+
+    function buildPackageCard(pkg, consultUrl) {
+        var card = el('article', 'pkg-card');
+        card.id = 'pkg-' + pkg.id;
+
+        card.appendChild(el('h4', 'pkg-name', pkg.name));
+        card.appendChild(el('p', 'audience', pkg.audience));
+
+        var price = el('p', 'price');
+        price.appendChild(el('span', 'price-value', formatMoney(pkg.price)));
+        price.appendChild(el('span', 'price-unit', ' / 월'));
+        card.appendChild(price);
+
+        card.appendChild(el('p', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
+
+        var list = el('ul', 'card-items');
+        pkg.items.forEach(function (item) {
+            list.appendChild(el('li', null, item));
+        });
+        card.appendChild(list);
+
+        if (pkg.note) card.appendChild(el('p', 'card-note', pkg.note));
+
+        var button = el('a', 'btn btn-primary card-cta', '이 패키지로 상담하기');
+        button.href = consultUrl;
+        button.target = '_blank';
+        button.rel = 'noopener';
+        card.appendChild(button);
+
+        return card;
+    }
+
     function renderPackages(data) {
-        var host = document.getElementById('package-cards');
-        data.packages.forEach(function (pkg) {
-            var card = el('article', 'card');
-            card.id = 'pkg-' + pkg.id;
-
-            card.appendChild(el('h3', null, pkg.name));
-            card.appendChild(el('p', 'audience', pkg.audience));
-
-            var price = el('p', 'price');
-            price.appendChild(el('span', 'price-value', formatMoney(pkg.price)));
-            price.appendChild(el('span', 'price-unit', ' / 월'));
-            card.appendChild(price);
-
-            var list = el('ul', 'card-items');
-            pkg.items.forEach(function (item) {
-                list.appendChild(el('li', null, item));
+        var consultUrl = document.getElementById('package-root').getAttribute('data-consult-url');
+        Object.keys(PACKAGE_GROUPS).forEach(function (hostId) {
+            var host = document.getElementById(hostId);
+            PACKAGE_GROUPS[hostId].forEach(function (id) {
+                var pkg = data.packages.filter(function (p) { return p.id === id; })[0];
+                if (pkg) host.appendChild(buildPackageCard(pkg, consultUrl));
             });
-            card.appendChild(list);
-
-            if (pkg.note) card.appendChild(el('p', 'card-note', pkg.note));
-            card.appendChild(el('p', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
-
-            host.appendChild(card);
         });
     }
 
