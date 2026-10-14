@@ -34,44 +34,43 @@
         'packages-all': ['allin_basic', 'allin_premium']
     };
 
-    function buildPackageCard(pkg, consultUrl) {
-        var card = el('article', 'pkg-card');
-        card.id = 'pkg-' + pkg.id;
+    // 패키지: "이름 · 대상 · 가격" 한 줄 행, 구성은 펼침(<details>)
+    function buildPackageRow(pkg) {
+        var row = el('details', 'pkg-row');
+        row.id = 'pkg-' + pkg.id;
 
-        card.appendChild(el('h4', 'pkg-name', pkg.name));
-        card.appendChild(el('p', 'audience', pkg.audience));
+        var summary = el('summary');
+        var info = el('span', 'pkg-info');
+        info.appendChild(el('span', 'pkg-name', pkg.name));
+        info.appendChild(el('span', 'audience', pkg.audience));
+        summary.appendChild(info);
 
-        var price = el('p', 'price');
-        price.appendChild(el('span', 'price-value', formatMoney(pkg.price)));
+        var price = el('span', 'pkg-price');
+        var value = el('span', 'price-value', formatMoney(pkg.price));
+        price.appendChild(value);
         price.appendChild(el('span', 'price-unit', ' / 월'));
-        card.appendChild(price);
+        price.appendChild(el('span', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
+        summary.appendChild(price);
+        row.appendChild(summary);
 
-        card.appendChild(el('p', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
-
+        var body = el('div', 'pkg-body');
         var list = el('ul', 'card-items');
         pkg.items.forEach(function (item) {
             list.appendChild(el('li', null, item));
         });
-        card.appendChild(list);
+        body.appendChild(list);
+        if (pkg.note) body.appendChild(el('p', 'card-note', pkg.note));
+        row.appendChild(body);
 
-        if (pkg.note) card.appendChild(el('p', 'card-note', pkg.note));
-
-        var button = el('a', 'btn btn-primary card-cta', '이 패키지로 상담하기');
-        button.href = consultUrl;
-        button.target = '_blank';
-        button.rel = 'noopener';
-        card.appendChild(button);
-
-        return card;
+        return row;
     }
 
     function renderPackages(data) {
-        var consultUrl = document.getElementById('package-root').getAttribute('data-consult-url');
         Object.keys(PACKAGE_GROUPS).forEach(function (hostId) {
             var host = document.getElementById(hostId);
             PACKAGE_GROUPS[hostId].forEach(function (id) {
                 var pkg = data.packages.filter(function (p) { return p.id === id; })[0];
-                if (pkg) host.appendChild(buildPackageCard(pkg, consultUrl));
+                if (pkg) host.appendChild(buildPackageRow(pkg));
             });
         });
     }
