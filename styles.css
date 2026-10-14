@@ -300,6 +300,59 @@ footer {
     color: var(--accent-light);
 }
 
+
+/* Services & Contact */
+.price {
+    margin-top: 1rem;
+    color: var(--accent-light) !important;
+    font-weight: 600;
+    font-size: 1.1rem !important;
+}
+
+.price-note {
+    margin-top: 1.5rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.contact-section {
+    padding: 4rem 0;
+    text-align: center;
+}
+
+.contact-section h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.contact-desc {
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+}
+
+.contact-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.contact-btn {
+    padding: 0.9rem 1.8rem;
+    border-radius: 999px;
+    border: 1px solid var(--border-color);
+    background: var(--card-bg);
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.contact-btn:hover {
+    border-color: var(--accent-light);
+    color: var(--accent-light);
+}
+
 /* Responsive */
 @media (max-width: 768px) {
     .hero-section {
