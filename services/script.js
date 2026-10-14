@@ -90,35 +90,17 @@
         if (!plan) return;
 
         host.appendChild(el('h3', null, plan.title));
-        host.appendChild(el('p', null, plan.text));
+        [].concat(plan.text).forEach(function (line) {
+            host.appendChild(el('p', null, line));
+        });
 
-        // 중도 해지 예시: 월 금액·세팅비는 JSON 값으로 계산
-        var examples = el('ul', 'examples');
-        Object.keys(plan.waiver).forEach(function (id) {
+        // 결제 방식별 금액: 월 결제 = price, 선결제 = prepayMonthly × 개월 수 (모두 JSON 값)
+        var list = el('ul', 'plan-prices');
+        Object.keys(plan.prepayMonthly).forEach(function (id) {
             var pkg = data.packages.filter(function (p) { return p.id === id; })[0];
             if (!pkg) return;
-            var setupFee = plan.waiver[id];
-            var paid = pkg.price * PLAN_MONTHS;
-            var parts = [];
-            for (var used = 1; used < PLAN_MONTHS; used++) {
-                var settled = pkg.price * used + setupFee;
-                parts.push(used + '개월 이용 후 해지 시 ' + formatMoney(settled) + ' 정산, ' + formatMoney(paid - settled) + ' 환불');
-            }
-            var line = pkg.name + '(월 ' + formatMoney(pkg.price) + ', 세팅비 ' + formatMoney(setupFee) + '): '
-                + PLAN_MONTHS + '개월분 ' + formatMoney(paid) + ' 결제 → ' + parts.join(' / ');
-            examples.appendChild(el('li', null, line));
-        });
-        host.appendChild(examples);
-
-        var list = el('ul', 'waivers');
-        Object.keys(plan.waiver).forEach(function (id) {
-            var pkg = data.packages.filter(function (p) { return p.id === id; })[0];
-            var li = el('li');
-            li.appendChild(el('strong', null, (pkg ? pkg.name : id) + ' · 세팅비 ' + formatMoney(plan.waiver[id]) + ' 면제'));
-            if (plan.waiverDetail && plan.waiverDetail[id]) {
-                li.appendChild(el('span', null, plan.waiverDetail[id]));
-            }
-            list.appendChild(li);
+            list.appendChild(el('li', null, pkg.name + ' — 월 결제 월 ' + formatMoney(pkg.price)
+                + ' / 선결제 ' + formatMoney(plan.prepayMonthly[id] * PLAN_MONTHS)));
         });
         host.appendChild(list);
         host.hidden = false;
@@ -152,6 +134,12 @@
             var parts = node.getAttribute('data-money').split('|');
             var row = findByName(data, parts[0], parts[1]);
             if (row) node.textContent = formatMoney(row.price);
+        });
+
+        Array.prototype.forEach.call(document.querySelectorAll('[data-referral-amount]'), function (node) {
+            if (data.referral && typeof data.referral.amount === 'number') {
+                node.textContent = formatMoney(data.referral.amount);
+            }
         });
 
         var discount = data.singlesDiscount || {};
