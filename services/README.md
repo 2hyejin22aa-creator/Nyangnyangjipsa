@@ -1,4 +1,6 @@
-# 이혜진 | 동네 업체 마케팅 파트너
+# /services/ — 동네 업체 마케팅 파트너 서비스·가격 페이지
+
+기존 홈페이지(저장소 루트의 `index.html`)와 별개로, `services/` 폴더에 들어 있는 페이지입니다.
 
 개인 프리랜서 마케터의 서비스·가격 안내용 단일 페이지 정적 사이트입니다.
 프레임워크와 빌드 단계 없이 HTML/CSS/JS만 사용하며 GitHub Pages로 배포합니다.
@@ -7,7 +9,7 @@
 
 | 파일 | 역할 |
 |---|---|
-| `index.html` | 페이지 구조와 고정 문구 |
+| `index.html` | 페이지 구조와 고정 문구 (프로필 사진은 루트의 `profile_pic.png`를 재사용) |
 | `styles.css` | 스타일 (모바일 우선, 다크모드 지원) |
 | `script.js` | `data/pricing.json`을 불러와 패키지 카드와 표를 그림 |
 | `data/pricing.json` | 모든 금액과 패키지 구성 |
@@ -15,13 +17,13 @@
 ## 로컬에서 확인하기
 
 `fetch`로 JSON을 읽기 때문에 `index.html`을 더블클릭(`file://`)하면 가격이 보이지 않습니다.
-저장소 폴더에서 간단한 서버를 켜세요.
+저장소 **루트**에서 간단한 서버를 켜세요. (사진을 루트에서 가져오기 때문입니다)
 
 ```bash
 python3 -m http.server 8000
 ```
 
-브라우저에서 <http://localhost:8000> 을 엽니다. 끝낼 때는 터미널에서 `Ctrl+C`.
+브라우저에서 <http://localhost:8000/services/> 를 엽니다. 끝낼 때는 터미널에서 `Ctrl+C`.
 
 ## 가격 수정
 
@@ -31,7 +33,7 @@ python3 -m http.server 8000
 
 ## 배포 (GitHub Pages)
 
-저장소 **Settings → Pages**에서 Branch를 `main` / `/ (root)`로 정하고 저장합니다.
+저장소 **Settings → Pages**에서 Branch를 `main` / `/ (root)`로 정하고 저장하면, 새 페이지는 `https://<계정>.github.io/<저장소>/services/` 에서 열립니다.
 
 ## 검색 노출
 
