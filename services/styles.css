@@ -70,7 +70,7 @@ a { color: var(--primary-strong); }
     border: 1.5px solid var(--primary); border-radius: var(--radius);
     font-weight: 700; text-decoration: none; text-align: center;
 }
-.btn-primary { background: var(--grad); color: var(--on-primary); border-color: transparent; }
+.btn-primary { background: var(--primary); color: var(--on-primary); border-color: var(--primary); }
 .btn-primary:hover { filter: brightness(1.08); }
 .btn-secondary { background: transparent; color: var(--primary-strong); }
 .btn-secondary:hover { background: rgba(77, 163, 255, 0.12); }
@@ -78,11 +78,6 @@ a { color: var(--primary-strong); }
 /* Hero (text only) */
 .lead { font-size: 1.15rem; color: var(--muted); max-width: 40em; }
 .hero-meta { font-size: 0.95rem; color: var(--primary-strong); margin-bottom: 0; }
-
-/* 제가 일하는 방식 */
-.dots { padding-left: 1.2em; }
-.dots li { margin-bottom: 10px; }
-.dots li::marker { color: var(--primary-strong); }
 
 /* 진행 방식: vertical numbered list */
 .steps { list-style: none; padding: 0; margin: 0 0 40px; counter-reset: step; }
@@ -97,12 +92,6 @@ a { color: var(--primary-strong); }
 .steps strong, .steps > li > span { display: block; }
 .steps > li > span { color: var(--muted); font-size: 1rem; }
 
-.ask-title { margin-top: 8px; }
-.asks { list-style: none; padding: 0; margin: 0; }
-.asks li { margin: 0; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.asks strong, .asks span { display: block; }
-@media (min-width: 640px) { .asks li { display: grid; grid-template-columns: 7em 1fr; gap: 12px; } }
-.asks span { color: var(--muted); font-size: 1rem; }
 
 /* Packages: one row each */
 .group-title { margin: 28px 0 8px; color: var(--primary-strong); font-size: 1rem; letter-spacing: 0.04em; }
@@ -138,12 +127,6 @@ a { color: var(--primary-strong); }
 .waivers strong, .waivers span { display: block; }
 .waivers span { color: var(--muted); font-size: 1rem; }
 
-/* Minimum operations: plain definition list */
-.minimum { margin: 0; border-top: 1px solid var(--line); }
-.minimum div { padding: 14px 0; border-bottom: 1px solid var(--line); }
-.minimum dt { font-weight: 700; color: var(--primary-strong); }
-.minimum dd { margin: 0; }
-
 /* Details (accordion) */
 details { margin: 0; }
 .faq details, section > .wrap > details { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 10px; }
@@ -166,7 +149,6 @@ details > p, .details-body { padding: 0 16px 8px; }
     .price-table tr { padding: 10px 0; border-bottom: 1px solid var(--line); }
     .price-table th, .price-table td { border: 0; padding: 2px 0; }
     .cell-note:empty { display: none; }
-    .industry-table td::before { content: attr(data-label) ": "; color: var(--muted); }
 }
 
 .terms { padding-left: 1.2em; }

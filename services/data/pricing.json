@@ -2,7 +2,7 @@
   "lastUpdated": "2026-10-14",
   "packages": [
     {
-      "id": "academy", "name": "정기 일정 안내형", "audience": "수업·클래스·프로그램 일정이 매달 있는 곳",
+      "id": "academy", "name": "정기 일정 안내형", "audience": "일정 안내가 매달 필요한 곳",
       "price": 360000, "monthlyPosts": 9,
       "items": [
         "블로그 4건 (일정 공지 1건 포함)",
@@ -15,7 +15,7 @@
       ]
     },
     {
-      "id": "naver", "name": "네이버 집중", "audience": "검색해서 찾아오는 손님이 중요한 곳",
+      "id": "naver", "name": "네이버 집중", "audience": "검색 유입이 중요한 곳",
       "price": 420000, "monthlyPosts": 8,
       "items": [
         "블로그 6건",
@@ -26,7 +26,7 @@
       "note": "영상 소스가 없으면 클립 1편을 카드뉴스 5장 1건으로 교환할 수 있습니다."
     },
     {
-      "id": "insta", "name": "인스타·영상 집중", "audience": "분위기와 비주얼로 선택받는 곳",
+      "id": "insta", "name": "인스타·영상 집중", "audience": "인스타·영상이 중요한 곳",
       "price": 490000, "monthlyPosts": 10,
       "items": [
         "인스타 피드 4건",
@@ -37,7 +37,7 @@
       "note": "플레이스 정비가 선행되어야 하며, 영상 소스는 업체 제공 기준입니다."
     },
     {
-      "id": "allin_basic", "name": "올인원 베이직", "audience": "채널을 한 번에 맡기고 싶은 곳",
+      "id": "allin_basic", "name": "올인원 베이직", "audience": "채널 전체를 맡기고 싶은 곳",
       "price": 600000, "monthlyPosts": 16,
       "items": [
         "블로그 4건",
@@ -51,7 +51,7 @@
       ]
     },
     {
-      "id": "allin_premium", "name": "올인원 프리미엄", "audience": "모든 채널을 풍성하게 맡기고 싶은 곳",
+      "id": "allin_premium", "name": "올인원 프리미엄", "audience": "전 채널, 게시물 많게",
       "price": 900000, "monthlyPosts": 20,
       "items": [
         "블로그 6건",
