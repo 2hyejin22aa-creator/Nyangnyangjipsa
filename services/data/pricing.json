@@ -2,7 +2,7 @@
   "lastUpdated": "2026-10-14",
   "packages": [
     {
-      "id": "academy", "name": "학원·센터 특화", "audience": "월별 일정 안내가 필요한 학원·센터",
+      "id": "academy", "name": "정기 일정 안내형", "audience": "수업·클래스·프로그램 일정이 매달 있는 곳",
       "price": 360000, "monthlyPosts": 9,
       "items": [
         "블로그 4건 (일정 공지 1건 포함)",
@@ -26,7 +26,7 @@
       "note": "영상 소스가 없으면 클립 1편을 카드뉴스 5장 1건으로 교환할 수 있습니다."
     },
     {
-      "id": "insta", "name": "인스타·영상 집중", "audience": "보여주는 게 중요한 곳",
+      "id": "insta", "name": "인스타·영상 집중", "audience": "분위기와 비주얼로 선택받는 곳",
       "price": 490000, "monthlyPosts": 10,
       "items": [
         "인스타 피드 4건",
