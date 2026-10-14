@@ -136,6 +136,12 @@
             if (row) node.textContent = formatMoney(row.price);
         });
 
+        Array.prototype.forEach.call(document.querySelectorAll('[data-referral-amount]'), function (node) {
+            if (data.referral && typeof data.referral.amount === 'number') {
+                node.textContent = formatMoney(data.referral.amount);
+            }
+        });
+
         var discount = data.singlesDiscount || {};
         Array.prototype.forEach.call(document.querySelectorAll('[data-discount]'), function (node) {
             var value = discount[node.getAttribute('data-discount')];

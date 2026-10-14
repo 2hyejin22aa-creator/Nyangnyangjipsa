@@ -113,5 +113,6 @@
     { "name": "릴스·클립 편집 (15~30초)", "price": 70000, "note": "길이 초과(31~60초) +2만원" },
     { "name": "릴스 기획+촬영+편집", "price": 150000, "note": "교통비 별도" }
   ],
-  "singlesDiscount": { "package": 10, "allin": 15, "note": "월 패키지 이용 업체의 추가 단건에만 적용" }
+  "singlesDiscount": { "package": 10, "allin": 15, "note": "월 패키지 이용 업체의 추가 단건에만 적용" },
+  "referral": { "amount": 30000 }
 }
