@@ -15,6 +15,7 @@
     <script src="../assets/nav.js" defer></script>
     <script src="../assets/media.js" defer></script>
     <script src="../assets/effects.js" defer></script>
+    <script src="../assets/results.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -42,6 +43,20 @@
         <section class="hero hero-page" aria-labelledby="hero-title">
             <div class="container">
                 <h1 id="hero-title">작업물</h1>
+            </div>
+        </section>
+
+        <section class="section" data-cases aria-labelledby="cases-title" hidden>
+            <div class="container">
+                <div class="section-head center"><h2 id="cases-title">성과 <em>사례</em></h2><p>네이버 스마트플레이스 · 월간 · 직전 기간 대비</p></div>
+                <div id="cases-grid" class="case-grid"></div>
+                <p class="fine center">결과는 업종과 상권에 따라 다르며 보장하지 않습니다.</p>
+            </div>
+        </section>
+
+        <section class="section band-soft" aria-labelledby="all-title">
+            <div class="container">
+                <div class="section-head center"><h2 id="all-title">작업 <em>화면</em></h2></div>
                 <div id="works-filters" class="filters" role="group" aria-label="채널" hidden></div>
                 <ul id="works-grid" class="works-grid"></ul>
             </div>

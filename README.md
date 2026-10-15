@@ -52,6 +52,7 @@ python3 -m http.server 8000
 | `services/insta-compare` | /services/ | `compare` | 전 이미지, 후 이미지 (2개) |
 | `services/blog-search` | /services/ | `image` | 이미지 1개 |
 | `services/report` | /services/ | `image` | 이미지 1개 |
+| `video/compare` | /video/ | `compare` | 편집 전·후 이미지 2개 (Before, After 순서) |
 | `video/reels` | /video/ | `video` | 영상 1~3개 (`posters`에 대표 이미지를 같은 순서로) |
 | `planning/calendar` | /planning/ | `image` | 이미지 1개 |
 | `planning/branding` | /planning/ | `image` | 이미지 1개 |
@@ -90,7 +91,7 @@ python3 -m http.server 8000
   "metrics": [{ "name": "예약·주문 신청", "prev": 371, "value": 410, "change": 11 }] }
 ```
 
-`change`는 화면에 표시된 증가율(%)입니다. 통계 화면 원본은 `data/media.json`의 `gallery`에 `"channel": "플레이스 통계"`로 올립니다.
+`change`는 화면에 표시된 증가율(%)입니다. `"did": ["한 일 한 줄", ...]`을 넣으면 작업물 페이지의 사례 카드에 "한 일" 목록이 함께 보입니다. 통계 화면 원본은 `data/media.json`의 `gallery`에 `"channel": "플레이스 통계"`로 올립니다.
 
 ## 배포 (GitHub Pages)
 

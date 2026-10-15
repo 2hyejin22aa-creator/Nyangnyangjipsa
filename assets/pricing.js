@@ -113,8 +113,47 @@
         node.hidden = false;
     }
 
+    var PLAN_MONTHS = 3; // 3개월 플랜 개월 수
+
+    // 3개월 플랜 금액·할인율: 모두 JSON 값으로 계산
+    function planValues(d, id) {
+        var plan = d.plan;
+        var pkg = d.packages.filter(function (p) { return p.id === id; })[0];
+        var price = pkg.price;
+        var prepay = plan.prepayMonthly[id];
+        var waiver = plan.waiver[id];
+        var price3 = price * PLAN_MONTHS;
+        var prepay3 = prepay * PLAN_MONTHS;
+        var normal3 = price3 + waiver; // 월 단위 이용 시 3개월 합계(세팅비 포함)
+        var cancel1 = price * 1 + waiver;
+        var cancel2 = price * 2 + waiver;
+        return {
+            prepayPercent: String(Math.round((price - prepay) / price * 100)),
+            months: String(PLAN_MONTHS),
+            price: formatMoney(price),
+            price3: formatMoney(price3),
+            prepayMonthly: formatMoney(prepay),
+            saveMonthly: formatMoney(normal3 - price3),
+            prepay3: formatMoney(prepay3),
+            savePrepay: formatMoney(normal3 - prepay3),
+            waiver: formatMoney(waiver),
+            cancel1Settle: formatMoney(cancel1),
+            cancel1Refund: formatMoney(prepay3 - cancel1),
+            cancel2Settle: formatMoney(cancel2),
+            cancel2Refund: formatMoney(prepay3 - cancel2)
+        };
+    }
+
+    function fill(template, values) {
+        return template.replace(/\{(\w+)\}/g, function (m, key) {
+            return values[key] !== undefined ? values[key] : m;
+        });
+    }
+
     window.Pricing = {
         formatMoney: formatMoney,
+        planValues: planValues,
+        fill: fill,
         el: el,
         findByName: findByName,
         onReady: function (callback) {

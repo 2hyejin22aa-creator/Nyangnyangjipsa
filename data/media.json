@@ -40,6 +40,15 @@
       "caption": ""
     },
     {
+      "id": "video/compare",
+      "page": "video",
+      "section": "Before & After",
+      "type": "compare",
+      "files": [],
+      "alt": "",
+      "caption": ""
+    },
+    {
       "id": "video/reels",
       "page": "video",
       "section": "릴스 샘플 영상",

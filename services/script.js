@@ -46,58 +46,58 @@
         });
     }
 
-    // 3개월 플랜: 문구는 JSON, 금액·할인율은 모두 JSON 값으로 계산해 채움
-    function planValues(data, id) {
-        var plan = data.plan;
-        var pkg = data.packages.filter(function (p) { return p.id === id; })[0];
-        var price = pkg.price;
-        var prepay = plan.prepayMonthly[id];
-        var waiver = plan.waiver[id];
-        var price3 = price * PLAN_MONTHS;
-        var prepay3 = prepay * PLAN_MONTHS;
-        var normal3 = price3 + waiver; // 월 단위 이용 시 3개월 합계(세팅비 포함)
-        var paid = prepay3;
-        var cancel1 = price * 1 + waiver;
-        var cancel2 = price * 2 + waiver;
-        return {
-            prepayPercent: String(Math.round((price - prepay) / price * 100)),
-            months: String(PLAN_MONTHS),
-            price: formatMoney(price),
-            price3: formatMoney(price3),
-            saveMonthly: formatMoney(normal3 - price3),
-            prepay3: formatMoney(prepay3),
-            savePrepay: formatMoney(normal3 - prepay3),
-            waiver: formatMoney(waiver),
-            cancel1Settle: formatMoney(cancel1),
-            cancel1Refund: formatMoney(paid - cancel1),
-            cancel2Settle: formatMoney(cancel2),
-            cancel2Refund: formatMoney(paid - cancel2)
-        };
-    }
-
-    function fill(template, values) {
-        return template.replace(/\{(\w+)\}/g, function (m, key) {
-            return values[key] !== undefined ? values[key] : m;
-        });
-    }
-
+    // 3개월 플랜: 문구는 JSON, 금액·할인율은 모두 JSON 값으로 계산해 채움 (Pricing.planValues)
     function renderPlan(data) {
         var plan = data.plan;
         var host = document.getElementById('plan-box');
         if (!plan) return;
 
         var id = Object.keys(plan.prepayMonthly)[0];
-        var values = planValues(data, id);
-        var lines = plan.text.map(function (line) { return fill(line, values); });
+        var v = Pricing.planValues(data, id);
+        var lines = plan.text.map(function (line) { return Pricing.fill(line, v); });
 
         host.appendChild(el('h3', null, plan.title));
-        // 먼저 요약(세팅비 면제, 결제 방식, 금액), 해지 조건은 접어 둠
-        [0, 1].forEach(function (i) { host.appendChild(el('p', null, lines[i])); });
+        host.appendChild(el('p', null, lines[0]));
 
-        var prices = el('ul', 'plan-prices');
-        [3, 4].forEach(function (i) { prices.appendChild(el('li', null, lines[i])); });
-        host.appendChild(prices);
+        // 결제 방식 탭: 월 결제 / 3개월 선결제
+        var tabs = el('div', 'price-tabs');
+        tabs.setAttribute('role', 'tablist');
+        var panels = el('div', 'price-panels');
+        var defs = [
+            { name: '월 결제', big: v.price, unit: '/ 월', sub: v.months + '개월 ' + v.price3 + ' · 월 단위 이용 대비 ' + v.saveMonthly + ' 절약', note: '기본 결제 방식입니다.' },
+            { name: '3개월 선결제', big: v.prepay3, unit: '/ ' + v.months + '개월', sub: '월 ' + v.prepayMonthly + ' 꼴 · 월 단위 이용 대비 ' + v.savePrepay + ' 절약', note: '월 금액 약 ' + v.prepayPercent + '% 할인이 적용됩니다.' }
+        ];
+        var buttons = [], bodies = [];
+        defs.forEach(function (def, index) {
+            var button = el('button', 'price-tab', def.name);
+            button.type = 'button';
+            button.setAttribute('role', 'tab');
+            button.setAttribute('aria-selected', index === 0 ? 'true' : 'false');
+            tabs.appendChild(button);
+            buttons.push(button);
 
+            var panel = el('div', 'price-panel');
+            panel.setAttribute('role', 'tabpanel');
+            panel.hidden = index !== 0;
+            var value = el('p', 'price-panel-value', def.big);
+            value.appendChild(el('span', 'price-panel-unit', def.unit));
+            panel.appendChild(value);
+            panel.appendChild(el('p', 'price-panel-sub', def.sub));
+            panel.appendChild(el('p', 'price-panel-note', def.note));
+            panels.appendChild(panel);
+            bodies.push(panel);
+
+            button.addEventListener('click', function () {
+                buttons.forEach(function (b, i) {
+                    b.setAttribute('aria-selected', i === index ? 'true' : 'false');
+                    bodies[i].hidden = i !== index;
+                });
+            });
+        });
+        host.appendChild(tabs);
+        host.appendChild(panels);
+
+        // 해지 조건은 접어 둠
         var terms = el('details', 'plan-terms-box');
         terms.appendChild(el('summary', null, '중도 해지 조건'));
         var body = el('div', 'plan-terms-body');

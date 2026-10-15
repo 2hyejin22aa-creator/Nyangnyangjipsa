@@ -16,6 +16,7 @@
     <script src="../assets/nav.js" defer></script>
     <script src="../assets/media.js" defer></script>
     <script src="../assets/effects.js" defer></script>
+    <script src="../assets/price-ui.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -47,6 +48,57 @@
                 <div class="cta">
                     <a class="btn btn-primary" href="#price">가격 보기</a>
                     <a class="btn btn-secondary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="channels-title">
+            <div class="container narrow-block">
+                <div class="section-head center"><h2 id="channels-title">채널별로 <em>하는 일</em></h2></div>
+                <div class="acc-list">
+                    <details class="acc" open>
+                        <summary><span class="tag">PLACE</span><span class="acc-title">네이버 플레이스</span></summary>
+                        <div class="acc-body">
+                            <p>지도에서 위치, 시간, 가격, 후기를 확인하는 손님을 위한 채널입니다.</p>
+                            <ul>
+                                <li>스마트플레이스 정비 (기본, 정밀)</li>
+                                <li>정보, 사진, 소식을 최신으로 관리</li>
+                                <li>문의 경로를 기록해 월간 리포트에 포함</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="acc">
+                        <summary><span class="tag">BLOG</span><span class="acc-title">네이버 블로그</span></summary>
+                        <div class="acc-body">
+                            <p>설명과 후기를 읽고 판단하는 손님을 위한 채널입니다.</p>
+                            <ul>
+                                <li>검색에 잡히는 글로 서비스를 설명</li>
+                                <li>홈페이지형 블로그 디자인 (기본, 확장)</li>
+                                <li>글 작성과 게시</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="acc">
+                        <summary><span class="tag">INSTAGRAM</span><span class="acc-title">인스타그램</span></summary>
+                        <div class="acc-body">
+                            <p>분위기와 최근 소식을 보는 손님을 위한 채널입니다.</p>
+                            <ul>
+                                <li>계정 세팅, 프로필 정리</li>
+                                <li>피드와 카드뉴스 제작, 꾸준한 게시</li>
+                                <li>릴스 편집과 게시 (업체 제공 영상)</li>
+                            </ul>
+                        </div>
+                    </details>
+                    <details class="acc">
+                        <summary><span class="tag">LINK</span><span class="acc-title">멀티링크</span></summary>
+                        <div class="acc-body">
+                            <p>더 알아볼 곳을 고르는 손님을 위한 채널입니다.</p>
+                            <ul>
+                                <li>블로그, 플레이스, 상담 링크를 한곳에 모음</li>
+                                <li>제작과 월 관리</li>
+                            </ul>
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -141,6 +193,8 @@
                 <p class="fine">카드뉴스는 5장 기준 건수입니다. 표기 금액은 세전입니다.</p>
                 <p class="fine">따로 주문하는 가격은 SNS 마케팅·영상 편집 탭의 단건·옵션 가격 합계입니다.</p>
                 <div id="plan-box" class="plan-box" hidden></div>
+                <div class="price-notice"><strong>최소 약정 없는 월 단위 이용</strong><span>다음 달 시작 7일 전까지 알려 주시면 해지됩니다. 변화는 3개월 정도 보시길 권합니다.</span></div>
+                <div class="benefit-grid" data-benefits hidden></div>
 
                 <details>
                     <summary>1회성 세팅</summary>
@@ -168,9 +222,8 @@
                     </div>
                 </details>
 
-                <p class="referral"><strong>지인 소개 — 소개한 분, 소개받은 분 모두 첫 달 월 금액 <span data-referral-amount></span> 할인</strong></p>
-                <p class="fine">소개받으신 분이 상담 때 성함을 말씀해 주시고, 계약이 시작되면 적용됩니다. 1건당 1회, 같은 사업자는 제외입니다.</p>
-                <div class="cta"><a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
+                <p class="fine">지인 소개 할인은 소개받으신 분이 상담 때 성함을 말씀해 주시고, 계약이 시작되면 적용됩니다. 1건당 1회, 같은 사업자는 제외입니다.</p>
+                <div class="cta cta-wide"><a class="btn btn-primary btn-wide" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">무료 상담으로 구성 확인하기</a></div>
             </div>
         </section>
 

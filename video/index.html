@@ -47,41 +47,53 @@
             </div>
         </section>
 
-        <section class="section band-soft" data-slots hidden>
+        <section class="problems" aria-label="이런 고민이 있으신가요?">
+            <div class="problem left"><div class="container"><span class="problem-no" aria-hidden="true">01</span><p>촬영은 했는데<br>편집할 시간이 없습니다</p></div></div>
+            <div class="problem right"><div class="container"><span class="problem-no" aria-hidden="true">02</span><p>올리긴 했는데<br>길이와 자막이 어색합니다</p></div></div>
+        </section>
+
+        <section class="section band-soft" data-slots aria-labelledby="video-compare-title" hidden>
+            <div class="container">
+                <div class="section-head center"><h2 id="video-compare-title">Before &amp; After</h2></div>
+                <div class="slot-list">
+                    <div data-slot="video/compare" hidden></div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section" data-slots hidden>
             <div class="container">
                 <div data-slot="video/reels" hidden></div>
             </div>
         </section>
 
         <section class="section" aria-labelledby="process-title">
-            <div class="container two-col">
-                <div>
-                    <div class="section-head"><h2 id="process-title">진행</h2></div>
-                    <ol class="steps">
-                        <li><strong>소스 전달</strong></li>
-                        <li><strong>편집(자막·BGM)</strong></li>
-                        <li><strong>확인(수정 1회)</strong></li>
-                        <li><strong>업로드</strong></li>
-                    </ol>
-                </div>
-                <div>
-                    <div class="section-head"><h2 id="criteria-title">기준</h2></div>
-                    <ul class="spec-list" style="grid-template-columns:1fr">
-                        <li>15~30초</li>
-                        <li>소스 5분 이내</li>
-                        <li><span data-note="singles|릴스·클립 편집 (15~30초)"></span></li>
-                    </ul>
+            <div class="container">
+                <div class="section-head center"><h2 id="process-title">진행은 <em>이렇게</em></h2></div>
+                <div class="point-grid point-grid-2">
+                    <article class="point">
+                        <span class="point-badge">Process</span>
+                        <h3>편집 진행</h3>
+                        <ol class="flow"><li>소스 전달</li><li>편집 (자막, BGM)</li><li>확인 (수정 1회)</li><li>업로드</li></ol>
+                    </article>
+                    <article class="point">
+                        <span class="point-badge">Standard</span>
+                        <h3>작업 기준</h3>
+                        <ol class="flow"><li>15~30초</li><li>소스 5분 이내</li><li><span data-note="singles|릴스·클립 편집 (15~30초)"></span></li></ol>
+                    </article>
                 </div>
             </div>
         </section>
 
         <section class="section band-soft" aria-labelledby="price-title">
             <div class="container">
-                <div class="section-head"><h2 id="price-title">가격</h2></div>
-                <table class="price-table" data-pricing-table="singles,options" data-category="video">
-                    <thead><tr><th scope="col">항목</th><th scope="col">금액</th><th scope="col">내용</th></tr></thead>
-                    <tbody></tbody>
-                </table>
+                <div class="section-head center"><h2 id="price-title"><em>가격</em></h2></div>
+                <div class="table-card">
+                    <table class="price-table" data-pricing-table="singles,options" data-category="video">
+                        <thead><tr><th scope="col">항목</th><th scope="col">금액</th><th scope="col">내용</th></tr></thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
             </div>
         </section>
 

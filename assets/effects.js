@@ -48,7 +48,7 @@
         '.hero-page h1', '.hero-page .lede', '.hero-page .cta',
         '.section-head', '.stat-card', '.works-grid li', '.compare-pair figure', '.pain-lines li', '.tile',
         '.step-grid li', '.card', '.cta-band h2', '.cta-band p', '.cta-band .cta',
-        '.pkg-feature', '.plan-box', '.months li', '.path-flow li', '.steps li', '.spec-list li', '.plan-list li',
+        '.problem', '.worry', '.declare .dec-small', '.declare .dec-big', '.declare .brush-wrap', '.declare .dec-last', '.point', '.fit-col', '.acc', '.benefit', '.deliver-card', '.case', '.price-notice', '.pkg-feature', '.plan-box', '.months li', '.path-flow li', '.steps li', '.spec-list li', '.plan-list li',
         '.contact-note', '.media-slot', '.learn li', '.referral'
     ].join(',');
 
@@ -59,6 +59,7 @@
             var node = entry.target;
             node.classList.add('in');
             io.unobserve(node);
+            Array.prototype.forEach.call(node.querySelectorAll ? node.querySelectorAll('.draw') : [], function (d) { d.classList.add('in'); });
             countUp(node);
         });
     }, { threshold: 0.12, rootMargin: '0px 0px -6% 0px' }) : null;
@@ -70,6 +71,7 @@
         var index = Math.max(0, siblings.indexOf(node));
         node.style.setProperty('--d', Math.min(MAX_DELAY, index * STEP) + 'ms');
         node.classList.add('reveal');
+        Array.prototype.forEach.call(node.querySelectorAll('.draw'), function (d) { d.classList.add('draw-pending'); });
         io.observe(node);
     }
 

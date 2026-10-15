@@ -46,4 +46,32 @@
         });
         renderFilters(channels);
     });
+
+    // 성과 사례: data/results.json의 업체별 카드 (한 일 목록 "did"가 있으면 함께 보여 줌)
+    (function renderCases() {
+        var host = document.getElementById('cases-grid');
+        if (!host || !window.Results) return;
+        fetch(new URL('../data/results.json', document.currentScript ? document.currentScript.src : location.href).href)
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .catch(function () { return null; })
+            .then(function (data) {
+                var companies = data && Array.isArray(data.companies) ? data.companies : [];
+                if (!companies.length) return;
+                companies.forEach(function (company, index) {
+                    var wrap = el('div', 'case');
+                    wrap.appendChild(el('p', 'case-no', 'Case ' + String(index + 1).padStart(2, '0')));
+                    wrap.appendChild(window.Results.card(company));
+                    if (Array.isArray(company.did) && company.did.length) {
+                        var did = el('div', 'case-did');
+                        did.appendChild(el('h4', null, '한 일'));
+                        var ul = el('ul');
+                        company.did.forEach(function (line) { ul.appendChild(el('li', null, line)); });
+                        did.appendChild(ul);
+                        wrap.appendChild(did);
+                    }
+                    host.appendChild(wrap);
+                });
+                host.closest('section').hidden = false;
+            });
+    })();
 })();

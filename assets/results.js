@@ -42,6 +42,8 @@
         return article;
     }
 
+    window.Results = { card: card };
+
     function init() {
         var section = document.querySelector('[data-results]');
         if (!section) return;
