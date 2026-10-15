@@ -9,7 +9,7 @@
     var data = null;
     var listeners = [];
 
-    // 원 단위 정수 → "36만원", "1.5만원"
+    // 원 단위 정수 → "N만원" (소수 한 자리까지)
     function formatMoney(won) {
         if (won % 1000 !== 0) {
             return won.toLocaleString('ko-KR') + '원';
@@ -42,7 +42,7 @@
         each('[data-money]', function (node) {
             var parts = node.getAttribute('data-money').split('|');
             var row = findByName(d, parts[0], parts[1]);
-            if (row) node.textContent = formatMoney(row.price);
+            if (row) node.textContent = formatMoney(row.price) + (node.hasAttribute('data-with-unit') && row.unit ? ' / ' + row.unit : '');
         });
 
         var discount = d.singlesDiscount || {};
@@ -115,6 +115,15 @@
 
     var PLAN_MONTHS = 3; // 3개월 플랜 개월 수
 
+    // 두 금액(원)을 "최소~최대만원" 범위로 표기 (같으면 한 값)
+    function rangeMan(a, b) {
+        function man(won) {
+            var v = won / WON_PER_MAN;
+            return Number.isInteger(v) ? String(v) : String(Math.round(v * 10) / 10);
+        }
+        return a === b ? man(a) + '만원' : man(a) + '~' + man(b) + '만원';
+    }
+
     // 3개월 플랜 금액·할인율: 모두 JSON 값으로 계산
     function planValues(d, id) {
         var plan = d.plan;
@@ -153,6 +162,7 @@
     window.Pricing = {
         formatMoney: formatMoney,
         planValues: planValues,
+        rangeMan: rangeMan,
         fill: fill,
         el: el,
         findByName: findByName,

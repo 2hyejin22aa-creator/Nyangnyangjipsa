@@ -1,0 +1,11 @@
+{
+  "compare": [
+    {
+      "title": "인스타그램 프로필",
+      "before": "assets/media/case-insta-before.jpg",
+      "after": "assets/media/case-insta-after.jpg",
+      "alt": "영어 키즈공간 인스타그램 프로필 화면",
+      "caption": "소개글 · 링크 정리"
+    }
+  ]
+}

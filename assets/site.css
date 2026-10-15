@@ -546,3 +546,56 @@ h2 em { font-style: normal; color: var(--accent); }
 }
 @media (max-width: 639px) { .problem.right .container, .problem .container { text-align: left; } .problem.right p { margin-left: 0; } }
 @media (prefers-reduced-motion: reduce) { .draw-pending path { stroke-dashoffset: 0; } .draw-pending.in path { transition: none; } }
+
+/* ---------- 패키지 카드 3종 ---------- */
+.pkg-cards { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: stretch; }
+.pkg-card { position: relative; display: flex; flex-direction: column; padding: 28px 24px; background: #ffffff; border: 1px solid var(--line); border-radius: 14px; }
+.pkg-card.recommended { border: 2px solid var(--accent); box-shadow: 0 10px 30px rgba(35, 71, 230, 0.14); }
+.pkg-flag { position: absolute; top: -13px; left: 24px; padding: 3px 14px; border-radius: 999px; background: var(--accent); color: #ffffff; font-size: 0.85rem; font-weight: 700; }
+.pkg-card .pkg-name { margin: 0 0 4px; font-size: 1.35rem; font-weight: 900; color: var(--navy); }
+.pkg-card .audience { margin: 0 0 18px; color: var(--muted); font-size: 0.93rem; min-height: 3em; }
+.pkg-price-big { margin: 0; font-size: clamp(2rem, 4vw, 2.6rem); font-weight: 900; line-height: 1.2; letter-spacing: -0.03em; color: var(--navy); }
+.pkg-price-big .price-unit { margin-left: 6px; font-size: 1rem; font-weight: 500; letter-spacing: 0; color: var(--muted); }
+.pkg-list-price { margin: 4px 0 18px; font-size: 0.88rem; color: var(--muted); }
+.pkg-card .card-items { border-top: 1px solid var(--line); padding-top: 8px; }
+.pkg-card .card-items li { font-size: 0.93rem; }
+.pkg-card .card-note { margin-top: auto; }
+.footnotes { list-style: none; margin: 18px 0 0; }
+.footnotes li { position: relative; padding: 1px 0 1px 12px; font-size: 0.86rem; color: var(--muted); }
+.footnotes li::before { content: "\00B7"; position: absolute; left: 2px; }
+.extras-line { margin: 14px 0 28px; }
+.extras-link { font-weight: 700; color: var(--accent); text-underline-offset: 4px; }
+.pkg-tabs { max-width: 520px; margin-bottom: 8px; }
+.plan-waiver { margin: 10px 0 0; font-size: 0.9rem; color: var(--muted); }
+.plan-box .price-tabs + .price-tabs { margin-top: 8px; }
+
+/* ---------- 채널별 역할 표 ---------- */
+.roles { width: 100%; border-collapse: collapse; background: #ffffff; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+.roles th, .roles td { padding: 16px 18px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.roles thead th { background: var(--soft); font-size: 0.85rem; font-weight: 700; color: var(--muted); }
+.roles tbody th { width: 20%; font-weight: 900; color: var(--navy); white-space: nowrap; }
+.roles tbody td { font-size: 0.97rem; }
+.roles tbody tr:last-child th, .roles tbody tr:last-child td { border-bottom: 0; }
+
+/* ---------- 월 순환 ---------- */
+.cycle-title { margin: 40px 0 14px; font-size: 1.1rem; }
+.cycle-row { list-style: none; display: grid; grid-template-columns: 1fr; gap: 10px; }
+.cycle-row li { position: relative; padding: 14px 16px; text-align: center; background: #ffffff; border: 2px solid #dfe3ea; border-radius: 12px; font-weight: 500; }
+.cycle-row li:first-child { border-color: var(--accent); }
+.cycle-row li:not(:last-child)::after { content: "\2193"; position: absolute; left: 50%; bottom: -18px; transform: translateX(-50%); color: var(--accent); font-weight: 700; z-index: 1; }
+
+@media (min-width: 800px) {
+    .pkg-cards { grid-template-columns: repeat(3, 1fr); }
+    .cycle-row { grid-template-columns: repeat(4, 1fr); gap: 22px; }
+    .cycle-row li:not(:last-child)::after { content: "\2192"; left: auto; right: -19px; bottom: auto; top: 50%; transform: translateY(-50%); }
+}
+@media (max-width: 639px) {
+    .roles thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); }
+    .roles, .roles tbody, .roles tr, .roles th, .roles td { display: block; width: 100%; }
+    .roles tr { padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .roles tbody th { width: auto; padding: 0 18px 4px; border: 0; }
+    .roles td { padding: 2px 18px; border: 0; }
+    .roles td::before { content: attr(data-label); display: block; margin-top: 6px; font-size: 0.78rem; font-weight: 700; color: var(--accent); }
+}
+
+.pkg-cards { padding-top: 16px; }
