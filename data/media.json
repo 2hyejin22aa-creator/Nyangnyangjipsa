@@ -14,9 +14,12 @@
       "page": "services",
       "section": "달라지는 점",
       "type": "compare",
-      "files": [],
-      "alt": "",
-      "caption": ""
+      "files": [
+        "assets/media/case-insta-before.jpg",
+        "assets/media/case-insta-after.jpg"
+      ],
+      "alt": "영어 키즈공간 인스타그램 프로필 화면 (연락처 가림)",
+      "caption": "인스타그램 프로필 소개글·링크 정리"
     },
     {
       "id": "services/blog-search",
@@ -100,20 +103,6 @@
       "channel": "블로그",
       "alt": "같은 디자인으로 이어지는 블로그 카드뉴스 목록 화면",
       "caption": "블로그 카드뉴스 시리즈"
-    },
-    {
-      "type": "image",
-      "file": "assets/media/case-insta-profile-1.jpg",
-      "channel": "인스타그램",
-      "alt": "영어 키즈공간 인스타그램 프로필 화면. 소개글과 예약 링크가 정리되어 있음 (연락처 가림)",
-      "caption": "인스타그램 프로필"
-    },
-    {
-      "type": "image",
-      "file": "assets/media/case-insta-profile-2.jpg",
-      "channel": "인스타그램",
-      "alt": "영어 키즈공간 인스타그램 프로필 화면. 소개글과 이용 연령이 정리되어 있음",
-      "caption": "인스타그램 프로필"
     },
     {
       "type": "image",

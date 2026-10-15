@@ -259,9 +259,11 @@ a { color: inherit; }
 .media-slot { margin: 0; }
 .media-slot img, .media-slot video, .works-grid img, .works-grid video { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--paper-2); }
 .zoom { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; cursor: zoom-in; font: inherit; color: inherit; }
-.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-.compare-pair figure { margin: 0; }
-.compare-pair figcaption { margin-top: 8px; font-size: 0.95rem; font-weight: 700; color: var(--muted); }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 1000px; }
+.compare-pair figure { margin: 0; display: flex; flex-direction: column; }
+.compare-pair figcaption { order: -1; align-self: flex-start; margin: 0 0 10px; padding: 3px 16px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 1rem; font-weight: 900; }
+.compare-pair figure:last-child figcaption { background: var(--cobalt); }
+.compare-pair img { width: 100%; height: auto; border-radius: 8px; border: 1px solid var(--line); }
 .video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: 14px; }
 .media-caption { margin: 10px 0 0; font-size: 0.95rem; color: var(--muted); }
 
@@ -387,3 +389,7 @@ dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.7); }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+
+.media-compare { width: 100%; }
+.media-compare .media-caption { margin-top: 12px; }
+.slot-list > :has(.media-compare) { grid-column: 1 / -1; }
