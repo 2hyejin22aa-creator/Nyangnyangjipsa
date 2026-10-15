@@ -177,14 +177,31 @@ a { color: var(--accent); }
     }
 }
 
-/* 달라지는 점 / 월간 리포트 (이미지는 data/proof.json) */
-.proof-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 28px; }
-.proof-list li { margin: 0; }
-.ba-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.ba-pair figure, .report-figure { margin: 0; }
-.ba-pair img, .report-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
-.ba-pair figcaption, .report-figure figcaption { margin-top: 6px; font-size: 0.95rem; color: var(--muted); }
-.ba-caption { margin: 8px 0 0; font-size: 0.95rem; color: var(--muted); }
+/* 이미지·영상 슬롯 (파일이 있을 때만 생성됨, assets/media.js) */
+.slot-list { display: grid; grid-template-columns: 1fr; gap: 28px; }
+.slot-list > [data-slot][hidden] { display: none; }
+[data-slot] { margin: 0; }
+.media-slot { margin: 0; }
+.media-slot img, .media-slot video, .works-grid img, .works-grid video {
+    display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft);
+}
+.zoom { display: block; width: 100%; padding: 0; margin: 0; border: 0; background: none; cursor: zoom-in; font: inherit; color: inherit; }
+.compare-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.compare-pair figure { margin: 0; }
+.compare-pair figcaption { margin-top: 6px; font-size: 0.95rem; color: var(--muted); }
+.video-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; }
+.media-caption { margin: 8px 0 0; font-size: 0.95rem; color: var(--muted); }
+
+dialog.lightbox {
+    max-width: 96vw; max-height: 96vh; padding: 12px; border: 1px solid var(--line); border-radius: var(--radius);
+    background: var(--bg); color: var(--text);
+}
+dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.6); }
+.lightbox-body img, .lightbox-body video { display: block; max-width: calc(96vw - 48px); max-height: calc(96vh - 96px); width: auto; height: auto; margin: 0 auto; }
+.lightbox-close {
+    display: block; margin: 0 0 8px auto; padding: 8px 16px; min-height: 40px; cursor: pointer;
+    font: inherit; font-weight: 700; border: 1.5px solid var(--accent); border-radius: var(--radius); background: var(--bg); color: var(--accent);
+}
 
 /* 월 순환 */
 .loop { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; }
@@ -241,10 +258,6 @@ section > .wrap > details[open] > summary { border-bottom: 1px solid var(--line)
 .works-grid li { margin: 0; }
 .works-grid li[hidden] { display: none; }
 .works-grid figure { margin: 0; }
-.works-grid img, .works-grid video {
-    display: block; width: 100%; aspect-ratio: 1 / 1; object-fit: cover;
-    background: var(--bg-soft); border-radius: var(--radius);
-}
 .works-grid figcaption { margin-top: 8px; font-size: 0.95rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
 footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 1rem; }
@@ -258,7 +271,7 @@ footer p { margin-bottom: 4px; }
     }
     .months { grid-template-columns: repeat(3, 1fr); column-gap: 24px; border-top: 0; }
     .months li { border-top: 1px solid var(--line); }
-    .proof-list { grid-template-columns: repeat(2, 1fr); }
+    .slot-list { grid-template-columns: repeat(2, 1fr); }
 }
 
 @media (min-width: 640px) {

@@ -5,9 +5,6 @@
     var formatMoney = Pricing.formatMoney;
     var PLAN_MONTHS = 3; // 3개월 플랜 개월 수
 
-    var script = document.currentScript || document.querySelector('script[src$="services/script.js"]');
-    var ROOT = new URL('../', script.src);
-
     // 패키지: "이름 · 대상 · 가격" 한 줄 행, 구성은 펼침(<details>), 첫 행은 펼친 상태
     function buildPackageRow(pkg, open) {
         var row = el('details', 'pkg-row');
@@ -109,57 +106,9 @@
         host.hidden = false;
     }
 
-    // 달라지는 점(전·후)과 월간 리포트 양식: data/proof.json, 항목이 없으면 섹션 전체 숨김
-    function mediaUrl(path) {
-        return new URL(path, ROOT).href;
-    }
-
-    function buildImage(src, alt) {
-        var img = el('img');
-        img.src = mediaUrl(src);
-        img.alt = alt || '';
-        img.loading = 'lazy';
-        img.decoding = 'async';
-        return img;
-    }
-
-    function renderProof(proof) {
-        var list = (proof && Array.isArray(proof.beforeAfter)) ? proof.beforeAfter : [];
-        var items = list.filter(function (item) { return item && item.before && item.after; });
-        if (items.length) {
-            var host = document.getElementById('proof-list');
-            items.forEach(function (item) {
-                var li = el('li');
-                var pair = el('div', 'ba-pair');
-                [['전', item.before], ['후', item.after]].forEach(function (entry) {
-                    var fig = el('figure');
-                    fig.appendChild(buildImage(entry[1], entry[0] + (item.caption ? ' · ' + item.caption : '')));
-                    fig.appendChild(el('figcaption', null, entry[0]));
-                    pair.appendChild(fig);
-                });
-                li.appendChild(pair);
-                if (item.caption) li.appendChild(el('p', 'ba-caption', item.caption));
-                host.appendChild(li);
-            });
-            document.getElementById('proof-section').hidden = false;
-        }
-
-        var report = proof && proof.report;
-        if (report && report.src) {
-            var figure = document.getElementById('report-figure');
-            figure.appendChild(buildImage(report.src, report.caption || ''));
-            if (report.caption) figure.appendChild(el('figcaption', null, report.caption));
-            document.getElementById('report-section').hidden = false;
-        }
-    }
-
     Pricing.onReady(function (data) {
         renderPackages(data);
         renderPlan(data);
     });
 
-    fetch(new URL('data/proof.json', ROOT).href)
-        .then(function (res) { return res.ok ? res.json() : null; })
-        .catch(function () { return null; })
-        .then(renderProof);
 })();

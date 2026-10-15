@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/site.css">
     <script src="../assets/pricing.js" defer></script>
     <script src="../assets/nav.js" defer></script>
+    <script src="../assets/media.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -76,11 +77,21 @@
             </div>
         </section>
 
-        <!-- 달라지는 점 (data/proof.json, 항목이 없으면 숨김) -->
-        <section id="proof-section" aria-labelledby="proof-title" hidden>
+        <!-- 달라지는 점 (assets/media.js: 파일이 없으면 구역 전체 숨김) -->
+        <section data-slots aria-labelledby="proof-title" hidden>
             <div class="wrap">
                 <h2 id="proof-title">달라지는 점</h2>
-                <ul id="proof-list" class="proof-list"></ul>
+                <div class="slot-list">
+                    <div data-slot="services/place-compare" hidden></div>
+                    <div data-slot="services/insta-compare" hidden></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 블로그 검색 노출 화면 -->
+        <section data-slots hidden>
+            <div class="wrap narrow">
+                <div data-slot="services/blog-search" hidden></div>
             </div>
         </section>
 
@@ -132,11 +143,11 @@
             </div>
         </section>
 
-        <!-- 월간 리포트 (data/proof.json의 report, 없으면 숨김) -->
-        <section id="report-section" aria-labelledby="report-title" hidden>
+        <!-- 월간 리포트 (assets/media.js: 파일이 없으면 구역 전체 숨김) -->
+        <section data-slots aria-labelledby="report-title" hidden>
             <div class="wrap narrow">
                 <h2 id="report-title">월간 리포트</h2>
-                <figure id="report-figure" class="report-figure"></figure>
+                <div data-slot="services/report" hidden></div>
             </div>
         </section>
 

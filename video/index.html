@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../assets/site.css">
     <script src="../assets/pricing.js" defer></script>
     <script src="../assets/nav.js" defer></script>
+    <script src="../assets/media.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
@@ -35,6 +36,12 @@
         <section class="hero" aria-labelledby="hero-title">
             <div class="wrap">
                 <h1 id="hero-title">영상 편집</h1>
+            </div>
+        </section>
+
+        <section data-slots hidden>
+            <div class="wrap">
+                <div data-slot="video/reels" hidden></div>
             </div>
         </section>
 

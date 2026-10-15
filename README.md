@@ -12,7 +12,7 @@
 | `/planning/` | `planning/index.html` | 기획 |
 | `/works/` | `works/index.html`, `works/script.js` | 작업물 |
 
-공통 파일: `assets/site.css`(스타일), `assets/nav.js`(탭 바), `assets/pricing.js`(가격 표시), `data/pricing.json`(모든 금액), `data/works.json`(작업물 목록), `data/proof.json`(/services/의 전·후 이미지와 월간 리포트 양식).
+공통 파일: `assets/site.css`(스타일), `assets/nav.js`(탭 바), `assets/pricing.js`(가격 표시), `data/pricing.json`(모든 금액), `assets/media.js`(이미지·영상 슬롯), `data/media.json`(이미지·영상 자리와 작업물).
 모든 페이지는 상대 경로를 쓰기 때문에 `/저장소이름/` 아래에서도, 내 도메인 루트에서도 그대로 동작합니다.
 
 ## 로컬에서 확인하기
@@ -36,44 +36,49 @@ python3 -m http.server 8000
   - `plan`: `/planning/` 표
 - `lastUpdated`를 `YYYY-MM-DD` 형식의 날짜로 바꾸면 푸터에 "가격 기준일"이 표시됩니다.
 
-## /services/ 전·후 이미지와 월간 리포트 양식 추가 방법
+## 새 이미지 추가 방법
 
-`data/proof.json`을 채우면 `/services/`의 "달라지는 점"과 "월간 리포트" 섹션이 나타납니다. 항목이 없으면 섹션 전체가 숨겨집니다. (처음에는 비어 있음)
+이미지와 영상은 `data/media.json`에 한 줄을 적어야 화면에 나타납니다. 파일이 없는 자리는 구역 전체가 숨겨져서 화면에 아무것도 남지 않습니다.
+
+1. **파일 넣기**: 이미지나 영상 파일을 `assets/media/` 폴더에 넣습니다. (예: `assets/media/place-before.jpg`)
+2. **`data/media.json`에 한 줄 추가**: 아래 자리(`slots`) 중 해당 항목의 `files`에 파일 경로를 적고, `alt`(이미지 설명, 필수)와 `caption`(캡션 한 줄)을 채웁니다. 경로는 사이트 루트 기준(`assets/media/...`)입니다.
+3. **확인**: `python3 -m http.server 8000`으로 서버를 켜고 해당 페이지를 열어 봅니다. 이미지가 보이고, 눌렀을 때 크게 보이는지(Esc 또는 닫기 버튼으로 닫힘) 확인합니다.
+
+### 자리(슬롯) 목록
+
+| id | 페이지 | 종류 | `files` |
+|---|---|---|---|
+| `services/place-compare` | /services/ | `compare` | 전 이미지, 후 이미지 (2개) |
+| `services/insta-compare` | /services/ | `compare` | 전 이미지, 후 이미지 (2개) |
+| `services/blog-search` | /services/ | `image` | 이미지 1개 |
+| `services/report` | /services/ | `image` | 이미지 1개 |
+| `video/reels` | /video/ | `video` | 영상 1~3개 (`posters`에 대표 이미지를 같은 순서로) |
+| `planning/calendar` | /planning/ | `image` | 이미지 1개 |
+| `planning/branding` | /planning/ | `image` | 이미지 1개 |
+
+예시 (`slots`의 `services/place-compare` 항목):
 
 ```json
-{
-  "beforeAfter": [
-    { "before": "services/media/before-01.jpg", "after": "services/media/after-01.jpg", "caption": "캡션 한 줄" }
-  ],
-  "report": { "src": "services/media/report-sample.png", "caption": "캡션 한 줄" }
-}
+{ "id": "services/place-compare", "page": "services", "section": "달라지는 점", "type": "compare",
+  "files": ["assets/media/place-before.jpg", "assets/media/place-after.jpg"],
+  "alt": "이미지 설명", "caption": "캡션 한 줄", "width": 1200, "height": 800 }
 ```
 
-이미지 파일은 `services/media/` 폴더에 넣고, 경로는 사이트 루트 기준으로 적습니다. `report`가 없거나 `src`가 비어 있으면 월간 리포트 섹션은 숨겨집니다.
+- `section`은 화면에서 어느 구역인지 알아보기 위한 메모입니다.
+- `width`, `height`(픽셀)를 적으면 이미지가 로딩되는 동안 화면이 밀리지 않습니다. 적지 않으면 불러온 뒤 실제 크기를 기록합니다.
+- `alt`가 비어 있으면 그 자리는 표시되지 않습니다.
+- 이미지는 지연 로딩되고, 영상은 소리 없이 자동 반복 재생됩니다(`muted autoplay loop playsinline`, 대표 이미지 `poster`).
 
-## 작업물 추가 방법
+### 작업물 탭
 
-작업물 탭은 `data/works.json`에 항목이 **3개 이상**일 때만 탭 바와 홈에 나타납니다. (처음에는 빈 배열 `[]`)
-
-1. 이미지나 영상 파일을 `works/media/` 폴더에 넣습니다. (예: `works/media/post-01.jpg`)
-2. `data/works.json`에 항목을 추가합니다. 경로는 **사이트 루트 기준**입니다.
+`gallery`에 항목을 3개 이상 넣으면 탭 바와 홈에 "작업물"이 나타납니다. (실제로 파일이 있는 항목만 셉니다.)
 
 ```json
-[
-  { "type": "image", "src": "works/media/post-01.jpg", "channel": "인스타", "caption": "캡션 한 줄" },
-  { "type": "video", "src": "works/media/reel-01.mp4", "poster": "works/media/reel-01.jpg", "channel": "영상", "caption": "캡션 한 줄" }
-]
+{ "type": "image", "file": "assets/media/work-01.jpg", "channel": "인스타", "alt": "이미지 설명", "caption": "캡션 한 줄" }
+{ "type": "video", "file": "assets/media/work-02.mp4", "poster": "assets/media/work-02.jpg", "channel": "영상", "alt": "영상 설명", "caption": "캡션 한 줄" }
 ```
 
-| 필드 | 설명 |
-|---|---|
-| `type` | `image` 또는 `video` |
-| `src` | 파일 경로 (사이트 루트 기준) |
-| `poster` | 영상 대표 이미지 (영상일 때) |
-| `channel` | 채널 이름. 서로 다른 채널이 2개 이상이면 필터 버튼이 생깁니다 |
-| `caption` | 캡션 (한 줄) |
-
-이미지는 지연 로딩되고, 영상은 소리 없이 자동 반복 재생됩니다(`muted autoplay loop playsinline`).
+`channel`이 2종류 이상이면 채널 필터 버튼이 생깁니다.
 
 ## 배포 (GitHub Pages)
 

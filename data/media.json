@@ -1,0 +1,12 @@
+{
+  "slots": [
+    { "id": "services/place-compare", "page": "services", "section": "달라지는 점", "type": "compare", "files": [], "alt": "", "caption": "" },
+    { "id": "services/insta-compare", "page": "services", "section": "달라지는 점", "type": "compare", "files": [], "alt": "", "caption": "" },
+    { "id": "services/blog-search", "page": "services", "section": "블로그 검색 노출 화면", "type": "image", "files": [], "alt": "", "caption": "" },
+    { "id": "services/report", "page": "services", "section": "월간 리포트", "type": "image", "files": [], "alt": "", "caption": "" },
+    { "id": "video/reels", "page": "video", "section": "릴스 샘플 영상", "type": "video", "files": [], "posters": [], "alt": "", "caption": "" },
+    { "id": "planning/calendar", "page": "planning", "section": "연간 콘텐츠 캘린더 샘플", "type": "image", "files": [], "alt": "", "caption": "" },
+    { "id": "planning/branding", "page": "planning", "section": "브랜딩 정리 샘플", "type": "image", "files": [], "alt": "", "caption": "" }
+  ],
+  "gallery": []
+}
