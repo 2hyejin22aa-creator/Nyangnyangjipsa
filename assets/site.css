@@ -317,4 +317,46 @@ dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.7); }
     .roles tbody th { width: 24%; }
 }
 
+/* ---------- 모션 (assets/motion.js와 선택자 목록이 같아야 함) ----------
+   '모션 줄이기' 설정에서는 아무것도 숨기거나 움직이지 않습니다.
+   스크립트가 실패해도 2.6초 뒤에는 모두 보이도록 대체 애니메이션이 있습니다. */
+.service-more { display: inline-block; transition: transform 0.25s ease; }
+.service-list a:hover .service-more { transform: translateX(6px); }
+.btn { transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.15s ease; }
+.btn:active { transform: translateY(1px); }
+
+@keyframes rise { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: none; } }
+@keyframes reveal-fallback { to { opacity: 1; transform: none; } }
+@keyframes line-fallback { to { transform: none; opacity: 1; } }
+
+@media (prefers-reduced-motion: no-preference) {
+    /* 히어로: 불러올 때 차례로 등장 */
+    .js .hero h1, .js .hero .lede, .js .hero .hero-copy .cta, .js .hero-page .cta { animation: rise 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both; }
+    .js .hero .lede { animation-delay: 0.12s; }
+    .js .hero .hero-copy .cta, .js .hero-page .cta { animation-delay: 0.24s; }
+
+    /* 스크롤: 구역별로 아래에서 올라오며 등장 */
+    .js :is(.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner) { opacity: 0; transform: translateY(18px); animation: reveal-fallback 0.01s linear 2.6s forwards; }
+    .js :is(.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner).in { opacity: 1; transform: none; animation: none; transition: opacity 0.6s ease var(--d, 0ms), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms); }
+    .js .hero-art figcaption, .js .journey li, .js .path-flow li { transform: none; }
+    .js .journey li { transform: translateY(14px); }
+    .js .journey li.in { transform: none; }
+
+    /* 타임라인 선이 이어서 그려짐 */
+    .js .journey li::before { transform: scaleY(0); transform-origin: top; animation: line-fallback 0.01s linear 2.8s forwards; }
+    .js .journey li.in::before { transform: scaleY(1); animation: none; transition: transform 0.45s ease calc(var(--d, 0ms) + 300ms); }
+    .js .path-flow li::before { transform: scaleX(0); transform-origin: left; animation: line-fallback 0.01s linear 2.8s forwards; }
+    .js .path-flow li.in::before { transform: scaleX(1); animation: none; transition: transform 0.5s ease calc(var(--d, 0ms) + 250ms); }
+    .js .path-flow li::after { opacity: 0; animation: line-fallback 0.01s linear 2.8s forwards; }
+    .js .path-flow li.in::after { opacity: 1; animation: none; transition: opacity 0.3s ease calc(var(--d, 0ms) + 650ms); }
+    @media (max-width: 639px) {
+        .js .path-flow li::before { transform: scaleY(0); transform-origin: top; }
+        .js .path-flow li.in::before { transform: scaleY(1); }
+    }
+
+    /* 월 순환: 칸과 화살표가 차례로 나타남 */
+    .js .loop rect, .js .loop text, .js .loop > path { opacity: 0; animation: line-fallback 0.01s linear 2.8s forwards; }
+    .js .cycle-fig.in .loop rect, .js .cycle-fig.in .loop text, .js .cycle-fig.in .loop > path { opacity: 1; animation: none; transition: opacity 0.45s ease var(--d, 0ms); }
+}
+
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
