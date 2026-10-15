@@ -583,3 +583,21 @@ h2 em { font-style: normal; color: var(--accent); }
 .settle-list li::before { content: "\00B7"; position: absolute; left: 2px; font-weight: 700; }
 
 .owner-line { margin: 24px 0 0; font-size: 0.82rem; color: var(--muted); }
+
+/* ---------- 콘텐츠 제작: 형식 카드 ---------- */
+.fmt-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.fmt-card { display: flex; flex-direction: column; gap: 4px; }
+.fmt-role { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
+.fmt-card h3 { margin: 0 0 4px; }
+.fmt-card .fmt-spec { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
+.fmt-prices { list-style: none; margin: auto 0 0; padding: 0; border-top: 1px solid var(--line); }
+.fmt-prices li { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.fmt-prices li:last-child { border-bottom: 0; padding-bottom: 0; }
+.fmt-name { font-size: 0.97rem; }
+.fmt-money { font-weight: 900; color: var(--navy); white-space: nowrap; }
+.fmt-note { grid-column: 1 / -1; margin-top: 2px; font-size: 0.85rem; color: var(--muted); }
+.fmt-note:empty { display: none; }
+.fmt-spec[hidden] { display: none; }
+@media (min-width: 800px) {
+    .fmt-grid { grid-template-columns: repeat(2, 1fr); }
+}

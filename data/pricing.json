@@ -228,6 +228,12 @@
       "category": "video"
     }
   ],
+  "contentSpec": {
+    "blog": "1,500자 이상, 평균 2,000자 내외",
+    "cardnews": "5장 기준, 건당 수정 1회, 추가 수정은 협의",
+    "reels": "15~30초, 소스 5분 이내, 자막 · BGM, 수정 1회, 업로드까지",
+    "banner": "업체 제공 소재로 제작, 포스터는 단면 기준"
+  },
   "singlesDiscount": {
     "package": 10,
     "note": "월 패키지 이용 업체의 추가 단건에만 적용"

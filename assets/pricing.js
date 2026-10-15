@@ -45,6 +45,12 @@
             if (row) node.textContent = formatMoney(row.price);
         });
 
+        // <p data-spec="blog"> → data/pricing.json의 contentSpec 문구 (없으면 숨김)
+        each('[data-spec]', function (node) {
+            var text = (d.contentSpec || {})[node.getAttribute('data-spec')];
+            if (text) node.textContent = text; else node.hidden = true;
+        });
+
         var discount = d.singlesDiscount || {};
         each('[data-discount]', function (node) {
             var value = discount[node.getAttribute('data-discount')];

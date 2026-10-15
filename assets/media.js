@@ -237,8 +237,11 @@
             var ready = results.filter(Boolean);
             if (ready.length < MIN_GALLERY) return;
             Array.prototype.forEach.call(hosts, function (host) {
-                var limit = Number(host.getAttribute('data-limit')) || ready.length;
-                ready.slice(0, limit).forEach(function (r) {
+                var only = (host.getAttribute('data-channels') || '').split(',').map(function (s) { return s.trim(); }).filter(Boolean);
+                var pool = only.length ? ready.filter(function (r) { return only.indexOf(r.item.channel) !== -1; }) : ready;
+                if (!pool.length) return;
+                var limit = Number(host.getAttribute('data-limit')) || pool.length;
+                pool.slice(0, limit).forEach(function (r) {
                     var li = el('li');
                     li.appendChild(r.fig.cloneNode(true));
                     host.appendChild(li);

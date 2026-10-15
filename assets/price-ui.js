@@ -38,6 +38,11 @@
             });
             host.hidden = false;
         });
+        // 패키지가 단건·옵션 합계보다 저렴한 폭 ("4~11만원" 형식)
+        Array.prototype.forEach.call(document.querySelectorAll('[data-bundle-range]'), function (node) {
+            var diffs = d.packages.map(function (p) { return p.listPrice - p.price; });
+            node.textContent = P.rangeMan(min(diffs), max(diffs));
+        });
         // 예: "패키지명 금액 · 패키지명 금액 (세전)" 형식
         Array.prototype.forEach.call(document.querySelectorAll('[data-package-line]'), function (node) {
             node.textContent = d.packages.map(function (p) { return p.name + ' ' + P.formatMoney(p.price); }).join(' · ') + ' (세전)';

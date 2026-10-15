@@ -1,4 +1,4 @@
-# SNS 마케팅 · 영상 편집 · 기획
+# SNS 마케팅 · 콘텐츠 제작 · 기획
 
 프레임워크와 빌드 단계 없이 HTML/CSS/JS만 쓰는 정적 사이트입니다. GitHub Pages로 배포합니다.
 
@@ -8,7 +8,8 @@
 |---|---|---|
 | `/` | `index.html` | 홈 |
 | `/services/` | `services/index.html`, `services/script.js` | SNS 마케팅 (주소 변경 금지: 이미 공유된 링크) |
-| `/video/` | `video/index.html` | 영상 편집 |
+| `/content/` | `content/index.html` | 콘텐츠 제작 (블로그 · 카드뉴스 · 릴스 · 배너·포스터) |
+| `/video/` | `video/index.html` | 예전 주소. `/content/`로 이동만 합니다 |
 | `/planning/` | `planning/index.html` | 기획 |
 | `/works/` | `works/index.html`, `works/script.js` | 작업물 |
 
@@ -44,11 +45,12 @@ python3 -m http.server 8000
 - 금액은 원 단위 정수로 적습니다. (예: `360000` → 화면에 "36만원", `15000` → "1.5만원")
 - `setup`, `options`, `singles`의 각 항목에는 `category`가 있습니다. 페이지별로 이 값에 맞는 항목만 표시됩니다.
   - `sns`: `/services/` 표 (`plan`, `video`가 아닌 나머지 전부)
-  - `video`: `/video/` 표
+  - `video`: 릴스·클립 관련 항목 (화면에서는 `/content/`의 형식 카드가 `data-money`로 이름을 찾아 금액을 읽음)
   - `plan`: `/planning/` 표
 - `lastUpdated`를 `YYYY-MM-DD` 형식의 날짜로 바꾸면 푸터에 "가격 기준일"이 표시됩니다.
 - `packages`는 3개(`lite`, `basic`, `plus`)입니다. `price`는 월 금액, `listPrice`는 단건·옵션으로 따로 맡길 때의 합계(= 단건·옵션 가격을 더한 값)입니다. `recommended: true`인 패키지에 "추천" 표시가 붙고 3개월 플랜 박스의 기본 선택이 됩니다.
 - `plan`은 3개월 **선결제** 전용입니다(월 단위로 나눠 내는 3개월 옵션은 없음). `waiver`(면제 세팅비), `prepayTotal`(선결제 총액), `waiverDetail`(면제 항목 문구)은 패키지 `id`별로 적습니다. 월 환산액·절약액·중도 해지 정산 예시·혜택 4칸의 "N~M만원"은 모두 이 값에서 계산합니다. 화면 문구에는 숫자를 적지 않습니다.
+- `contentSpec`은 `/content/` 형식 카드(블로그·카드뉴스·릴스·배너)에 보이는 제작 기준 한 줄입니다(`blog`, `cardnews`, `reels`, `banner`). 글자 수·분량·수정 횟수 같은 숫자는 여기서만 고칩니다. 키를 지우면 그 줄은 숨겨집니다.
 
 ## 새 이미지 추가 방법
 
@@ -66,8 +68,7 @@ python3 -m http.server 8000
 | `services/insta-compare` | /services/ | `compare` | 전 이미지, 후 이미지 (2개) |
 | `services/blog-search` | /services/ | `image` | 이미지 1개 |
 | `services/report` | /services/ | `image` | 이미지 1개 |
-| `video/compare` | /video/ | `compare` | 편집 전·후 이미지 2개 (Before, After 순서) |
-| `video/reels` | /video/ | `video` | 영상 1~3개 (`posters`에 대표 이미지를 같은 순서로) |
+| `content/reels` | /content/ | `video` | 영상 1~3개 (`posters`에 대표 이미지를 같은 순서로) |
 | `planning/calendar` | /planning/ | `image` | 이미지 1개 |
 | `planning/branding` | /planning/ | `image` | 이미지 1개 |
 
@@ -113,5 +114,5 @@ python3 -m http.server 8000
 
 ## 검색 노출
 
-`/services/`, `/video/`, `/planning/`, `/works/`에는 `<meta name="robots" content="noindex">`가 들어 있습니다.
+`/services/`, `/content/`, `/video/`, `/planning/`, `/works/`에는 `<meta name="robots" content="noindex">`가 들어 있습니다.
 검색에 노출하려면 각 페이지에서 이 줄을 지우세요.
