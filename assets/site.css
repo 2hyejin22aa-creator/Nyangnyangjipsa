@@ -574,3 +574,8 @@ h2 em { font-style: normal; color: var(--accent); }
 }
 
 .pkg-cards { padding-top: 16px; }
+
+.price-panel-monthly { margin: 2px 0 0; font-size: 1rem; font-weight: 700; color: var(--muted); }
+.settle-list { list-style: none; margin: 8px 0 4px; }
+.settle-list li { position: relative; padding: 4px 0 4px 14px; font-size: 0.93rem; }
+.settle-list li::before { content: "\00B7"; position: absolute; left: 2px; font-weight: 700; }

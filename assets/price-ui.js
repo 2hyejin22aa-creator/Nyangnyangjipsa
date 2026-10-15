@@ -10,19 +10,16 @@
 
     function benefits(d) {
         var pkgs = d.packages;
-        var plan = d.plan;
+        var calcs = pkgs.map(function (p) { return P.planCalc(d, p.id); });
         var diffs = pkgs.map(function (p) { return p.listPrice - p.price; });
-        var waivers = pkgs.map(function (p) { return plan.waiver[p.id]; });
-        var saves = pkgs.map(function (p) {
-            var prepay = plan.prepayMonthly[p.id];
-            return (p.price * 3 + plan.waiver[p.id]) - prepay * 3;
-        });
-        var percents = pkgs.map(function (p) { return Math.round((p.price - plan.prepayMonthly[p.id]) / p.price * 100); });
+        var waivers = calcs.map(function (c) { return c.waiver; });
+        var saves = calcs.map(function (c) { return c.save; });
+        var percents = calcs.map(function (c) { return c.percent; });
 
         var items = [
             ['묶음 가격', '단건보다 저렴', '패키지에 따라 ' + P.rangeMan(min(diffs), max(diffs)) + ' 저렴'],
-            ['3개월 이용', '세팅비 면제', '패키지에 따라 ' + P.rangeMan(min(waivers), max(waivers)) + ', 3개월 이용 시 적용'],
-            ['3개월 선결제', '월 금액 약 ' + min(percents) + '% 할인', '월 단위 이용 대비 ' + P.rangeMan(min(saves), max(saves)) + ' 절약']
+            ['3개월 이용', '세팅비 면제', '패키지에 따라 ' + P.rangeMan(min(waivers), max(waivers)) + ', 3개월 선결제 시 적용'],
+            ['3개월 선결제', '월 금액 약 ' + min(percents) + '% 할인', '월 단위 이용 대비 ' + P.rangeMan(min(saves), max(saves)) + ' 절약 (세팅비 면제 포함)']
         ];
         if (d.referral && typeof d.referral.amount === 'number') {
             items.push(['지인 소개', P.formatMoney(d.referral.amount) + ' 할인', '소개한 분, 소개받은 분 모두 첫 달 월 금액']);

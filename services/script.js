@@ -33,7 +33,7 @@
         host.appendChild(grid);
     }
 
-    // 3개월 플랜: 패키지 탭 + 결제 방식 탭. 문구는 JSON, 금액은 모두 Pricing.planValues로 계산
+    // 3개월 플랜(선결제): 패키지 탭만 제공. 문구는 JSON, 금액은 모두 Pricing.planCalc로 계산
     function renderPlan(data) {
         var plan = data.plan;
         var host = document.getElementById('plan-box');
@@ -41,7 +41,6 @@
 
         var ids = data.packages.map(function (p) { return p.id; });
         var current = (data.packages.filter(function (p) { return p.recommended; })[0] || data.packages[0]).id;
-        var method = 0; // 0 월 결제, 1 3개월 선결제
 
         host.appendChild(el('h3', null, plan.title));
         host.appendChild(el('p', null, plan.text[0]));
@@ -49,9 +48,6 @@
         var pkgTabs = el('div', 'price-tabs pkg-tabs');
         pkgTabs.setAttribute('role', 'tablist');
         pkgTabs.setAttribute('aria-label', '패키지');
-        var methodTabs = el('div', 'price-tabs');
-        methodTabs.setAttribute('role', 'tablist');
-        methodTabs.setAttribute('aria-label', '결제 방식');
         var panel = el('div', 'price-panel');
         panel.setAttribute('role', 'tabpanel');
         var waiverLine = el('p', 'plan-waiver');
@@ -60,7 +56,7 @@
         var termsBody = el('div', 'plan-terms-body');
         terms.appendChild(termsBody);
 
-        var pkgButtons = data.packages.map(function (pkg) {
+        var buttons = data.packages.map(function (pkg) {
             var b = el('button', 'price-tab', pkg.name);
             b.type = 'button';
             b.setAttribute('role', 'tab');
@@ -68,38 +64,29 @@
             pkgTabs.appendChild(b);
             return b;
         });
-        var methodButtons = ['월 결제', '3개월 선결제'].map(function (name, index) {
-            var b = el('button', 'price-tab', name);
-            b.type = 'button';
-            b.setAttribute('role', 'tab');
-            b.addEventListener('click', function () { method = index; update(); });
-            methodTabs.appendChild(b);
-            return b;
-        });
 
         function update() {
-            var v = Pricing.planValues(data, current);
-            pkgButtons.forEach(function (b, i) { b.setAttribute('aria-selected', ids[i] === current ? 'true' : 'false'); });
-            methodButtons.forEach(function (b, i) { b.setAttribute('aria-selected', i === method ? 'true' : 'false'); });
+            var c = Pricing.planCalc(data, current);
+            buttons.forEach(function (b, i) { b.setAttribute('aria-selected', ids[i] === current ? 'true' : 'false'); });
 
             panel.textContent = '';
-            var value = el('p', 'price-panel-value', method === 0 ? v.price : v.prepayMonthly);
-            value.appendChild(el('span', 'price-panel-unit', '/ 월'));
+            var value = el('p', 'price-panel-value', formatMoney(c.total));
+            value.appendChild(el('span', 'price-panel-unit', '/ ' + c.months + '개월'));
             panel.appendChild(value);
-            if (method === 0) {
-                panel.appendChild(el('p', 'price-panel-sub', v.months + '개월 ' + v.price3 + ' · 월 단위 이용 대비 ' + v.saveMonthly + ' 절약'));
-                panel.appendChild(el('p', 'price-panel-note', '기본 결제 방식입니다.'));
-            } else {
-                panel.appendChild(el('p', 'price-panel-sub', v.months + '개월 ' + v.prepay3 + ' · 월 단위 이용 대비 ' + v.savePrepay + ' 절약'));
-            }
+            panel.appendChild(el('p', 'price-panel-monthly', '월 약 ' + Pricing.manOne(c.monthlyEq)));
+            panel.appendChild(el('p', 'price-panel-sub', '월 단위 이용 대비 ' + formatMoney(c.save) + ' 절약 (세팅비 ' + formatMoney(c.waiver) + ' 면제 포함)'));
             waiverLine.textContent = '면제되는 세팅비: ' + (plan.waiverDetail ? plan.waiverDetail[current] : '');
 
             termsBody.textContent = '';
-            plan.text.slice(2).forEach(function (line) { termsBody.appendChild(el('p', 'plan-terms', Pricing.fill(line, v))); });
+            termsBody.appendChild(el('p', 'plan-terms', plan.text[1]));
+            var list = el('ul', 'settle-list');
+            list.appendChild(el('li', null, '1개월 이용 후 해지: 정상가 정산 ' + formatMoney(c.settle1) + ' (월 금액 + 세팅비) → 환불 ' + formatMoney(c.refund1)));
+            list.appendChild(el('li', null, '2개월 이용 후 해지: 정상가 정산 ' + formatMoney(c.settle2) + ' (월 금액 × 2 + 세팅비) → 환불 ' + formatMoney(c.refund2)));
+            list.appendChild(el('li', null, c.months + '개월 이용: 환불 없음'));
+            termsBody.appendChild(list);
         }
 
         host.appendChild(pkgTabs);
-        host.appendChild(methodTabs);
         host.appendChild(panel);
         host.appendChild(waiverLine);
         host.appendChild(terms);

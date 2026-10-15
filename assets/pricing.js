@@ -124,46 +124,42 @@
         return a === b ? man(a) + '만원' : man(a) + '~' + man(b) + '만원';
     }
 
-    // 3개월 플랜 금액·할인율: 모두 JSON 값으로 계산
-    function planValues(d, id) {
+    // 원 단위 금액 → 소수 한 자리 만원 ("N만원", 정수면 소수점 없음)
+    function manOne(won) {
+        var v = Math.round(won / 1000) / 10;
+        return (Number.isInteger(v) ? String(v) : v.toFixed(1)) + '만원';
+    }
+
+    // 3개월 선결제 플랜 계산: 모두 JSON 값(월 금액, waiver, prepayTotal)에서 계산
+    function planCalc(d, id) {
         var plan = d.plan;
         var pkg = d.packages.filter(function (p) { return p.id === id; })[0];
         var price = pkg.price;
-        var prepay = plan.prepayMonthly[id];
         var waiver = plan.waiver[id];
-        var price3 = price * PLAN_MONTHS;
-        var prepay3 = prepay * PLAN_MONTHS;
-        var normal3 = price3 + waiver; // 월 단위 이용 시 3개월 합계(세팅비 포함)
-        var cancel1 = price * 1 + waiver;
-        var cancel2 = price * 2 + waiver;
+        var total = plan.prepayTotal[id];
+        var normal = price * PLAN_MONTHS + waiver; // 월 단위 이용 시 3개월 합계(세팅비 포함)
+        var settle1 = price * 1 + waiver;
+        var settle2 = price * 2 + waiver;
         return {
-            prepayPercent: String(Math.round((price - prepay) / price * 100)),
-            months: String(PLAN_MONTHS),
-            price: formatMoney(price),
-            price3: formatMoney(price3),
-            prepayMonthly: formatMoney(prepay),
-            saveMonthly: formatMoney(normal3 - price3),
-            prepay3: formatMoney(prepay3),
-            savePrepay: formatMoney(normal3 - prepay3),
-            waiver: formatMoney(waiver),
-            cancel1Settle: formatMoney(cancel1),
-            cancel1Refund: formatMoney(prepay3 - cancel1),
-            cancel2Settle: formatMoney(cancel2),
-            cancel2Refund: formatMoney(prepay3 - cancel2)
+            months: PLAN_MONTHS,
+            price: price,
+            waiver: waiver,
+            total: total,
+            monthlyEq: total / PLAN_MONTHS,
+            save: normal - total,
+            percent: Math.round((price - total / PLAN_MONTHS) / price * 100),
+            settle1: settle1,
+            refund1: Math.max(0, total - settle1),
+            settle2: settle2,
+            refund2: Math.max(0, total - settle2)
         };
-    }
-
-    function fill(template, values) {
-        return template.replace(/\{(\w+)\}/g, function (m, key) {
-            return values[key] !== undefined ? values[key] : m;
-        });
     }
 
     window.Pricing = {
         formatMoney: formatMoney,
-        planValues: planValues,
+        planCalc: planCalc,
         rangeMan: rangeMan,
-        fill: fill,
+        manOne: manOne,
         el: el,
         findByName: findByName,
         onReady: function (callback) {
