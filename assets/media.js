@@ -244,8 +244,30 @@
         });
     }
 
+
+    // 홈의 소개 구역: data/profile.json에 내용이 있을 때만 보임
+    function initProfile() {
+        var section = document.querySelector('[data-profile]');
+        if (!section) return;
+        fetch(new URL('data/profile.json', ROOT).href)
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .catch(function () { return null; })
+            .then(function (data) {
+                if (!data) return;
+                var lines = Array.isArray(data.lines) ? data.lines.filter(Boolean) : [];
+                var headline = (data.headline || '').trim();
+                if (!headline && !lines.length) return;
+                var lead = section.querySelector('[data-profile-lead]');
+                var list = section.querySelector('[data-profile-lines]');
+                if (headline) { lead.textContent = headline; lead.hidden = false; }
+                lines.forEach(function (line) { list.appendChild(el('li', null, line)); });
+                list.hidden = !lines.length;
+                section.hidden = false;
+            });
+    }
+
     window.Media = { load: load, renderGalleryItem: renderGalleryItem };
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { initSlots(); initGalleryPreview(); });
-    else { initSlots(); initGalleryPreview(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { initSlots(); initGalleryPreview(); initProfile(); });
+    else { initSlots(); initGalleryPreview(); initProfile(); }
 })();

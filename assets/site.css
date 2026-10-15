@@ -93,6 +93,7 @@ a { color: inherit; }
 .hero { padding-block: clamp(48px, 9vw, 112px) clamp(56px, 9vw, 112px); }
 .hero-home .container { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
 .hero-copy h1 { margin-bottom: 24px; }
+.hero-copy .sub { margin: 0 0 4px; color: var(--muted); font-size: 1rem; max-width: 38em; }
 .hero-page h1 { margin-bottom: 20px; }
 
 /* 손님이 오는 길(홈): 번호가 붙은 세로 타임라인 */
@@ -186,7 +187,7 @@ a { color: inherit; }
 .pkg-name { font-family: var(--font-display); font-weight: 900; font-size: clamp(1.8rem, 4vw, 2.6rem); letter-spacing: -0.03em; margin: 0 0 4px; }
 .audience { color: rgba(255, 255, 255, 0.78); margin: 0; }
 .pkg-price { display: flex; flex-direction: column; gap: 2px; }
-.list-price { font-size: 0.95rem; color: rgba(255, 255, 255, 0.7); }
+.list-price { font-size: 0.95rem; color: rgba(255, 255, 255, 0.78); }
 .price-value { font-family: var(--font-display); font-weight: 900; font-size: clamp(3rem, 9vw, 5.5rem); line-height: 1.05; letter-spacing: -0.04em; color: #ffffff; }
 .price-unit { font-family: var(--font-body); font-weight: 500; font-size: 1.1rem; letter-spacing: 0; margin-left: 6px; opacity: 0.8; }
 .discount { color: var(--cobalt-soft); font-weight: 700; }
@@ -201,9 +202,14 @@ a { color: inherit; }
 .plan-box p { max-width: 46em; }
 .plan-prices { list-style: none; margin: 18px 0; display: grid; gap: 8px; }
 .plan-prices li { font-family: var(--font-display); font-weight: 700; font-size: 1.15rem; }
-.plan-terms { font-size: 0.95rem; opacity: 0.9; margin-bottom: 0; }
+.plan-terms { font-size: 0.95rem; opacity: 0.92; margin-bottom: 12px; }
+.plan-box details { margin: 20px 0 0; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: var(--radius); }
+.plan-box details:first-of-type { margin-top: 20px; }
+.plan-box summary { cursor: pointer; padding: 14px 16px; min-height: 48px; font-weight: 700; }
+.plan-box details[open] > summary { border-bottom: 1px solid rgba(255, 255, 255, 0.4); margin-bottom: 12px; }
+.plan-terms-body { padding: 0 16px 4px; }
 
-.band-ink details { margin: 14px 0 0; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: var(--radius); }
+.band-ink > .container > details { margin: 14px 0 0; border: 1px solid rgba(255, 255, 255, 0.3); border-radius: var(--radius); }
 .band-ink details:first-of-type { margin-top: 36px; }
 .band-ink summary { cursor: pointer; padding: 16px 18px; min-height: 52px; font-weight: 700; font-size: 1.05rem; }
 .band-ink details[open] > summary { border-bottom: 1px solid rgba(255, 255, 255, 0.3); margin-bottom: 8px; }

@@ -17,7 +17,7 @@
 
         var price = el('div', 'pkg-price');
         if (pkg.listPrice > pkg.price) {
-            price.appendChild(el('s', 'list-price', '정가 ' + formatMoney(pkg.listPrice)));
+            price.appendChild(el('span', 'list-price', '따로 주문하면 ' + formatMoney(pkg.listPrice)));
         }
         var value = el('span', 'price-value', formatMoney(pkg.price));
         value.appendChild(el('span', 'price-unit', '/ 월'));
@@ -25,7 +25,7 @@
         if (pkg.listPrice > pkg.price) {
             var saved = pkg.listPrice - pkg.price;
             var percent = Math.round(saved / pkg.listPrice * 100);
-            price.appendChild(el('span', 'discount', formatMoney(saved) + ' · ' + percent + '% 할인'));
+            price.appendChild(el('span', 'discount', '묶음 할인 ' + formatMoney(saved) + ' · ' + percent + '%'));
         }
         price.appendChild(el('span', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
         box.appendChild(price);
@@ -91,13 +91,19 @@
         var lines = plan.text.map(function (line) { return fill(line, values); });
 
         host.appendChild(el('h3', null, plan.title));
-        lines.slice(0, 3).forEach(function (line) { host.appendChild(el('p', null, line)); });
+        // 먼저 요약(세팅비 면제, 결제 방식, 금액), 해지 조건은 접어 둠
+        [0, 1].forEach(function (i) { host.appendChild(el('p', null, lines[i])); });
 
         var prices = el('ul', 'plan-prices');
-        lines.slice(3, 5).forEach(function (line) { prices.appendChild(el('li', null, line)); });
+        [3, 4].forEach(function (i) { prices.appendChild(el('li', null, lines[i])); });
         host.appendChild(prices);
 
-        lines.slice(5).forEach(function (line) { host.appendChild(el('p', 'plan-terms', line)); });
+        var terms = el('details', 'plan-terms-box');
+        terms.appendChild(el('summary', null, '중도 해지 조건'));
+        var body = el('div', 'plan-terms-body');
+        [2, 5].forEach(function (i) { body.appendChild(el('p', 'plan-terms', lines[i])); });
+        terms.appendChild(body);
+        host.appendChild(terms);
         host.hidden = false;
     }
 
