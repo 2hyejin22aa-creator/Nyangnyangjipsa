@@ -1,4 +1,4 @@
-# 이혜진 · SNS 마케팅 · 영상 편집 · 기획
+# SNS 마케팅 · 영상 편집 · 기획
 
 프레임워크와 빌드 단계 없이 HTML/CSS/JS만 쓰는 정적 사이트입니다. GitHub Pages로 배포합니다.
 
@@ -12,7 +12,7 @@
 | `/planning/` | `planning/index.html` | 기획 |
 | `/works/` | `works/index.html`, `works/script.js` | 작업물 |
 
-공통 파일: `assets/site.css`(스타일), `assets/nav.js`(탭 바), `assets/pricing.js`(가격 표시), `data/pricing.json`(모든 금액), `assets/media.js`(이미지·영상 슬롯), `data/media.json`(이미지·영상 자리와 작업물).
+공통 파일: `assets/site.css`(스타일), `assets/site.js` + `data/site.json`(상단 로고·푸터·운영자 표기), `assets/nav.js`(탭 바), `assets/pricing.js`(가격 표시), `data/pricing.json`(모든 금액), `assets/media.js`(이미지·영상 슬롯), `data/media.json`(이미지·영상 자리와 작업물).
 모든 페이지는 상대 경로를 쓰기 때문에 `/저장소이름/` 아래에서도, 내 도메인 루트에서도 그대로 동작합니다.
 
 ## 로컬에서 확인하기
@@ -25,6 +25,18 @@ python3 -m http.server 8000
 ```
 
 브라우저에서 <http://localhost:8000/> 을 엽니다. 끝낼 때는 터미널에서 `Ctrl+C`.
+
+## 상단 로고·이름 표기 수정
+
+`data/site.json` 한 곳에서 읽습니다. HTML에는 이름을 적지 않습니다.
+
+```json
+{ "brandName": "로고 텍스트", "brandSub": "로고 옆 작은 글씨", "ownerName": "이름" }
+```
+
+- `brandName`: 상단 로고와 푸터에 중간 굵기로 표시됩니다.
+- `brandSub`: 로고 옆에 작고 옅게 표시됩니다. 푸터에서는 "○○ · 개인 프리랜서"로 이어집니다.
+- `ownerName`: `/services/` 맨 아래 문의 영역에 "운영: ○○" 한 줄(작은 글씨)로만 표시됩니다. 비워 두면 표시하지 않습니다.
 
 ## 가격 수정
 

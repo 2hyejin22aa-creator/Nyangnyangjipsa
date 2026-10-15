@@ -6,12 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex">
     <meta name="color-scheme" content="light">
-    <title>이혜진 | 기획</title>
+    <title>기획</title>
     <meta name="description" content="브랜딩 · 연간 콘텐츠 계획">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
     <link rel="stylesheet" href="../assets/site.css">
+    <script src="../assets/site.js" defer></script>
     <script src="../assets/pricing.js" defer></script>
     <script src="../assets/nav.js" defer></script>
     <script src="../assets/media.js" defer></script>
@@ -22,7 +23,7 @@
 
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="../">이혜진</a>
+            <a class="brand" href="../"><span class="brand-name" data-brand-name></span><span class="brand-sub" data-brand-sub></span></a>
             <nav aria-label="사이트 메뉴">
                 <ul class="tabs">
                         <li><a href="../">홈</a></li>
@@ -108,8 +109,8 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div>
-                <p class="footer-brand">이혜진</p>
-                <p class="footer-line">이혜진 · 1인 마케터 · 개인 프리랜서</p>
+                <p class="footer-brand" data-brand-name></p>
+                <p class="footer-line"><span data-brand-sub="sep"></span>개인 프리랜서</p>
             </div>
             <ul class="footer-links"><li><a href="../">홈</a></li><li><a href="../services/">SNS 마케팅</a></li><li><a href="../video/">영상 편집</a></li><li><a href="../planning/">기획</a></li></ul>
             <p id="last-updated" class="fine" hidden></p>

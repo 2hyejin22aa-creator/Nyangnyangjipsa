@@ -5,12 +5,13 @@
     <script>document.documentElement.className += ' js';</script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light">
-    <title>이혜진 | SNS 마케팅·영상 편집·기획</title>
-    <meta name="description" content="블로그·플레이스·인스타 운영, 릴스·클립 편집, 마케팅 기획. 1인 마케터 이혜진.">
+    <title>SNS 마케팅 · 영상 편집 · 기획</title>
+    <meta name="description" content="블로그·플레이스·인스타 운영, 릴스·클립 편집, 마케팅 기획.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/site.css">
+    <script src="assets/site.js" defer></script>
     <script src="assets/pricing.js" defer></script>
     <script src="assets/nav.js" defer></script>
     <script src="assets/media.js" defer></script>
@@ -23,7 +24,7 @@
 
     <header class="site-header">
         <div class="container header-inner">
-            <a class="brand" href="./">이혜진</a>
+            <a class="brand" href="./"><span class="brand-name" data-brand-name></span><span class="brand-sub" data-brand-sub></span></a>
             <nav aria-label="사이트 메뉴">
                 <ul class="tabs">
                         <li><a href="./" aria-current="page">홈</a></li>
@@ -88,12 +89,11 @@
             <div class="problem left"><div class="container"><span class="problem-no" aria-hidden="true">03</span><p>무엇부터 해야 할지<br>모르겠습니다</p></div></div>
         </section>
 
-        <section class="band-dark declare" aria-label="이혜진">
+        <section class="band-dark declare" aria-label="시작 방식">
             <div class="container">
-                <p class="dec-small">마케팅 맡기실 땐</p>
-                <p class="dec-big">문의가 오는 길을 만드는</p>
-                <div class="brush-wrap"><span class="brand-word">이혜진</span><svg class="brush draw" viewBox="0 0 340 130" aria-hidden="true"><path pathLength="1" d="M60 70 C20 28 150 4 262 22 C336 36 318 104 176 118 C62 128 4 96 40 46"/></svg></div>
-                <p class="dec-last">한 달 단위로 시작하세요.</p>
+                <p class="dec-small">동네 업체 마케팅</p>
+                <div class="brush-wrap"><span class="dec-word">문의 경로</span><svg class="brush draw" viewBox="0 0 340 130" aria-hidden="true"><path pathLength="1" d="M60 70 C20 28 150 4 262 22 C336 36 318 104 176 118 C62 128 4 96 40 46"/></svg></div>
+                <p class="dec-last">한 달 단위로 시작</p>
             </div>
         </section>
 
@@ -242,8 +242,8 @@
     <footer class="site-footer">
         <div class="container footer-inner">
             <div>
-                <p class="footer-brand">이혜진</p>
-                <p class="footer-line">이혜진 · 1인 마케터 · 개인 프리랜서</p>
+                <p class="footer-brand" data-brand-name></p>
+                <p class="footer-line"><span data-brand-sub="sep"></span>개인 프리랜서</p>
             </div>
             <ul class="footer-links"><li><a href="./">홈</a></li><li><a href="services/">SNS 마케팅</a></li><li><a href="video/">영상 편집</a></li><li><a href="planning/">기획</a></li></ul>
             <p id="last-updated" class="fine" hidden></p>
