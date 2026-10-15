@@ -203,11 +203,11 @@ a { color: var(--accent); }
 
 /* 접기 */
 details { margin: 0; }
-.faq details, section > .wrap > details { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 10px; }
+section > .wrap > details { border: 1px solid var(--line); border-radius: var(--radius); margin-bottom: 10px; }
 summary { cursor: pointer; padding: 14px 16px; min-height: 48px; font-weight: 700; list-style-position: inside; }
 .pkg-row summary { padding: 16px 0; }
 details > p, .details-body { padding: 0 16px 8px; }
-.faq details[open] > summary, section > .wrap > details[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+section > .wrap > details[open] > summary { border-bottom: 1px solid var(--line); margin-bottom: 12px; }
 
 /* 표 */
 .price-table { width: 100%; border-collapse: collapse; margin-bottom: 16px; font-size: 1rem; }
