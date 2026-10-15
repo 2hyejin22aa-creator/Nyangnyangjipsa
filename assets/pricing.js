@@ -45,12 +45,6 @@
             if (row) node.textContent = formatMoney(row.price);
         });
 
-        // 패키지 중 가장 낮은 월 금액
-        each('[data-package-min]', function (node) {
-            var prices = d.packages.map(function (p) { return p.price; });
-            if (prices.length) node.textContent = formatMoney(Math.min.apply(null, prices));
-        });
-
         var discount = d.singlesDiscount || {};
         each('[data-discount]', function (node) {
             var value = discount[node.getAttribute('data-discount')];

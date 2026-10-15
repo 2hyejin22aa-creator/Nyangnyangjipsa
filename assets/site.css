@@ -105,7 +105,6 @@ a { color: var(--accent); }
 .tab-list a:hover .tab-name { color: var(--accent); text-decoration: underline; }
 .tab-name { font-weight: 800; font-size: 1.25rem; }
 .tab-desc { color: var(--muted); }
-.tab-price { color: var(--accent); font-weight: 700; }
 
 /* 번호 목록 */
 .steps { list-style: none; padding: 0; margin: 0; counter-reset: step; }
@@ -125,7 +124,6 @@ a { color: var(--accent); }
 .criteria li::marker { color: var(--accent); }
 
 /* 패키지: 한 줄 행 */
-.group-title { margin: 28px 0 8px; color: var(--accent); font-size: 1rem; letter-spacing: 0.04em; }
 .pkg-list { border-top: 1px solid var(--line); }
 .pkg-row { border-bottom: 1px solid var(--line); }
 .pkg-row summary {
@@ -157,6 +155,51 @@ a { color: var(--accent); }
 .plan-note h3 { margin-bottom: 8px; }
 .plan-prices { list-style: none; padding: 0; margin: 0; }
 .plan-prices li { margin-bottom: 6px; font-weight: 700; }
+
+
+/* 손님이 오는 길: 박스 + 화살표 (모바일은 세로) */
+.flow { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 32px; }
+.flow li {
+    position: relative; margin: 0; padding: 14px 16px; text-align: center; font-weight: 800;
+    border: 1.5px solid var(--accent); border-radius: var(--radius); background: var(--bg);
+}
+.flow li:not(:last-child)::after {
+    content: ""; position: absolute; left: 50%; bottom: -22px; width: 10px; height: 10px;
+    border-right: 2px solid var(--accent); border-bottom: 2px solid var(--accent);
+    transform: translateX(-50%) rotate(45deg);
+}
+
+/* 채널별 역할 표 */
+.role-table tbody th { white-space: nowrap; }
+@media (max-width: 639px) {
+    .role-table td::before {
+        content: attr(data-label); display: block; font-size: 0.85rem; color: var(--muted); margin-top: 6px;
+    }
+}
+
+/* 달라지는 점 / 월간 리포트 (이미지는 data/proof.json) */
+.proof-list { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: 1fr; gap: 28px; }
+.proof-list li { margin: 0; }
+.ba-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ba-pair figure, .report-figure { margin: 0; }
+.ba-pair img, .report-figure img { display: block; width: 100%; height: auto; border: 1px solid var(--line); border-radius: var(--radius); background: var(--bg-soft); }
+.ba-pair figcaption, .report-figure figcaption { margin-top: 6px; font-size: 0.95rem; color: var(--muted); }
+.ba-caption { margin: 8px 0 0; font-size: 0.95rem; color: var(--muted); }
+
+/* 월 순환 */
+.loop { display: block; width: 100%; max-width: 420px; height: auto; margin: 0 auto; }
+.loop rect { fill: var(--bg); stroke: var(--line); stroke-width: 1.5; }
+.loop text { fill: var(--text); font-size: 13.5px; font-weight: 800; font-family: inherit; }
+.loop path { fill: none; stroke: var(--accent); stroke-width: 2; }
+.loop marker path { fill: var(--accent); stroke: none; }
+
+/* 3개월 동안 */
+.months { list-style: none; margin: 0 0 8px; padding: 0; display: grid; grid-template-columns: 1fr; border-top: 1px solid var(--line); }
+.months li { margin: 0; padding: 14px 0; border-bottom: 1px solid var(--line); }
+.months strong { display: block; color: var(--accent); font-size: 1.15rem; }
+.months span { color: var(--text); }
+.after-title { margin-top: 32px; }
+.plan-terms { font-size: 0.95rem; color: var(--muted); }
 
 /* 접기 */
 details { margin: 0; }
@@ -207,10 +250,21 @@ details > p, .details-body { padding: 0 16px 8px; }
 footer { border-top: 1px solid var(--line); padding: 24px 0 40px; color: var(--muted); font-size: 1rem; }
 footer p { margin-bottom: 4px; }
 
+@media (min-width: 760px) {
+    .flow { flex-direction: row; align-items: stretch; gap: 36px; }
+    .flow li { flex: 1 1 0; display: flex; align-items: center; justify-content: center; }
+    .flow li:not(:last-child)::after {
+        left: auto; right: -24px; bottom: auto; top: 50%; transform: translateY(-50%) rotate(-45deg);
+    }
+    .months { grid-template-columns: repeat(3, 1fr); column-gap: 24px; border-top: 0; }
+    .months li { border-top: 1px solid var(--line); }
+    .proof-list { grid-template-columns: repeat(2, 1fr); }
+}
+
 @media (min-width: 640px) {
     h1 { font-size: 2.4rem; }
     h2 { font-size: 1.7rem; }
-    .tab-list a { grid-template-columns: 11rem 1fr auto; align-items: baseline; gap: 16px; }
+    .tab-list a { grid-template-columns: 11rem 1fr; align-items: baseline; gap: 16px; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
 }
 

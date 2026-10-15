@@ -12,7 +12,7 @@
 | `/planning/` | `planning/index.html` | 기획 |
 | `/works/` | `works/index.html`, `works/script.js` | 작업물 |
 
-공통 파일: `assets/site.css`(스타일), `assets/nav.js`(탭 바), `assets/pricing.js`(가격 표시), `data/pricing.json`(모든 금액), `data/works.json`(작업물 목록).
+공통 파일: `assets/site.css`(스타일), `assets/nav.js`(탭 바), `assets/pricing.js`(가격 표시), `data/pricing.json`(모든 금액), `data/works.json`(작업물 목록), `data/proof.json`(/services/의 전·후 이미지와 월간 리포트 양식).
 모든 페이지는 상대 경로를 쓰기 때문에 `/저장소이름/` 아래에서도, 내 도메인 루트에서도 그대로 동작합니다.
 
 ## 로컬에서 확인하기
@@ -35,6 +35,21 @@ python3 -m http.server 8000
   - `video`: `/video/` 표
   - `plan`: `/planning/` 표
 - `lastUpdated`를 `YYYY-MM-DD` 형식의 날짜로 바꾸면 푸터에 "가격 기준일"이 표시됩니다.
+
+## /services/ 전·후 이미지와 월간 리포트 양식 추가 방법
+
+`data/proof.json`을 채우면 `/services/`의 "달라지는 점"과 "월간 리포트" 섹션이 나타납니다. 항목이 없으면 섹션 전체가 숨겨집니다. (처음에는 비어 있음)
+
+```json
+{
+  "beforeAfter": [
+    { "before": "services/media/before-01.jpg", "after": "services/media/after-01.jpg", "caption": "캡션 한 줄" }
+  ],
+  "report": { "src": "services/media/report-sample.png", "caption": "캡션 한 줄" }
+}
+```
+
+이미지 파일은 `services/media/` 폴더에 넣고, 경로는 사이트 루트 기준으로 적습니다. `report`가 없거나 `src`가 비어 있으면 월간 리포트 섹션은 숨겨집니다.
 
 ## 작업물 추가 방법
 
