@@ -1,33 +1,9 @@
 (function () {
     'use strict';
 
-    var PRICING_URL = 'data/pricing.json';
-    var WON_PER_MAN = 10000;
-    var PLAN_MONTHS = 3; // 올인원 플랜 선결제 개월 수
-
-    // 원 단위 정수 → "36만원", "1.5만원"
-    function formatMoney(won) {
-        if (won % 1000 !== 0) {
-            return won.toLocaleString('ko-KR') + '원';
-        }
-        var man = won / WON_PER_MAN;
-        return (Number.isInteger(man) ? String(man) : String(Math.round(man * 10) / 10)) + '만원';
-    }
-
-    function el(tag, className, text) {
-        var node = document.createElement(tag);
-        if (className) node.className = className;
-        if (text !== undefined) node.textContent = text;
-        return node;
-    }
-
-    function findByName(data, listName, name) {
-        var list = data[listName] || [];
-        for (var i = 0; i < list.length; i++) {
-            if (list[i].name === name) return list[i];
-        }
-        return null;
-    }
+    var el = Pricing.el;
+    var formatMoney = Pricing.formatMoney;
+    var PLAN_MONTHS = 3; // 3개월 플랜 선결제 개월 수
 
     // 패키지 그룹 (id 기준 분류. 금액·구성은 JSON에서만 가져옴)
     var PACKAGE_GROUPS = {
@@ -106,79 +82,8 @@
         host.hidden = false;
     }
 
-    function renderTable(tableId, rows, withUnit) {
-        var body = document.querySelector('#' + tableId + ' tbody');
-        rows.forEach(function (row) {
-            var tr = el('tr');
-
-            var name = el('th', null, row.name);
-            name.scope = 'row';
-            name.setAttribute('data-label', '항목');
-            tr.appendChild(name);
-
-            var price = el('td', 'cell-price', formatMoney(row.price) + (withUnit && row.unit ? ' / ' + row.unit : ''));
-            price.setAttribute('data-label', '금액');
-            tr.appendChild(price);
-
-            var note = el('td', 'cell-note', row.note || '');
-            note.setAttribute('data-label', '내용');
-            tr.appendChild(note);
-
-            body.appendChild(tr);
-        });
-    }
-
-    function fillInlineValues(data) {
-        var moneyNodes = document.querySelectorAll('[data-money]');
-        Array.prototype.forEach.call(moneyNodes, function (node) {
-            var parts = node.getAttribute('data-money').split('|');
-            var row = findByName(data, parts[0], parts[1]);
-            if (row) node.textContent = formatMoney(row.price);
-        });
-
-        Array.prototype.forEach.call(document.querySelectorAll('[data-referral-amount]'), function (node) {
-            if (data.referral && typeof data.referral.amount === 'number') {
-                node.textContent = formatMoney(data.referral.amount);
-            }
-        });
-
-        var discount = data.singlesDiscount || {};
-        Array.prototype.forEach.call(document.querySelectorAll('[data-discount]'), function (node) {
-            var value = discount[node.getAttribute('data-discount')];
-            if (value !== undefined) node.textContent = value + '%';
-        });
-        Array.prototype.forEach.call(document.querySelectorAll('[data-discount-note]'), function (node) {
-            if (discount.note) node.textContent = discount.note;
-        });
-    }
-
-    function renderLastUpdated(data) {
-        var node = document.getElementById('last-updated');
-        if (/^\d{4}-\d{2}-\d{2}$/.test(data.lastUpdated || '')) {
-            node.textContent = '가격 기준일 ' + data.lastUpdated;
-            node.hidden = false;
-        }
-    }
-
-    function showError() {
-        var node = document.getElementById('load-error');
-        node.textContent = '가격 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
-        node.hidden = false;
-    }
-
-    fetch(PRICING_URL)
-        .then(function (res) {
-            if (!res.ok) throw new Error('HTTP ' + res.status);
-            return res.json();
-        })
-        .then(function (data) {
-            renderPackages(data);
-            renderAllInOne(data);
-            renderTable('setup-table', data.setup, false);
-            renderTable('options-table', data.options, true);
-            renderTable('singles-table', data.singles, false);
-            fillInlineValues(data);
-            renderLastUpdated(data);
-        })
-        .catch(showError);
+    Pricing.onReady(function (data) {
+        renderPackages(data);
+        renderAllInOne(data);
+    });
 })();

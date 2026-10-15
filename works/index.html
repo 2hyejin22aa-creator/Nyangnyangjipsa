@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="noindex">
+    <meta name="color-scheme" content="light">
+    <title>이혜진 | 작업물</title>
+    <link rel="stylesheet" href="../assets/site.css">
+    <script src="../assets/pricing.js" defer></script>
+    <script src="../assets/nav.js" defer></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+
+    <header class="tabbar">
+        <div class="wrap tabbar-inner">
+            <nav aria-label="사이트 메뉴">
+                <ul class="tabs">
+                    <li><a href="../">홈</a></li>
+                    <li><a href="../services/">SNS 마케팅</a></li>
+                    <li><a href="../video/">영상 편집</a></li>
+                    <li><a href="../planning/">기획</a></li>
+                    <li data-tab="works" hidden><a href="../works/" aria-current="page">작업물</a></li>
+                </ul>
+            </nav>
+            <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
+        </div>
+    </header>
+
+    <main id="main">
+        <p id="load-error" class="load-error" role="alert" hidden></p>
+
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="wrap">
+                <h1 id="hero-title">작업물</h1>
+                <div id="works-filters" class="filters" role="group" aria-label="채널" hidden></div>
+                <ul id="works-grid" class="works-grid"></ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="wrap">
+            <p>이혜진 · 1인 마케터 · 개인 프리랜서</p>
+            <p id="last-updated" class="fine" hidden></p>
+        </div>
+    </footer>
+</body>
+</html>
