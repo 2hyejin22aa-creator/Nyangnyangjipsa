@@ -16,7 +16,7 @@
         price.appendChild(el('span', 'price-unit', '/ 월'));
         box.appendChild(price);
         if (pkg.listPrice > pkg.price) {
-            box.appendChild(el('p', 'pkg-list-price', '단건으로 따로 맡기면 ' + formatMoney(pkg.listPrice)));
+            box.appendChild(el('p', 'pkg-list-price', '단건 결제 시 ' + formatMoney(pkg.listPrice)));
         }
 
         var list = el('ul', 'card-items');

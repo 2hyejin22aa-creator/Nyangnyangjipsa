@@ -176,7 +176,6 @@ a.card:hover { border-color: var(--accent); }
 .learn-title { margin: 36px 0 12px; font-size: 1.1rem; }
 .learn { list-style: none; max-width: 760px; border-top: 1px solid var(--line); }
 .learn li { padding: 12px 0; border-bottom: 1px solid var(--line); }
-.learn-note { margin-top: 14px; }
 .narrow-block { max-width: 820px; }
 
 .spec-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 12px; }
