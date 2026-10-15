@@ -271,8 +271,47 @@
             });
     }
 
+
+    // 달라지는 점(전·후): data/proof.json의 compare 항목. 파일이 없거나 비어 있으면 구역 전체를 숨김
+    function initProof() {
+        var section = document.querySelector('[data-proof]');
+        if (!section) return;
+        var host = section.querySelector('[data-proof-list]');
+        fetch(new URL('data/proof.json', ROOT).href)
+            .then(function (res) { return res.ok ? res.json() : null; })
+            .catch(function () { return null; })
+            .then(function (data) {
+                var items = data && Array.isArray(data.compare) ? data.compare : [];
+                return Promise.all(items.map(function (item) {
+                    if (!item || !item.before || !item.after || !item.alt) return null;
+                    return allExist([item.before, item.after]).then(function (ok) {
+                        if (!ok) return null;
+                        var wrap = el('figure', 'media-slot media-compare');
+                        var pair = el('div', 'compare-pair');
+                        [item.before, item.after].forEach(function (path, i) {
+                            var fig = el('figure');
+                            var alt = item.alt + ' ' + COMPARE_LABELS[i];
+                            fig.appendChild(zoomable(buildImage(path, alt, item), 'image', path, null, alt, item));
+                            fig.appendChild(el('figcaption', null, COMPARE_LABELS[i]));
+                            pair.appendChild(fig);
+                        });
+                        wrap.appendChild(pair);
+                        var caption = [item.title, item.caption].filter(Boolean).join(' · ');
+                        if (caption) wrap.appendChild(el('figcaption', 'media-caption', caption));
+                        return wrap;
+                    });
+                }));
+            })
+            .then(function (nodes) {
+                var ready = (nodes || []).filter(Boolean);
+                if (!ready.length) return;
+                ready.forEach(function (node) { host.appendChild(node); });
+                section.hidden = false;
+            });
+    }
+
     window.Media = { load: load, renderGalleryItem: renderGalleryItem };
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { initSlots(); initGalleryPreview(); initProfile(); });
-    else { initSlots(); initGalleryPreview(); initProfile(); }
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { initSlots(); initGalleryPreview(); initProfile(); initProof(); });
+    else { initSlots(); initGalleryPreview(); initProfile(); initProof(); }
 })();

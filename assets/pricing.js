@@ -42,7 +42,7 @@
         each('[data-money]', function (node) {
             var parts = node.getAttribute('data-money').split('|');
             var row = findByName(d, parts[0], parts[1]);
-            if (row) node.textContent = formatMoney(row.price);
+            if (row) node.textContent = formatMoney(row.price) + (node.hasAttribute('data-with-unit') && row.unit ? ' / ' + row.unit : '');
         });
 
         var discount = d.singlesDiscount || {};

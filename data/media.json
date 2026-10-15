@@ -75,6 +75,16 @@
       "files": [],
       "alt": "",
       "caption": ""
+    },
+    {
+      "id": "works/gallery",
+      "page": "works",
+      "section": "작업물 갤러리",
+      "type": "gallery",
+      "files": [],
+      "alt": "",
+      "caption": "",
+      "note": "파일은 gallery 배열에 적습니다"
     }
   ],
   "gallery": [
