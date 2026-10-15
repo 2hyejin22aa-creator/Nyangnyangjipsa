@@ -6,7 +6,7 @@
     var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     if (reduce || !('IntersectionObserver' in window)) return;
 
-    var SELECTOR = '.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner';
+    var SELECTOR = '.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner, .pain-list li, .statement p, .assure';
     var STEP = 70;      // 같은 목록 안에서 항목마다 늦추는 시간(ms)
     var MAX_DELAY = 420;
 

@@ -93,8 +93,24 @@ a { color: inherit; }
 .hero { padding-block: clamp(48px, 9vw, 112px) clamp(56px, 9vw, 112px); }
 .hero-home .container { display: grid; grid-template-columns: 1fr; gap: 48px; align-items: center; }
 .hero-copy h1 { margin-bottom: 24px; }
-.hero-copy .sub { margin: 0 0 4px; color: var(--muted); font-size: 1rem; max-width: 38em; }
+.hero-copy .sub { margin: 0 0 8px; color: var(--muted); font-size: 1rem; max-width: 38em; }
 .hero-page h1 { margin-bottom: 20px; }
+
+/* 신뢰 문구 */
+.assure { list-style: none; display: flex; flex-wrap: wrap; gap: 8px 20px; margin: 14px 0 0; font-weight: 700; font-size: 0.98rem; }
+.assure li { position: relative; padding-left: 22px; }
+.assure li::before { content: ""; position: absolute; left: 2px; top: 0.55em; width: 11px; height: 6px; border-left: 2px solid var(--cobalt); border-bottom: 2px solid var(--cobalt); transform: rotate(-45deg); }
+
+/* 고민 */
+.pain-list { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; border-top: 2px solid var(--ink); }
+.pain-list li { padding: 22px 0; border-bottom: 1px solid var(--line); font-weight: 900; font-size: clamp(1.35rem, 3.6vw, 2rem); letter-spacing: -0.03em; line-height: 1.35; }
+
+/* 접근 방식 한마디 */
+.statement p { margin: 0; font-weight: 900; font-size: clamp(1.7rem, 4.6vw, 3.1rem); line-height: 1.3; letter-spacing: -0.035em; max-width: 22em; }
+.statement p + p { margin-top: 14px; font-weight: 500; font-size: clamp(1.1rem, 2.4vw, 1.5rem); opacity: 0.92; letter-spacing: -0.01em; }
+
+.results .spec-list li { font-size: clamp(1.2rem, 2.4vw, 1.6rem); line-height: 1.5; }
+.results .fine { margin-top: 20px; }
 
 /* 손님이 오는 길(홈): 번호가 붙은 세로 타임라인 */
 .hero-art { margin: 0; }
@@ -133,11 +149,13 @@ a { color: inherit; }
 /* ---------- 서브 페이지 ---------- */
 .path-flow { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
 .path-flow li { position: relative; display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 0 16px; padding-bottom: 28px; }
+.path-flow .p-no { grid-row: span 2; }
 .path-flow li.last { padding-bottom: 0; }
 .path-flow li:not(.last)::before { content: ""; position: absolute; left: 23px; top: 48px; bottom: 0; width: 2px; background: rgba(255, 255, 255, 0.7); }
 .p-no { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 2px solid #ffffff; border-radius: 50%; font-weight: 900; font-size: 1.2rem; }
 .path-flow li.last .p-no { background: #ffffff; color: var(--cobalt); }
 .p-name { font-weight: 900; font-size: 1.35rem; letter-spacing: -0.02em; }
+.p-cap { grid-column: 2; font-size: 0.95rem; line-height: 1.5; opacity: 0.92; }
 
 /* 역할 표 */
 .roles { width: 100%; border-collapse: collapse; }
@@ -289,9 +307,12 @@ dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.7); }
 
 @media (min-width: 640px) {
     :root { --gutter: 32px; }
+    .pain-list { grid-template-columns: repeat(2, 1fr); column-gap: 40px; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
     .path-flow { grid-template-columns: repeat(5, 1fr); }
-    .path-flow li { grid-template-columns: 1fr; justify-items: start; gap: 14px; padding-bottom: 0; }
+    .path-flow li { grid-template-columns: 1fr; justify-items: start; align-content: start; gap: 14px; padding-bottom: 0; padding-right: 20px; }
+    .path-flow .p-no { grid-row: auto; }
+    .p-cap { grid-column: auto; }
     .path-flow li:not(.last)::before { left: 56px; right: 8px; top: 23px; bottom: auto; width: auto; height: 2px; }
     .path-flow li:not(.last)::after { content: ""; position: absolute; right: 8px; top: 17px; width: 10px; height: 10px; border-right: 2px solid rgba(255, 255, 255, 0.9); border-top: 2px solid rgba(255, 255, 255, 0.9); transform: rotate(45deg); }
     .slot-list { grid-template-columns: repeat(2, 1fr); }
@@ -342,8 +363,8 @@ dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.7); }
     .js .hero .hero-copy .cta, .js .hero-page .cta { animation-delay: 0.24s; }
 
     /* 스크롤: 구역별로 아래에서 올라오며 등장 */
-    .js :is(.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner) { opacity: 0; transform: translateY(18px); animation: reveal-fallback 0.01s linear 2.6s forwards; }
-    .js :is(.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner).in { opacity: 1; transform: none; animation: none; transition: opacity 0.6s ease var(--d, 0ms), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms); }
+    .js :is(.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner, .pain-list li, .statement p, .assure) { opacity: 0; transform: translateY(18px); animation: reveal-fallback 0.01s linear 2.6s forwards; }
+    .js :is(.section-head, .service-list li, .steps5 li, .steps li, .months li, .learn-title, .learn li, .learn-note, .plan-list li, .roles tbody tr, .hero-art figcaption, .journey li, .path-flow li, .spec-list li, .pkg-feature, .plan-box, .referral, .band-ink details, .cta-band h2, .cta-band p, .cta-band .cta, .contact h2, .contact .cta, .contact-note, .cycle-fig, .media-slot, .works-grid li, .price-table, .footer-inner, .pain-list li, .statement p, .assure).in { opacity: 1; transform: none; animation: none; transition: opacity 0.6s ease var(--d, 0ms), transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms); }
     .js .hero-art figcaption, .js .journey li, .js .path-flow li { transform: none; }
     .js .journey li { transform: translateY(14px); }
     .js .journey li.in { transform: none; }
