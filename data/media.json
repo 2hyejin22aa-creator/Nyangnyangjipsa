@@ -83,35 +83,35 @@
       "file": "assets/media/case-search-1.jpg",
       "channel": "검색 노출",
       "alt": "네이버 모바일 검색 결과에서 업체 블로그 글이 노출된 화면",
-      "caption": "메인 키워드 검색 결과에 블로그 글 노출"
+      "caption": "메인 키워드 블로그 글 상위노출"
     },
     {
       "type": "image",
       "file": "assets/media/case-search-2.jpg",
       "channel": "검색 노출",
       "alt": "네이버 검색 결과 상단에 업체 블로그 글이 노출된 화면",
-      "caption": "메인 키워드 검색 결과에 블로그 글 노출"
+      "caption": "메인 키워드 블로그 글 상위노출"
     },
     {
       "type": "image",
       "file": "assets/media/case-chat.jpg",
       "channel": "고객 메시지",
       "alt": "카카오톡 화면. 업체에 서브키워드 확장을 제안하자 \"그렇게 해주세요\"라고 답했고, 이어서 잘 해 주셔서 감사하다는 메시지가 왔습니다. 핵심 문장은 빨간 박스로 표시했습니다",
-      "caption": "서브키워드 확장 제안에 “그렇게 해주세요”"
+      "caption": "서브키워드 확장 제안"
     },
     {
       "type": "image",
       "file": "assets/media/case-blog-feed.jpg",
       "channel": "블로그",
       "alt": "같은 디자인으로 이어지는 블로그 카드뉴스 목록 화면",
-      "caption": "같은 디자인으로 이어지는 카드뉴스 시리즈"
+      "caption": "브랜딩 기획에 따른 시리즈"
     },
     {
       "type": "image",
       "file": "assets/media/case-insta-highlights.jpg",
       "channel": "인스타그램",
       "alt": "인스타그램 하이라이트. 월별 일정, 방학 라운지, 문의 등 항목별로 같은 아이콘으로 정리됨",
-      "caption": "일정 · 방학 · 문의로 나눈 하이라이트"
+      "caption": "일정 · 방학 · 문의 분류 하이라이트"
     },
     {
       "type": "image",
