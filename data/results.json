@@ -1,0 +1,82 @@
+{
+  "note": "네이버 스마트플레이스 통계 기준, 월간, 직전 기간 대비입니다.",
+  "companies": [
+    {
+      "label": "업체 A",
+      "title": "플레이스 유입",
+      "subtitle": "월간",
+      "metrics": [
+        {
+          "name": "플레이스 유입",
+          "prev": 1036,
+          "value": 3661,
+          "change": 253
+        }
+      ]
+    },
+    {
+      "label": "업체 B",
+      "title": "플레이스 유입",
+      "subtitle": "26년 5월 ~ 8월",
+      "rows": [
+        {
+          "period": "5월",
+          "prev": 473,
+          "value": 651,
+          "change": 38
+        },
+        {
+          "period": "6월",
+          "prev": 651,
+          "value": 794,
+          "change": 22
+        },
+        {
+          "period": "7월",
+          "prev": 794,
+          "value": 1106,
+          "change": 39
+        },
+        {
+          "period": "8월",
+          "prev": 1106,
+          "value": 1182,
+          "change": 7
+        }
+      ],
+      "extra": [
+        {
+          "label": "6월 예약·주문 신청",
+          "prev": 65,
+          "value": 89,
+          "change": 37
+        }
+      ]
+    },
+    {
+      "label": "업체 C",
+      "title": "26년 8월",
+      "subtitle": "월간",
+      "metrics": [
+        {
+          "name": "플레이스 유입",
+          "prev": 1324,
+          "value": 1591,
+          "change": 20
+        },
+        {
+          "name": "예약·주문 신청",
+          "prev": 371,
+          "value": 410,
+          "change": 11
+        },
+        {
+          "name": "스마트콜 통화",
+          "prev": 5,
+          "value": 13,
+          "change": 160
+        }
+      ]
+    }
+  ]
+}

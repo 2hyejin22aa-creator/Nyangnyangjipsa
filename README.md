@@ -80,6 +80,18 @@ python3 -m http.server 8000
 
 `channel`이 2종류 이상이면 채널 필터 버튼이 생깁니다.
 
+## 성과 데이터 (홈)
+
+`data/results.json`에 업체별 통계를 적으면 홈에 "성과 데이터" 카드가 생깁니다. 값은 통계 화면에 보이는 숫자를 그대로 적고, 비어 있으면 구역이 보이지 않습니다.
+
+```json
+{ "label": "업체 A", "title": "플레이스 유입", "subtitle": "월간",
+  "rows":    [{ "period": "5월", "prev": 473, "value": 651, "change": 38 }],
+  "metrics": [{ "name": "예약·주문 신청", "prev": 371, "value": 410, "change": 11 }] }
+```
+
+`change`는 화면에 표시된 증가율(%)입니다. 통계 화면 원본은 `data/media.json`의 `gallery`에 `"channel": "플레이스 통계"`로 올립니다.
+
 ## 배포 (GitHub Pages)
 
 저장소 **Settings → Pages**에서 Branch를 `main` / `/ (root)`로 정하고 저장합니다.
