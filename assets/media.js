@@ -183,7 +183,12 @@
                     ? buildVideo(item.file, posterOk ? item.poster : null, item, false)
                     : buildImage(item.file, item.alt, item);
                 fig.appendChild(zoomable(node, isVideo ? 'video' : 'image', item.file, posterOk ? item.poster : null, item.alt, item));
-                if (item.caption) fig.appendChild(el('figcaption', null, item.caption));
+                if (item.caption || item.channel) {
+                    var cap = el('figcaption');
+                    if (item.channel) cap.appendChild(el('span', 'cap-tag', item.channel));
+                    if (item.caption) cap.appendChild(el('strong', 'cap-text', item.caption));
+                    fig.appendChild(cap);
+                }
                 return fig;
             });
         });

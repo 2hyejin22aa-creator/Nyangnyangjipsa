@@ -9,7 +9,7 @@
     <meta name="description" content="블로그·플레이스·인스타 운영, 릴스·클립 편집, 마케팅 기획. 1인 마케터 이혜진.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
     <link rel="stylesheet" href="assets/site.css">
     <script src="assets/pricing.js" defer></script>
     <script src="assets/nav.js" defer></script>
@@ -39,23 +39,18 @@
 
         <section class="hero hero-home" aria-labelledby="hero-title">
             <div class="container">
-                <div class="hero-copy">
-                    <h1 id="hero-title">동네 업체 마케팅,<br>문의가 오는 길을 만듭니다</h1>
-                    <p class="lede">블로그 · 플레이스 · 인스타그램 운영, 릴스 · 클립 편집, 브랜딩 · 연간 콘텐츠 계획까지 업체 상황에 맞게 구성합니다.</p>
-                    <div class="cta">
-                        <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡으로 무료 상담</a>
-                        <a class="btn btn-secondary" href="services/#price">가격 보기</a>
-                    </div>
-                    <ul class="assure">
-                        <li>첫 상담 무료</li>
-                        <li>월 단위 시작</li>
-                        <li>약정 없음</li>
-                    </ul>
+                <p class="eyebrow">이혜진 · 1인 마케터</p>
+                <h1 id="hero-title">동네 업체 마케팅,<br>실제 작업 화면으로 보여 드립니다</h1>
+                <p class="lede">블로그 · 플레이스 · 인스타그램 운영, 릴스 · 클립 편집,<br class="pc">브랜딩 · 연간 콘텐츠 계획까지 업체 상황에 맞게 구성합니다.</p>
+                <div class="cta">
+                    <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡으로 무료 상담</a>
+                    <a class="btn btn-secondary" href="services/#price">가격 보기</a>
                 </div>
-                <figure class="hero-proof" data-gallery-section hidden>
-                    <ul class="hero-shots" data-gallery-preview data-limit="2"></ul>
-                    <figcaption>실제 작업 화면 · 업체명과 키워드는 가렸습니다</figcaption>
-                </figure>
+                <ul class="assure">
+                    <li>첫 상담 무료</li>
+                    <li>월 단위 시작</li>
+                    <li>약정 없음</li>
+                </ul>
             </div>
         </section>
 
@@ -67,48 +62,38 @@
             </div>
         </section>
 
-        <section class="section" aria-labelledby="services-title">
+        <section class="section proof" data-tab="works" data-gallery-section aria-labelledby="work-title" hidden>
             <div class="container">
-                <div class="section-head"><h2 id="services-title">서비스</h2><p>필요한 것만 골라 시작할 수 있습니다.</p></div>
-                <div class="card-grid">
-                    <a class="card" href="services/">
-                        <h3>SNS 마케팅</h3>
-                        <p>블로그 · 플레이스 · 인스타그램을 한 달 단위로 운영합니다.</p>
-                        <ul class="card-points">
-                            <li>블로그 · 인스타그램 · 플레이스 운영</li>
-                            <li>릴스 · 카드뉴스 제작</li>
-                            <li>월간 리포트, 월 1회 방향 미팅</li>
-                        </ul>
-                        <span class="card-link">자세히 보기</span>
-                    </a>
-                    <a class="card" href="video/">
-                        <h3>영상 편집</h3>
-                        <p>업체에서 촬영한 영상을 릴스 · 클립으로 편집합니다.</p>
-                        <ul class="card-points">
-                            <li>15~30초 릴스 · 클립 편집</li>
-                            <li>자막 · BGM</li>
-                            <li>수정 1회, 업로드까지</li>
-                        </ul>
-                        <span class="card-link">자세히 보기</span>
-                    </a>
-                    <a class="card" href="planning/">
-                        <h3>기획</h3>
-                        <p>방향을 정하고, 12개월 콘텐츠 계획을 세웁니다.</p>
-                        <ul class="card-points">
-                            <li>브랜딩 정리</li>
-                            <li>연간 · 월별 콘텐츠 계획</li>
-                            <li>정기 미팅</li>
-                        </ul>
-                        <span class="card-link">자세히 보기</span>
-                    </a>
+                <div class="section-head center">
+                    <p class="eyebrow">작업 사례</p>
+                    <h2 id="work-title">실제 작업 화면입니다</h2>
+                    <p>업체명 · 키워드 · 연락처는 가렸습니다. 노출 순위는 시점과 키워드에 따라 달라집니다.</p>
+                </div>
+                <ul class="works-grid" data-gallery-preview data-limit="6"></ul>
+                <p class="works-more"><a class="btn btn-secondary" href="works/">작업물 전체 보기</a></p>
+            </div>
+        </section>
+
+        <section class="section band-soft" data-slots aria-labelledby="home-compare-title" hidden>
+            <div class="container">
+                <div class="section-head center">
+                    <p class="eyebrow">전 · 후</p>
+                    <h2 id="home-compare-title">달라진 점</h2>
+                    <p>업체명 · 연락처는 가렸습니다.</p>
+                </div>
+                <div class="slot-list">
+                    <div data-slot="services/insta-compare" hidden></div>
                 </div>
             </div>
         </section>
 
-        <section class="section band-soft" aria-labelledby="pain-title">
+        <section class="section band-dark pain" aria-labelledby="pain-title">
             <div class="container">
-                <div class="section-head"><h2 id="pain-title">이런 고민이 있으시다면</h2></div>
-                <ul class="check-grid">
+                <div class="section-head center">
+                    <p class="eyebrow">이런 고민이라면</p>
+                    <h2 id="pain-title">올려도 문의가 없다면,<br>어디서 막혔는지부터 봐야 합니다</h2>
+                </div>
+                <ul class="pain-lines">
                     <li>올려도 문의가 오지 않습니다</li>
                     <li>블로그 · 인스타를 해야 하는데 시간이 없습니다</li>
                     <li>무엇부터 해야 할지 모르겠습니다</li>
@@ -117,26 +102,56 @@
             </div>
         </section>
 
-        <section class="section" data-slots aria-labelledby="home-compare-title" hidden>
+        <section class="section" aria-labelledby="services-title">
             <div class="container">
-                <div class="section-head"><h2 id="home-compare-title">달라진 점</h2><p>업체명 · 연락처는 가렸습니다.</p></div>
-                <div class="slot-list">
-                    <div data-slot="services/insta-compare" hidden></div>
+                <div class="section-head center">
+                    <p class="eyebrow">서비스</p>
+                    <h2 id="services-title">필요한 것만 골라 시작합니다</h2>
+                </div>
+                <div class="tile-grid">
+                    <a class="tile" href="services/">
+                        <span class="tile-no" aria-hidden="true">1</span>
+                        <h3>SNS 마케팅</h3>
+                        <p>블로그 · 플레이스 · 인스타그램을 한 달 단위로 운영합니다.</p>
+                        <ul>
+                            <li>블로그 · 인스타그램 · 플레이스 운영</li>
+                            <li>릴스 · 카드뉴스 제작</li>
+                            <li>월간 리포트, 월 1회 방향 미팅</li>
+                        </ul>
+                        <span class="tile-link">자세히 보기</span>
+                    </a>
+                    <a class="tile" href="video/">
+                        <span class="tile-no" aria-hidden="true">2</span>
+                        <h3>영상 편집</h3>
+                        <p>업체에서 촬영한 영상을 릴스 · 클립으로 편집합니다.</p>
+                        <ul>
+                            <li>15~30초 릴스 · 클립 편집</li>
+                            <li>자막 · BGM</li>
+                            <li>수정 1회, 업로드까지</li>
+                        </ul>
+                        <span class="tile-link">자세히 보기</span>
+                    </a>
+                    <a class="tile" href="planning/">
+                        <span class="tile-no" aria-hidden="true">3</span>
+                        <h3>기획</h3>
+                        <p>방향을 정하고, 12개월 콘텐츠 계획을 세웁니다.</p>
+                        <ul>
+                            <li>브랜딩 정리</li>
+                            <li>연간 · 월별 콘텐츠 계획</li>
+                            <li>정기 미팅</li>
+                        </ul>
+                        <span class="tile-link">자세히 보기</span>
+                    </a>
                 </div>
             </div>
         </section>
 
-        <section class="section band-soft" data-tab="works" data-gallery-section aria-labelledby="work-title" hidden>
+        <section class="section band-soft" aria-labelledby="process-title">
             <div class="container">
-                <div class="section-head"><h2 id="work-title">작업물</h2><p>업체명 · 키워드 · 연락처 등은 가렸습니다.</p></div>
-                <ul class="works-grid" data-gallery-preview data-limit="6"></ul>
-                <p class="works-more"><a href="works/">작업물 전체 보기</a></p>
-            </div>
-        </section>
-
-        <section class="section" aria-labelledby="process-title">
-            <div class="container">
-                <div class="section-head"><h2 id="process-title">진행 순서</h2></div>
+                <div class="section-head center">
+                    <p class="eyebrow">진행 순서</p>
+                    <h2 id="process-title">상담에서 리포트까지</h2>
+                </div>
                 <ol class="step-grid">
                     <li><span class="num" aria-hidden="true">1</span><strong>상담</strong><span class="d">상황과 목표를 확인합니다 (무료)</span></li>
                     <li><span class="num" aria-hidden="true">2</span><strong>진단</strong><span class="d">현황을 점검하고 구성을 제안합니다 (<span data-money="setup|현황 진단"></span>, 계약 시 차감)</span></li>
@@ -147,19 +162,22 @@
             </div>
         </section>
 
-        <section class="section band-soft results" aria-labelledby="results-title">
+        <section class="section results" aria-labelledby="results-title">
             <div class="container">
-                <div class="section-head"><h2 id="results-title">3개월 뒤에 알게 되는 것</h2></div>
+                <div class="section-head center">
+                    <p class="eyebrow">리포트</p>
+                    <h2 id="results-title">3개월 뒤에 알게 되는 것</h2>
+                </div>
                 <ul class="card-grid card-grid-plain">
                     <li class="card"><h3>문의 경로</h3><p>문의가 어디서 오는지 보입니다.</p></li>
                     <li class="card"><h3>반응이 좋은 콘텐츠</h3><p>어떤 콘텐츠가 통했는지 숫자로 알게 됩니다.</p></li>
                     <li class="card"><h3>다음 방향</h3><p>무엇을 더하고 뺄지 근거가 생깁니다.</p></li>
                 </ul>
-                <p class="fine">결과는 업종과 상권에 따라 다르며 보장하지 않습니다.</p>
+                <p class="fine center">결과는 업종과 상권에 따라 다르며 보장하지 않습니다.</p>
             </div>
         </section>
 
-        <section class="section" aria-labelledby="price-teaser-title">
+        <section class="section band-soft" aria-labelledby="price-teaser-title">
             <div class="container">
                 <div class="price-teaser">
                     <div>
@@ -171,7 +189,7 @@
             </div>
         </section>
 
-        <section class="section band-navy cta-band" aria-labelledby="cta-title">
+        <section class="section band-dark cta-band" aria-labelledby="cta-title">
             <div class="container">
                 <h2 id="cta-title">현재 상황과 목표를 먼저 들어 봅니다</h2>
                 <p>첫 상담은 무료입니다. 월 단위로 시작하고, 그만둘 수 있습니다.</p>
