@@ -345,3 +345,79 @@ br.pc { display: none; }
 
 @media (min-width: 720px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1040px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+
+/* ---------- 화면 효과 (assets/effects.js) ----------
+   스크립트가 클래스를 붙일 때만 숨김 → 스크립트가 실패해도 내용은 보입니다. '동작 줄이기'에서는 스크립트가 아무것도 붙이지 않습니다. */
+.reveal { opacity: 0; transform: translateY(26px); }
+.reveal.in { opacity: 1; transform: none; }
+.reveal, .reveal.in { transition: opacity 0.7s ease var(--d, 0ms), transform 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) var(--d, 0ms), translate 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.2s ease; }
+
+.scroll-bar { position: fixed; top: 0; left: 0; right: 0; height: 3px; background: var(--accent); transform: scaleX(0); transform-origin: left; z-index: 50; pointer-events: none; }
+.site-header { transition: box-shadow 0.25s ease; }
+.site-header.scrolled { box-shadow: 0 6px 24px rgba(17, 20, 24, 0.07); }
+
+/* 플로팅 카톡 버튼 */
+.fab { position: fixed; right: 18px; bottom: 18px; z-index: 45; padding: 13px 22px; border-radius: 999px; background: var(--navy); color: #ffffff; font-weight: 700; font-size: 0.95rem; text-decoration: none; box-shadow: 0 10px 28px rgba(17, 20, 24, 0.28); transition: opacity 0.3s ease, translate 0.3s ease, background-color 0.2s ease; }
+.fab:hover { background: #000000; }
+.js .fab:not(.show) { opacity: 0; translate: 0 16px; pointer-events: none; }
+.fab.show::after { content: ""; position: absolute; inset: 0; border-radius: inherit; border: 2px solid var(--navy); animation: fab-pulse 2.8s ease-out infinite; pointer-events: none; }
+@keyframes fab-pulse { 0% { transform: scale(1); opacity: 0.55; } 70%, 100% { transform: scale(1.35, 1.7); opacity: 0; } }
+
+/* 키워드 띠 */
+.marquee { overflow: hidden; background: var(--navy); color: #ffffff; }
+.marquee-track { display: flex; width: max-content; animation: marquee 32s linear infinite; }
+.marquee:hover .marquee-track { animation-play-state: paused; }
+.marquee span { position: relative; padding: 15px 30px; font-weight: 700; font-size: 0.95rem; letter-spacing: 0.02em; white-space: nowrap; }
+.marquee span::after { content: ""; position: absolute; right: -3px; top: 50%; width: 6px; height: 6px; border-radius: 50%; background: #9db1ff; transform: translateY(-50%); }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+/* 호버 */
+.card, .tile, .stat-card, .works-grid figure { transition: translate 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease, background-color 0.2s ease; }
+.card:hover, .stat-card:hover, .works-grid figure:hover { translate: 0 -5px; box-shadow: 0 14px 34px rgba(17, 20, 24, 0.1); }
+.tile:hover { translate: 0 -5px; box-shadow: 0 14px 34px rgba(17, 20, 24, 0.22); }
+.works-grid figure img { transition: transform 0.6s ease; }
+.works-grid figure:hover img { transform: scale(1.04); }
+.btn:hover { translate: 0 -2px; }
+.btn:active { translate: 0 0; }
+.tabs a:hover { border-bottom-color: var(--line); }
+.tile-link::after { display: inline-block; transition: translate 0.25s ease; }
+.tile:hover .tile-link::after, .card:hover .card-link::after { translate: 5px 0; }
+.cta-price { margin: 0 0 6px; color: rgba(255, 255, 255, 0.92); }
+.cta-price a { text-underline-offset: 4px; }
+
+/* 진행 순서: 상자 없이 선으로 잇고, 보이면 선이 채워짐 */
+.step-grid { gap: 8px 28px; }
+.step-grid li { position: relative; padding: 22px 0 0; border: 0; border-top: 2px solid var(--line); border-radius: 0; background: none; }
+.step-grid li::after { content: ""; position: absolute; top: -2px; left: 0; height: 2px; width: 100%; background: var(--navy); transition: width 0.9s ease var(--d, 0ms); }
+.step-grid li.reveal:not(.in)::after { width: 0; }
+.step-grid li:hover { translate: none; box-shadow: none; }
+
+/* 타일: 큰 번호 대신 깔끔하게 */
+.tile-no { display: none; }
+.tile h3 { margin-top: 4px; }
+
+/* 마우스 커서 */
+.cursor-ring, .cursor-dot { position: fixed; left: 0; top: 0; z-index: 10000; pointer-events: none; opacity: 0; mix-blend-mode: difference; background: transparent; }
+.cursor-on .cursor-ring, .cursor-on .cursor-dot { opacity: 1; }
+.cursor-ring { width: 38px; height: 38px; margin: -19px 0 0 -19px; border: 1.5px solid #ffffff; border-radius: 50%; transition: width 0.25s ease, height 0.25s ease, margin 0.25s ease, background-color 0.25s ease, opacity 0.2s ease, scale 0.15s ease; }
+.cursor-ring.is-link { width: 62px; height: 62px; margin: -31px 0 0 -31px; background: #ffffff; }
+.cursor-ring.is-zoom { width: 88px; height: 88px; margin: -44px 0 0 -44px; background: #ffffff; }
+.cursor-ring.is-zoom::after { content: "확대"; position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #000000; font-size: 0.9rem; font-weight: 700; }
+.cursor-ring.is-down { scale: 0.85; }
+.cursor-dot { width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: #ffffff; transition: opacity 0.2s ease; }
+.cursor-dot.is-hidden { opacity: 0 !important; }
+.btn.pulled { transition: translate 0.3s ease, background-color 0.15s ease, border-color 0.15s ease; }
+
+@media (max-width: 639px) {
+    .fab { right: 14px; bottom: 14px; padding: 12px 18px; }
+    .step-grid { gap: 22px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .marquee-track { animation: none; width: auto; flex-wrap: wrap; justify-content: center; }
+    .marquee span:nth-child(n+8) { display: none; }
+    .fab.show::after { animation: none; display: none; }
+    .fab, .site-header, .card, .tile, .stat-card, .works-grid figure, .works-grid figure img { transition: none; }
+}
+
+.stat-grid + .fine { margin-top: 24px; }

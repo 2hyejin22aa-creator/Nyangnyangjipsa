@@ -14,6 +14,7 @@
     <script src="assets/pricing.js" defer></script>
     <script src="assets/nav.js" defer></script>
     <script src="assets/media.js" defer></script>
+    <script src="assets/effects.js" defer></script>
     <script src="assets/results.js" defer></script>
 </head>
 <body>
@@ -40,9 +41,8 @@
 
         <section class="hero hero-home" aria-labelledby="hero-title">
             <div class="container">
-                <p class="eyebrow">이혜진 · 1인 마케터</p>
                 <h1 id="hero-title">동네 업체 마케팅,<br>실제 작업 화면으로 보여 드립니다</h1>
-                <p class="lede">블로그 · 플레이스 · 인스타그램 운영, 릴스 · 클립 편집,<br class="pc">브랜딩 · 연간 콘텐츠 계획까지 업체 상황에 맞게 구성합니다.</p>
+                <p class="lede">블로그, 플레이스, 인스타그램 운영과 릴스 편집, 브랜딩과 콘텐츠 계획을 업체 상황에 맞춰 진행합니다.</p>
                 <div class="cta">
                     <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡으로 무료 상담</a>
                     <a class="btn btn-secondary" href="services/#price">가격 보기</a>
@@ -55,6 +55,13 @@
             </div>
         </section>
 
+        <div class="marquee" aria-hidden="true">
+            <div class="marquee-track">
+                <span>블로그</span><span>플레이스</span><span>인스타그램</span><span>릴스</span><span>클립 편집</span><span>브랜딩</span><span>연간 콘텐츠 계획</span>
+                <span>블로그</span><span>플레이스</span><span>인스타그램</span><span>릴스</span><span>클립 편집</span><span>브랜딩</span><span>연간 콘텐츠 계획</span>
+            </div>
+        </div>
+
         <section class="section band-soft" data-profile aria-labelledby="profile-title" hidden>
             <div class="container narrow-block">
                 <div class="section-head"><h2 id="profile-title">소개</h2></div>
@@ -66,33 +73,30 @@
         <section class="section" data-results aria-labelledby="stats-title" hidden>
             <div class="container">
                 <div class="section-head center">
-                    <p class="eyebrow">성과 데이터</p>
-                    <h2 id="stats-title">실제 업체의 플레이스 통계입니다</h2>
-                    <p>네이버 스마트플레이스 통계 기준 · 월간 · 직전 기간 대비</p>
+                    <h2 id="stats-title">플레이스 통계</h2>
+                    <p>네이버 스마트플레이스 · 월간 · 직전 기간 대비</p>
                 </div>
                 <div class="stat-grid" data-results-grid></div>
                 <p class="fine center">결과는 업종과 상권에 따라 다르며 보장하지 않습니다. 통계 원본 화면은 <a href="works/">작업물</a>에서 볼 수 있습니다.</p>
             </div>
         </section>
 
-        <section class="section proof" data-tab="works" data-gallery-section aria-labelledby="work-title" hidden>
+        <section class="section band-soft proof" data-tab="works" data-gallery-section aria-labelledby="work-title" hidden>
             <div class="container">
                 <div class="section-head center">
-                    <p class="eyebrow">작업 사례</p>
-                    <h2 id="work-title">실제 작업 화면입니다</h2>
-                    <p>업체명 · 키워드 · 연락처는 가렸습니다. 노출 순위는 시점과 키워드에 따라 달라집니다.</p>
+                    <h2 id="work-title">작업 화면</h2>
+                    <p>업체명, 키워드, 연락처는 가렸습니다. 노출 순위는 시점과 키워드에 따라 달라집니다.</p>
                 </div>
                 <ul class="works-grid" data-gallery-preview data-limit="6"></ul>
                 <p class="works-more"><a class="btn btn-secondary" href="works/">작업물 전체 보기</a></p>
             </div>
         </section>
 
-        <section class="section band-soft" data-slots aria-labelledby="home-compare-title" hidden>
+        <section class="section" data-slots aria-labelledby="home-compare-title" hidden>
             <div class="container">
                 <div class="section-head center">
-                    <p class="eyebrow">전 · 후</p>
-                    <h2 id="home-compare-title">달라진 점</h2>
-                    <p>업체명 · 연락처는 가렸습니다.</p>
+                    <h2 id="home-compare-title">전과 후</h2>
+                    <p>업체명과 연락처는 가렸습니다.</p>
                 </div>
                 <div class="slot-list">
                     <div data-slot="services/insta-compare" hidden></div>
@@ -103,12 +107,11 @@
         <section class="section band-dark pain" aria-labelledby="pain-title">
             <div class="container">
                 <div class="section-head center">
-                    <p class="eyebrow">이런 고민이라면</p>
-                    <h2 id="pain-title">올려도 문의가 없다면,<br>어디서 막혔는지부터 봐야 합니다</h2>
+                    <h2 id="pain-title">이런 고민이 있으신가요?</h2>
                 </div>
                 <ul class="pain-lines">
                     <li>올려도 문의가 오지 않습니다</li>
-                    <li>블로그 · 인스타를 해야 하는데 시간이 없습니다</li>
+                    <li>블로그와 인스타를 해야 하는데 시간이 없습니다</li>
                     <li>무엇부터 해야 할지 모르겠습니다</li>
                     <li>맡겼는데 무엇을 했는지 알 수 없었습니다</li>
                 </ul>
@@ -118,39 +121,35 @@
         <section class="section" aria-labelledby="services-title">
             <div class="container">
                 <div class="section-head center">
-                    <p class="eyebrow">서비스</p>
-                    <h2 id="services-title">필요한 것만 골라 시작합니다</h2>
+                    <h2 id="services-title">서비스</h2>
                 </div>
                 <div class="tile-grid">
                     <a class="tile" href="services/">
-                        <span class="tile-no" aria-hidden="true">1</span>
                         <h3>SNS 마케팅</h3>
-                        <p>블로그 · 플레이스 · 인스타그램을 한 달 단위로 운영합니다.</p>
+                        <p>블로그, 플레이스, 인스타그램을 한 달 단위로 운영합니다.</p>
                         <ul>
-                            <li>블로그 · 인스타그램 · 플레이스 운영</li>
-                            <li>릴스 · 카드뉴스 제작</li>
+                            <li>블로그, 인스타그램, 플레이스 운영</li>
+                            <li>릴스와 카드뉴스 제작</li>
                             <li>월간 리포트, 월 1회 방향 미팅</li>
                         </ul>
                         <span class="tile-link">자세히 보기</span>
                     </a>
                     <a class="tile" href="video/">
-                        <span class="tile-no" aria-hidden="true">2</span>
                         <h3>영상 편집</h3>
-                        <p>업체에서 촬영한 영상을 릴스 · 클립으로 편집합니다.</p>
+                        <p>업체에서 촬영한 영상을 릴스와 클립으로 편집합니다.</p>
                         <ul>
-                            <li>15~30초 릴스 · 클립 편집</li>
-                            <li>자막 · BGM</li>
+                            <li>15~30초 릴스, 클립 편집</li>
+                            <li>자막, BGM</li>
                             <li>수정 1회, 업로드까지</li>
                         </ul>
                         <span class="tile-link">자세히 보기</span>
                     </a>
                     <a class="tile" href="planning/">
-                        <span class="tile-no" aria-hidden="true">3</span>
                         <h3>기획</h3>
                         <p>방향을 정하고, 12개월 콘텐츠 계획을 세웁니다.</p>
                         <ul>
                             <li>브랜딩 정리</li>
-                            <li>연간 · 월별 콘텐츠 계획</li>
+                            <li>연간, 월별 콘텐츠 계획</li>
                             <li>정기 미팅</li>
                         </ul>
                         <span class="tile-link">자세히 보기</span>
@@ -162,43 +161,15 @@
         <section class="section band-soft" aria-labelledby="process-title">
             <div class="container">
                 <div class="section-head center">
-                    <p class="eyebrow">진행 순서</p>
-                    <h2 id="process-title">상담에서 리포트까지</h2>
+                    <h2 id="process-title">진행 순서</h2>
                 </div>
                 <ol class="step-grid">
                     <li><span class="num" aria-hidden="true">1</span><strong>상담</strong><span class="d">상황과 목표를 확인합니다 (무료)</span></li>
                     <li><span class="num" aria-hidden="true">2</span><strong>진단</strong><span class="d">현황을 점검하고 구성을 제안합니다 (<span data-money="setup|현황 진단"></span>, 계약 시 차감)</span></li>
                     <li><span class="num" aria-hidden="true">3</span><strong>세팅</strong><span class="d">필요한 채널을 정리합니다</span></li>
-                    <li><span class="num" aria-hidden="true">4</span><strong>운영</strong><span class="d">월초 일정을 공유하고 제작 · 게시합니다</span></li>
+                    <li><span class="num" aria-hidden="true">4</span><strong>운영</strong><span class="d">월초 일정을 공유하고 제작과 게시를 진행합니다</span></li>
                     <li><span class="num" aria-hidden="true">5</span><strong>리포트</strong><span class="d">월 1회 한 장으로 정리합니다</span></li>
                 </ol>
-            </div>
-        </section>
-
-        <section class="section results" aria-labelledby="results-title">
-            <div class="container">
-                <div class="section-head center">
-                    <p class="eyebrow">리포트</p>
-                    <h2 id="results-title">3개월 뒤에 알게 되는 것</h2>
-                </div>
-                <ul class="card-grid card-grid-plain">
-                    <li class="card"><h3>문의 경로</h3><p>문의가 어디서 오는지 보입니다.</p></li>
-                    <li class="card"><h3>반응이 좋은 콘텐츠</h3><p>어떤 콘텐츠가 통했는지 숫자로 알게 됩니다.</p></li>
-                    <li class="card"><h3>다음 방향</h3><p>무엇을 더하고 뺄지 근거가 생깁니다.</p></li>
-                </ul>
-                <p class="fine center">결과는 업종과 상권에 따라 다르며 보장하지 않습니다.</p>
-            </div>
-        </section>
-
-        <section class="section band-soft" aria-labelledby="price-teaser-title">
-            <div class="container">
-                <div class="price-teaser">
-                    <div>
-                        <h2 id="price-teaser-title">요금 안내</h2>
-                        <p>필수 패키지 월 <strong data-money="packages|필수 패키지"></strong> (세전). 3개월 플랜과 단건 · 옵션 가격은 SNS 마케팅 페이지에서 확인하실 수 있습니다.</p>
-                    </div>
-                    <a class="btn btn-secondary" href="services/#price">가격 자세히 보기</a>
-                </div>
             </div>
         </section>
 
@@ -206,6 +177,7 @@
             <div class="container">
                 <h2 id="cta-title">현재 상황과 목표를 먼저 들어 봅니다</h2>
                 <p>첫 상담은 무료입니다. 월 단위로 시작하고, 그만둘 수 있습니다.</p>
+                <p class="cta-price">필수 패키지 월 <strong data-money="packages|필수 패키지"></strong> (세전) · <a href="services/#price">가격 보기</a></p>
                 <div class="cta"><a class="btn btn-light" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
             </div>
         </section>
@@ -221,5 +193,6 @@
             <p id="last-updated" class="fine" hidden></p>
         </div>
     </footer>
+    <a class="fab" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
 </body>
 </html>
