@@ -66,7 +66,6 @@ python3 -m http.server 8000
 | `services/insta-compare` | /services/ | `compare` | 전 이미지, 후 이미지 (2개) |
 | `services/blog-search` | /services/ | `image` | 이미지 1개 |
 | `services/report` | /services/ | `image` | 이미지 1개 |
-| `works/gallery` | /works/, 홈 | `gallery` 배열 | 아래 "작업물 탭" 참고 (슬롯이 아니라 `gallery` 배열에 적음) |
 | `video/compare` | /video/ | `compare` | 편집 전·후 이미지 2개 (Before, After 순서) |
 | `video/reels` | /video/ | `video` | 영상 1~3개 (`posters`에 대표 이미지를 같은 순서로) |
 | `planning/calendar` | /planning/ | `image` | 이미지 1개 |
@@ -84,17 +83,6 @@ python3 -m http.server 8000
 - `width`, `height`(픽셀)를 적으면 이미지가 로딩되는 동안 화면이 밀리지 않습니다. 적지 않으면 불러온 뒤 실제 크기를 기록합니다.
 - `alt`가 비어 있으면 그 자리는 표시되지 않습니다.
 - 이미지는 지연 로딩되고, 영상은 소리 없이 자동 반복 재생됩니다(`muted autoplay loop playsinline`, 대표 이미지 `poster`).
-
-### 달라지는 점 (SNS 마케팅 페이지)
-
-`/services/`의 "달라지는 점"은 `data/proof.json`의 `compare` 항목으로 채웁니다. 파일이 없거나 `compare`가 비어 있으면, 또는 이미지 파일이 없으면 구역 전체가 숨겨집니다. 실제 캡처만 넣습니다.
-
-```json
-{ "compare": [ { "title": "인스타그램 프로필", "before": "assets/media/xxx-before.jpg", "after": "assets/media/xxx-after.jpg",
-                 "alt": "이미지 설명(필수)", "caption": "캡션 한 줄" } ] }
-```
-
-`before`가 왼쪽(Before), `after`가 오른쪽(After)입니다. 항목을 여러 개 적으면 위에서부터 차례로 보입니다. 홈의 "Before & After"는 `services/insta-compare` 슬롯을 씁니다.
 
 ### 작업물 탭
 
