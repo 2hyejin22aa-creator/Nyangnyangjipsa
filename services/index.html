@@ -10,12 +10,11 @@
     <meta name="description" content="블로그 · 플레이스 · 인스타그램">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700;900&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap">
     <link rel="stylesheet" href="../assets/site.css">
     <script src="../assets/pricing.js" defer></script>
     <script src="../assets/nav.js" defer></script>
     <script src="../assets/media.js" defer></script>
-    <script src="../assets/motion.js" defer></script>
     <script src="script.js" defer></script>
 </head>
 <body>
@@ -51,9 +50,9 @@
             </div>
         </section>
 
-        <section class="section band-cobalt" aria-labelledby="path-title">
+        <section class="section band-soft" aria-labelledby="path-title">
             <div class="container">
-                <div class="section-head"><h2 id="path-title">손님이 오는 길</h2></div>
+                <div class="section-head"><h2 id="path-title">문의까지의 경로</h2></div>
                 <ol class="path-flow">
                     <li><span class="p-no" aria-hidden="true">1</span><span class="p-name">릴스</span><span class="p-cap">처음 알게 됩니다</span></li>
                     <li><span class="p-no" aria-hidden="true">2</span><span class="p-name">인스타그램</span><span class="p-cap">분위기와 최근 소식을 봅니다</span></li>
@@ -65,7 +64,7 @@
         </section>
 
         <!-- 달라지는 점 (assets/media.js: 파일이 없으면 구역 전체 숨김) -->
-        <section class="section band-paper2" data-slots aria-labelledby="proof-title" hidden>
+        <section class="section band-soft" data-slots aria-labelledby="proof-title" hidden>
             <div class="container">
                 <div class="section-head"><h2 id="proof-title">달라지는 점</h2></div>
                 <div class="slot-list">
@@ -95,22 +94,19 @@
                     </ol>
                 </div>
                 <div>
-                    <div class="section-head"><h2 id="cycle-title">월 순환</h2></div>
-                    <figure class="cycle-fig">
-                        <ol class="visually-hidden">
-                            <li>월초 기획·미팅</li><li>제작·게시</li><li>중간 점검</li><li>월말 리포트</li><li>다음 달 조정</li>
-                        </ol>
-                        <svg class="loop" viewBox="0 0 440 380" role="img" aria-label="월 순환: 월초 기획·미팅 → 제작·게시 → 중간 점검 → 월말 리포트 → 다음 달 조정">
-                    <defs><marker id="loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z"/></marker></defs>
-                    <path d="M268.8 43.2 A150 150 0 0 1 342.9 99.0" marker-end="url(#loop-arrow)"/><path d="M370.0 182.4 A150 150 0 0 1 339.8 275.3" marker-end="url(#loop-arrow)"/><path d="M268.8 326.8 A150 150 0 0 1 171.2 326.8" marker-end="url(#loop-arrow)"/><path d="M100.2 275.3 A150 150 0 0 1 70.0 182.4" marker-end="url(#loop-arrow)"/><path d="M97.1 99.0 A150 150 0 0 1 171.2 43.2" marker-end="url(#loop-arrow)"/>
-                    <rect class="start" x="161.0" y="16.0" width="118" height="38" rx="6"/><text class="start" x="220.0" y="40.0" text-anchor="middle">월초 기획·미팅</text><rect x="303.7" y="119.6" width="118" height="38" rx="6"/><text x="362.7" y="143.6" text-anchor="middle">제작·게시</text><rect x="249.2" y="287.4" width="118" height="38" rx="6"/><text x="308.2" y="311.4" text-anchor="middle">중간 점검</text><rect x="72.8" y="287.4" width="118" height="38" rx="6"/><text x="131.8" y="311.4" text-anchor="middle">월말 리포트</text><rect x="18.3" y="119.6" width="118" height="38" rx="6"/><text x="77.3" y="143.6" text-anchor="middle">다음 달 조정</text>
-                </svg>
-                    </figure>
+                    <div class="section-head"><h2 id="cycle-title">월 진행</h2></div>
+                    <ol class="steps">
+                        <li><strong>월초 기획 · 미팅</strong></li>
+                        <li><strong>제작 · 게시</strong></li>
+                        <li><strong>중간 점검</strong></li>
+                        <li><strong>월말 리포트</strong></li>
+                        <li><strong>다음 달 조정</strong></li>
+                    </ol>
                 </div>
             </div>
         </section>
 
-        <section class="section band-paper2" aria-labelledby="months-title">
+        <section class="section band-soft" aria-labelledby="months-title">
             <div class="container">
                 <div class="section-head"><h2 id="months-title">3개월 동안</h2></div>
                 <ol class="months">
@@ -137,7 +133,7 @@
         </section>
 
         <!-- 가격 (마지막 콘텐츠 섹션) -->
-        <section id="price" class="section band-ink" aria-labelledby="price-title">
+        <section id="price" class="section price-section" aria-labelledby="price-title">
             <div class="container">
                 <div class="section-head"><h2 id="price-title">가격</h2></div>
                 <div id="packages-list" aria-live="polite"></div>
@@ -173,7 +169,7 @@
 
                 <p class="referral"><strong>지인 소개 — 소개한 분, 소개받은 분 모두 첫 달 월 금액 <span data-referral-amount></span> 할인</strong></p>
                 <p class="fine">소개받으신 분이 상담 때 성함을 말씀해 주시고, 계약이 시작되면 적용됩니다. 1건당 1회, 같은 사업자는 제외입니다.</p>
-                <div class="cta"><a class="btn btn-light" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
+                <div class="cta"><a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
             </div>
         </section>
 
