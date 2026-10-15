@@ -5,49 +5,44 @@
     var formatMoney = Pricing.formatMoney;
     var PLAN_MONTHS = 3; // 3개월 플랜 개월 수
 
-    // 패키지: "이름 · 대상 · 가격" 한 줄 행, 구성은 펼침(<details>), 첫 행은 펼친 상태
-    function buildPackageRow(pkg, open) {
-        var row = el('details', 'pkg-row');
-        row.id = 'pkg-' + pkg.id;
-        if (open) row.open = true;
+    // 필수 패키지: 이름·대상 / 가격 / 구성 3단 (구성 항목은 JSON 그대로)
+    function buildPackageFeature(pkg) {
+        var box = el('article', 'pkg-feature');
+        box.id = 'pkg-' + pkg.id;
 
-        var summary = el('summary');
-        var info = el('span', 'pkg-info');
-        info.appendChild(el('span', 'pkg-name', pkg.name));
-        info.appendChild(el('span', 'audience', pkg.audience));
-        summary.appendChild(info);
+        var head = el('div', 'pkg-head');
+        head.appendChild(el('h3', 'pkg-name', pkg.name));
+        head.appendChild(el('p', 'audience', pkg.audience));
+        box.appendChild(head);
 
-        var price = el('span', 'pkg-price');
+        var price = el('div', 'pkg-price');
         if (pkg.listPrice > pkg.price) {
             price.appendChild(el('s', 'list-price', '정가 ' + formatMoney(pkg.listPrice)));
         }
-        price.appendChild(el('span', 'price-value', formatMoney(pkg.price)));
-        price.appendChild(el('span', 'price-unit', ' / 월'));
+        var value = el('span', 'price-value', formatMoney(pkg.price));
+        value.appendChild(el('span', 'price-unit', '/ 월'));
+        price.appendChild(value);
         if (pkg.listPrice > pkg.price) {
             var saved = pkg.listPrice - pkg.price;
             var percent = Math.round(saved / pkg.listPrice * 100);
             price.appendChild(el('span', 'discount', formatMoney(saved) + ' · ' + percent + '% 할인'));
         }
         price.appendChild(el('span', 'card-posts', '월 총 게시물 ' + pkg.monthlyPosts + '건'));
-        summary.appendChild(price);
-        row.appendChild(summary);
+        box.appendChild(price);
 
-        var body = el('div', 'pkg-body');
         var list = el('ul', 'card-items');
         pkg.items.forEach(function (item) {
             list.appendChild(el('li', null, item));
         });
-        body.appendChild(list);
-        if (pkg.note) body.appendChild(el('p', 'card-note', pkg.note));
-        row.appendChild(body);
-
-        return row;
+        box.appendChild(list);
+        if (pkg.note) box.appendChild(el('p', 'card-note', pkg.note));
+        return box;
     }
 
     function renderPackages(data) {
         var host = document.getElementById('packages-list');
-        data.packages.forEach(function (pkg, index) {
-            host.appendChild(buildPackageRow(pkg, index === 0));
+        data.packages.forEach(function (pkg) {
+            host.appendChild(buildPackageFeature(pkg));
         });
     }
 

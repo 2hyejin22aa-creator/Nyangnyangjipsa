@@ -6,22 +6,27 @@
     <meta name="color-scheme" content="light">
     <title>이혜진 | SNS 마케팅·영상 편집·기획</title>
     <meta name="description" content="블로그·플레이스·인스타 운영, 릴스·클립 편집, 마케팅 기획. 1인 마케터 이혜진.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;800&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="assets/site.css">
     <script src="assets/pricing.js" defer></script>
     <script src="assets/nav.js" defer></script>
+    <script src="assets/media.js" defer></script>
 </head>
 <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-    <header class="tabbar">
-        <div class="wrap tabbar-inner">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="./">이혜진</a>
             <nav aria-label="사이트 메뉴">
                 <ul class="tabs">
-                    <li><a href="./" aria-current="page">홈</a></li>
-                    <li><a href="services/">SNS 마케팅</a></li>
-                    <li><a href="video/">영상 편집</a></li>
-                    <li><a href="planning/">기획</a></li>
-                    <li data-tab="works" hidden><a href="works/">작업물</a></li>
+                        <li><a href="./" aria-current="page">홈</a></li>
+                        <li><a href="services/">SNS 마케팅</a></li>
+                        <li><a href="video/">영상 편집</a></li>
+                        <li><a href="planning/">기획</a></li>
+                        <li data-tab="works" hidden><a href="works/">작업물</a></li>
                 </ul>
             </nav>
             <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
@@ -31,25 +36,77 @@
     <main id="main">
         <p id="load-error" class="load-error" role="alert" hidden></p>
 
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="wrap">
-                <h1 id="hero-title">이혜진 · SNS 마케팅 · 영상 편집 · 기획</h1>
-                <ul class="tab-list">
-                    <li><a href="services/"><span class="tab-name">SNS 마케팅</span><span class="tab-desc">블로그 · 플레이스 · 인스타그램</span></a></li>
-                    <li><a href="video/"><span class="tab-name">영상 편집</span><span class="tab-desc">릴스 · 클립 편집</span></a></li>
-                    <li><a href="planning/"><span class="tab-name">기획</span><span class="tab-desc">브랜딩 · 연간 콘텐츠 계획</span></a></li>
-                    <li data-tab="works" hidden><a href="works/"><span class="tab-name">작업물</span></a></li>
-                </ul>
-                <div class="cta">
-                    <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
+        <section class="hero hero-home" aria-labelledby="hero-title">
+            <div class="container">
+                <div class="hero-copy">
+                    <h1 id="hero-title">문의가 없다면, 끊긴 곳부터 봅니다</h1>
+                    <p class="lede">블로그 · 플레이스 · 인스타그램 운영, 릴스 · 클립 편집, 브랜딩 · 연간 콘텐츠 계획</p>
+                    <div class="cta">
+                        <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
+                        <a class="btn btn-secondary" href="services/#price">가격 보기</a>
+                    </div>
                 </div>
+                <figure class="hero-art">
+                    <figcaption>손님이 오는 길</figcaption>
+                    <ol class="funnel">
+                        <li>릴스</li>
+                        <li>인스타그램</li>
+                        <li>멀티링크</li>
+                        <li>블로그 · 플레이스</li>
+                        <li>상담 문의</li>
+                    </ol>
+                </figure>
+            </div>
+        </section>
+
+        <section class="section" aria-labelledby="services-title">
+            <div class="container">
+                <div class="section-head"><h2 id="services-title">하는 일</h2></div>
+                <ul class="service-list">
+                    <li><a href="services/"><span class="service-name">SNS 마케팅</span><span class="service-desc">블로그 · 플레이스 · 인스타그램</span><span class="service-more">자세히 보기 →</span></a></li>
+                    <li><a href="video/"><span class="service-name">영상 편집</span><span class="service-desc">릴스 · 클립 편집</span><span class="service-more">자세히 보기 →</span></a></li>
+                    <li><a href="planning/"><span class="service-name">기획</span><span class="service-desc">브랜딩 · 연간 콘텐츠 계획</span><span class="service-more">자세히 보기 →</span></a></li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="section band-paper2" data-tab="works" data-gallery-section aria-labelledby="work-title" hidden>
+            <div class="container">
+                <div class="section-head"><h2 id="work-title">작업물</h2></div>
+                <ul class="works-grid" data-gallery-preview data-limit="6"></ul>
+                <p class="works-more"><a href="works/">작업물 전체 보기 →</a></p>
+            </div>
+        </section>
+
+        <section class="section band-ink" aria-labelledby="process-title">
+            <div class="container">
+                <div class="section-head"><h2 id="process-title">진행 방식</h2></div>
+                <ol class="steps5">
+                    <li><span class="num" aria-hidden="true">1</span><strong>상담</strong><span class="d">상황과 목표 확인 (무료)</span></li>
+                    <li><span class="num" aria-hidden="true">2</span><strong>진단</strong><span class="d">현황 점검, 구성 제안 (<span data-money="setup|현황 진단"></span>, 계약 시 차감)</span></li>
+                    <li><span class="num" aria-hidden="true">3</span><strong>세팅</strong><span class="d">필요한 채널 정리</span></li>
+                    <li><span class="num" aria-hidden="true">4</span><strong>운영</strong><span class="d">월초 일정 공유 후 제작·게시</span></li>
+                    <li><span class="num" aria-hidden="true">5</span><strong>리포트</strong><span class="d">월 1회 한 장 정리</span></li>
+                </ol>
+            </div>
+        </section>
+
+        <section class="section band-cobalt cta-band" aria-labelledby="cta-title">
+            <div class="container">
+                <h2 id="cta-title">상황과 목표부터 들어 봅니다</h2>
+                <p>첫 상담은 무료입니다</p>
+                <div class="cta"><a class="btn btn-light" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="wrap">
-            <p>이혜진 · 1인 마케터 · 개인 프리랜서</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <p class="footer-brand">이혜진</p>
+                <p class="footer-line">이혜진 · 1인 마케터 · 개인 프리랜서</p>
+            </div>
+            <ul class="footer-links"><li><a href="./">홈</a></li><li><a href="services/">SNS 마케팅</a></li><li><a href="video/">영상 편집</a></li><li><a href="planning/">기획</a></li></ul>
             <p id="last-updated" class="fine" hidden></p>
         </div>
     </footer>

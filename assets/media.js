@@ -218,8 +218,34 @@
         });
     }
 
+    // 홈의 작업물 미리보기: 실제 파일이 있는 항목이 MIN_GALLERY개 이상일 때만 구역을 보여 줌
+    var MIN_GALLERY = 3;
+    function initGalleryPreview() {
+        var hosts = document.querySelectorAll('[data-gallery-preview]');
+        if (!hosts.length) return;
+        load().then(function (media) {
+            var gallery = Array.isArray(media.gallery) ? media.gallery : [];
+            return Promise.all(gallery.map(function (item) {
+                return renderGalleryItem(item).then(function (fig) { return fig ? { item: item, fig: fig } : null; });
+            }));
+        }).then(function (results) {
+            var ready = results.filter(Boolean);
+            if (ready.length < MIN_GALLERY) return;
+            Array.prototype.forEach.call(hosts, function (host) {
+                var limit = Number(host.getAttribute('data-limit')) || ready.length;
+                ready.slice(0, limit).forEach(function (r) {
+                    var li = el('li');
+                    li.appendChild(r.fig.cloneNode(true));
+                    host.appendChild(li);
+                });
+                var section = host.closest('[data-gallery-section]');
+                if (section) section.hidden = false;
+            });
+        });
+    }
+
     window.Media = { load: load, renderGalleryItem: renderGalleryItem };
 
-    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', initSlots);
-    else initSlots();
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', function () { initSlots(); initGalleryPreview(); });
+    else { initSlots(); initGalleryPreview(); }
 })();

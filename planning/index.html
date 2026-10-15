@@ -7,6 +7,9 @@
     <meta name="color-scheme" content="light">
     <title>이혜진 | 기획</title>
     <meta name="description" content="브랜딩 · 연간 콘텐츠 계획">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;800&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../assets/site.css">
     <script src="../assets/pricing.js" defer></script>
     <script src="../assets/nav.js" defer></script>
@@ -15,15 +18,16 @@
 <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-    <header class="tabbar">
-        <div class="wrap tabbar-inner">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../">이혜진</a>
             <nav aria-label="사이트 메뉴">
                 <ul class="tabs">
-                    <li><a href="../">홈</a></li>
-                    <li><a href="../services/">SNS 마케팅</a></li>
-                    <li><a href="../video/">영상 편집</a></li>
-                    <li><a href="../planning/" aria-current="page">기획</a></li>
-                    <li data-tab="works" hidden><a href="../works/">작업물</a></li>
+                        <li><a href="../">홈</a></li>
+                        <li><a href="../services/">SNS 마케팅</a></li>
+                        <li><a href="../video/">영상 편집</a></li>
+                        <li><a href="../planning/" aria-current="page">기획</a></li>
+                        <li data-tab="works" hidden><a href="../works/">작업물</a></li>
                 </ul>
             </nav>
             <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
@@ -33,16 +37,18 @@
     <main id="main">
         <p id="load-error" class="load-error" role="alert" hidden></p>
 
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="wrap">
+        <section class="hero hero-page" aria-labelledby="hero-title">
+            <div class="container">
                 <h1 id="hero-title">기획</h1>
+                <p class="lede">브랜딩 · 연간 콘텐츠 계획</p>
+                <div class="cta"><a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
             </div>
         </section>
 
-        <section aria-labelledby="scope-title">
-            <div class="wrap narrow">
+        <section class="section" aria-labelledby="scope-title">
+            <div class="container">
                 <h2 id="scope-title" class="visually-hidden">기획 범위</h2>
-                <ol class="steps">
+                <ol class="plan-list">
                     <li><strong>브랜딩 정리</strong><span>강점, 대상 고객, 말투와 분위기를 정리합니다</span></li>
                     <li><strong>연간·월별 콘텐츠 계획</strong><span>시즌과 일정에 맞춰 12개월 주제를 잡습니다</span></li>
                     <li><strong>주제 기획</strong><span>문의와 반응을 보고 반응이 좋을 주제를 고릅니다</span></li>
@@ -52,8 +58,8 @@
             </div>
         </section>
 
-        <section data-slots hidden>
-            <div class="wrap">
+        <section class="section band-paper2" data-slots hidden>
+            <div class="container">
                 <div class="slot-list">
                     <div data-slot="planning/calendar" hidden></div>
                     <div data-slot="planning/branding" hidden></div>
@@ -61,20 +67,32 @@
             </div>
         </section>
 
-        <section aria-labelledby="price-title">
-            <div class="wrap">
-                <h2 id="price-title">가격</h2>
+        <section class="section" aria-labelledby="price-title">
+            <div class="container">
+                <div class="section-head"><h2 id="price-title">가격</h2></div>
                 <table class="price-table" data-pricing-table="setup" data-category="plan">
                     <thead><tr><th scope="col">항목</th><th scope="col">금액</th><th scope="col">내용</th></tr></thead>
                     <tbody></tbody>
                 </table>
             </div>
         </section>
+
+        <section class="section band-cobalt cta-band" aria-labelledby="cta-title">
+            <div class="container">
+                <h2 id="cta-title">상황과 목표부터 들어 봅니다</h2>
+                <p>첫 상담은 무료입니다</p>
+                <div class="cta"><a class="btn btn-light" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
+            </div>
+        </section>
     </main>
 
-    <footer>
-        <div class="wrap">
-            <p>이혜진 · 1인 마케터 · 개인 프리랜서</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <p class="footer-brand">이혜진</p>
+                <p class="footer-line">이혜진 · 1인 마케터 · 개인 프리랜서</p>
+            </div>
+            <ul class="footer-links"><li><a href="../">홈</a></li><li><a href="../services/">SNS 마케팅</a></li><li><a href="../video/">영상 편집</a></li><li><a href="../planning/">기획</a></li></ul>
             <p id="last-updated" class="fine" hidden></p>
         </div>
     </footer>

@@ -7,6 +7,9 @@
     <meta name="color-scheme" content="light">
     <title>이혜진 | SNS 마케팅</title>
     <meta name="description" content="블로그 · 플레이스 · 인스타그램">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@500;800&family=IBM+Plex+Sans+KR:wght@400;500;600&display=swap">
     <link rel="stylesheet" href="../assets/site.css">
     <script src="../assets/pricing.js" defer></script>
     <script src="../assets/nav.js" defer></script>
@@ -16,15 +19,16 @@
 <body>
     <a class="skip-link" href="#main">본문으로 건너뛰기</a>
 
-    <header class="tabbar">
-        <div class="wrap tabbar-inner">
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../">이혜진</a>
             <nav aria-label="사이트 메뉴">
                 <ul class="tabs">
-                    <li><a href="../">홈</a></li>
-                    <li><a href="../services/" aria-current="page">SNS 마케팅</a></li>
-                    <li><a href="../video/">영상 편집</a></li>
-                    <li><a href="../planning/">기획</a></li>
-                    <li data-tab="works" hidden><a href="../works/">작업물</a></li>
+                        <li><a href="../">홈</a></li>
+                        <li><a href="../services/" aria-current="page">SNS 마케팅</a></li>
+                        <li><a href="../video/">영상 편집</a></li>
+                        <li><a href="../planning/">기획</a></li>
+                        <li data-tab="works" hidden><a href="../works/">작업물</a></li>
                 </ul>
             </nav>
             <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
@@ -34,10 +38,10 @@
     <main id="main">
         <p id="load-error" class="load-error" role="alert" hidden></p>
 
-        <!-- 히어로 -->
-        <section class="hero" aria-labelledby="hero-title">
-            <div class="wrap">
-                <h1 id="hero-title">문의가 없다면, 끊긴 곳부터 봅니다</h1>
+        <section class="hero hero-page" aria-labelledby="hero-title">
+            <div class="container">
+                <h1 id="hero-title">SNS 마케팅</h1>
+                <p class="lede">블로그 · 플레이스 · 인스타그램</p>
                 <div class="cta">
                     <a class="btn btn-primary" href="#price">가격 보기</a>
                     <a class="btn btn-secondary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
@@ -45,11 +49,10 @@
             </div>
         </section>
 
-        <!-- 손님이 오는 길 -->
-        <section aria-labelledby="path-title">
-            <div class="wrap">
-                <h2 id="path-title">손님이 오는 길</h2>
-                <ol class="flow">
+        <section class="section band-cobalt" aria-labelledby="path-title">
+            <div class="container">
+                <div class="section-head"><h2 id="path-title">손님이 오는 길</h2></div>
+                <ol class="path-flow">
                     <li>릴스</li>
                     <li>인스타그램</li>
                     <li>멀티링크</li>
@@ -59,11 +62,10 @@
             </div>
         </section>
 
-        <!-- 채널별 역할 -->
-        <section aria-labelledby="roles-title">
-            <div class="wrap">
-                <h2 id="roles-title">채널별 역할</h2>
-                <table class="price-table role-table">
+        <section class="section" aria-labelledby="roles-title">
+            <div class="container">
+                <div class="section-head"><h2 id="roles-title">채널별 역할</h2></div>
+                <table class="roles">
                     <thead><tr><th scope="col">채널</th><th scope="col">손님이 하는 일</th><th scope="col">우리가 하는 일</th></tr></thead>
                     <tbody>
                         <tr><th scope="row" data-label="채널">릴스</th><td data-label="손님이 하는 일">처음 알게 됩니다</td><td data-label="우리가 하는 일">15~30초 영상으로 노출을 만듭니다</td></tr>
@@ -78,9 +80,9 @@
         </section>
 
         <!-- 달라지는 점 (assets/media.js: 파일이 없으면 구역 전체 숨김) -->
-        <section data-slots aria-labelledby="proof-title" hidden>
-            <div class="wrap">
-                <h2 id="proof-title">달라지는 점</h2>
+        <section class="section band-paper2" data-slots aria-labelledby="proof-title" hidden>
+            <div class="container">
+                <div class="section-head"><h2 id="proof-title">달라지는 점</h2></div>
                 <div class="slot-list">
                     <div data-slot="services/place-compare" hidden></div>
                     <div data-slot="services/insta-compare" hidden></div>
@@ -89,78 +91,75 @@
         </section>
 
         <!-- 블로그 검색 노출 화면 -->
-        <section data-slots hidden>
-            <div class="wrap narrow">
+        <section class="section" data-slots hidden>
+            <div class="container">
                 <div data-slot="services/blog-search" hidden></div>
             </div>
         </section>
 
-        <!-- 진행 방식 -->
-        <section aria-labelledby="process-title">
-            <div class="wrap narrow">
-                <h2 id="process-title">진행 방식</h2>
-                <ol class="steps">
-                    <li><strong>상담</strong><span>상황과 목표 확인 (무료)</span></li>
-                    <li><strong>진단</strong><span>현황 점검, 구성 제안 (<span data-money="setup|현황 진단"></span>, 계약 시 차감)</span></li>
-                    <li><strong>세팅</strong><span>필요한 채널 정리</span></li>
-                    <li><strong>운영</strong><span>월초 일정 공유 후 제작·게시</span></li>
-                    <li><strong>리포트</strong><span>월 1회 한 장 정리</span></li>
-                </ol>
-            </div>
-        </section>
-
-        <!-- 월 순환 -->
-        <section aria-labelledby="cycle-title">
-            <div class="wrap narrow">
-                <h2 id="cycle-title">월 순환</h2>
-                <ol class="visually-hidden">
-                    <li>월초 기획·미팅</li><li>제작·게시</li><li>중간 점검</li><li>월말 리포트</li><li>다음 달 조정</li>
-                </ol>
-                <svg class="loop" viewBox="0 0 380 340" role="img" aria-label="월 순환: 월초 기획·미팅 → 제작·게시 → 중간 점검 → 월말 리포트 → 다음 달 조정">
+        <section class="section" aria-labelledby="process-title">
+            <div class="container two-col">
+                <div>
+                    <div class="section-head"><h2 id="process-title">진행 방식</h2></div>
+                    <ol class="steps">
+                        <li><strong>상담</strong><span>상황과 목표 확인 (무료)</span></li>
+                        <li><strong>진단</strong><span>현황 점검, 구성 제안 (<span data-money="setup|현황 진단"></span>, 계약 시 차감)</span></li>
+                        <li><strong>세팅</strong><span>필요한 채널 정리</span></li>
+                        <li><strong>운영</strong><span>월초 일정 공유 후 제작·게시</span></li>
+                        <li><strong>리포트</strong><span>월 1회 한 장 정리</span></li>
+                    </ol>
+                </div>
+                <div>
+                    <div class="section-head"><h2 id="cycle-title">월 순환</h2></div>
+                    <figure class="cycle-fig">
+                        <ol class="visually-hidden">
+                            <li>월초 기획·미팅</li><li>제작·게시</li><li>중간 점검</li><li>월말 리포트</li><li>다음 달 조정</li>
+                        </ol>
+                        <svg class="loop" viewBox="0 0 440 380" role="img" aria-label="월 순환: 월초 기획·미팅 → 제작·게시 → 중간 점검 → 월말 리포트 → 다음 달 조정">
                     <defs><marker id="loop-arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z"/></marker></defs>
-                    <path d="M240.6 49.8 A135 135 0 0 1 297.8 93.8" marker-end="url(#loop-arrow)"/><path d="M325.0 177.4 A135 135 0 0 1 300.6 252.4" marker-end="url(#loop-arrow)"/><path d="M229.5 304.1 A135 135 0 0 1 150.5 304.1" marker-end="url(#loop-arrow)"/><path d="M79.4 252.4 A135 135 0 0 1 55.0 177.4" marker-end="url(#loop-arrow)"/><path d="M82.2 93.8 A135 135 0 0 1 139.4 49.8" marker-end="url(#loop-arrow)"/>
-                    <rect x="136.0" y="22.0" width="108" height="36" rx="8"/><text x="190.0" y="45.0" text-anchor="middle">월초 기획·미팅</text><rect x="264.4" y="115.3" width="108" height="36" rx="8"/><text x="318.4" y="138.3" text-anchor="middle">제작·게시</text><rect x="215.4" y="266.2" width="108" height="36" rx="8"/><text x="269.4" y="289.2" text-anchor="middle">중간 점검</text><rect x="56.6" y="266.2" width="108" height="36" rx="8"/><text x="110.6" y="289.2" text-anchor="middle">월말 리포트</text><rect x="7.6" y="115.3" width="108" height="36" rx="8"/><text x="61.6" y="138.3" text-anchor="middle">다음 달 조정</text>
+                    <path d="M268.8 43.2 A150 150 0 0 1 342.9 99.0" marker-end="url(#loop-arrow)"/><path d="M370.0 182.4 A150 150 0 0 1 339.8 275.3" marker-end="url(#loop-arrow)"/><path d="M268.8 326.8 A150 150 0 0 1 171.2 326.8" marker-end="url(#loop-arrow)"/><path d="M100.2 275.3 A150 150 0 0 1 70.0 182.4" marker-end="url(#loop-arrow)"/><path d="M97.1 99.0 A150 150 0 0 1 171.2 43.2" marker-end="url(#loop-arrow)"/>
+                    <rect class="start" x="161.0" y="16.0" width="118" height="38" rx="6"/><text class="start" x="220.0" y="40.0" text-anchor="middle">월초 기획·미팅</text><rect x="303.7" y="119.6" width="118" height="38" rx="6"/><text x="362.7" y="143.6" text-anchor="middle">제작·게시</text><rect x="249.2" y="287.4" width="118" height="38" rx="6"/><text x="308.2" y="311.4" text-anchor="middle">중간 점검</text><rect x="72.8" y="287.4" width="118" height="38" rx="6"/><text x="131.8" y="311.4" text-anchor="middle">월말 리포트</text><rect x="18.3" y="119.6" width="118" height="38" rx="6"/><text x="77.3" y="143.6" text-anchor="middle">다음 달 조정</text>
                 </svg>
+                    </figure>
+                </div>
             </div>
         </section>
 
-        <!-- 3개월 동안 / 3개월 뒤에 알게 되는 것 -->
-        <section aria-labelledby="months-title">
-            <div class="wrap">
-                <h2 id="months-title">3개월 동안</h2>
+        <section class="section band-paper2" aria-labelledby="months-title">
+            <div class="container">
+                <div class="section-head"><h2 id="months-title">3개월 동안</h2></div>
                 <ol class="months">
                     <li><strong>1개월</strong><span>기본기 정비, 시작 전 지표 기록, 첫 콘텐츠</span></li>
                     <li><strong>2개월</strong><span>반응과 문의 경로 확인, 주제 조정</span></li>
                     <li><strong>3개월</strong><span>성과 리뷰, 다음 3개월 방향 재설계</span></li>
                 </ol>
-                <h3 class="after-title">3개월 뒤에 알게 되는 것</h3>
-                <ul class="criteria">
+                <h3 class="learn-title">3개월 뒤에 알게 되는 것</h3>
+                <ul class="learn">
                     <li>문의가 어디서 오는지 보입니다.</li>
                     <li>어떤 콘텐츠가 통했는지 숫자로 알게 됩니다.</li>
                     <li>무엇을 더하고 뺄지 근거가 생깁니다.</li>
                 </ul>
-                <p class="fine">결과는 업종과 상권에 따라 다르며 보장하지 않습니다.</p>
+                <p class="fine learn-note">결과는 업종과 상권에 따라 다르며 보장하지 않습니다.</p>
             </div>
         </section>
 
         <!-- 월간 리포트 (assets/media.js: 파일이 없으면 구역 전체 숨김) -->
-        <section data-slots aria-labelledby="report-title" hidden>
-            <div class="wrap narrow">
-                <h2 id="report-title">월간 리포트</h2>
+        <section class="section" data-slots aria-labelledby="report-title" hidden>
+            <div class="container">
+                <div class="section-head"><h2 id="report-title">월간 리포트</h2></div>
                 <div data-slot="services/report" hidden></div>
             </div>
         </section>
 
         <!-- 가격 (마지막 콘텐츠 섹션) -->
-        <section id="price" aria-labelledby="price-title">
-            <div class="wrap narrow">
-                <h2 id="price-title">가격</h2>
-                <div id="packages-list" class="pkg-list" aria-live="polite"></div>
+        <section id="price" class="section band-ink" aria-labelledby="price-title">
+            <div class="container">
+                <div class="section-head"><h2 id="price-title">가격</h2></div>
+                <div id="packages-list" aria-live="polite"></div>
                 <p class="fine">카드뉴스는 5장 기준 건수입니다. 표기 금액은 세전입니다.</p>
                 <p class="fine">정가는 SNS 마케팅·영상 편집 탭의 단건·옵션 가격 합계입니다.</p>
-                <div id="plan-box" class="plan-note" hidden></div>
-            </div>
-            <div class="wrap">
+                <div id="plan-box" class="plan-box" hidden></div>
+
                 <details>
                     <summary>1회성 세팅</summary>
                     <div class="details-body">
@@ -186,35 +185,35 @@
                         </table>
                     </div>
                 </details>
-            </div>
-            <div class="wrap narrow">
+
                 <p class="referral"><strong>지인 소개 — 소개한 분, 소개받은 분 모두 첫 달 월 금액 <span data-referral-amount></span> 할인</strong></p>
                 <p class="fine">소개받으신 분이 상담 때 성함을 말씀해 주시고, 계약이 시작되면 적용됩니다. 1건당 1회, 같은 사업자는 제외입니다.</p>
-                <div class="cta">
-                    <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
-                </div>
+                <div class="cta"><a class="btn btn-light" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
             </div>
         </section>
 
-        <!-- 문의 -->
-        <section class="contact" aria-labelledby="contact-title">
-            <div class="wrap">
+        <section class="section contact" aria-labelledby="contact-title">
+            <div class="container">
                 <h2 id="contact-title">문의</h2>
-                <div class="cta">
-                    <a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a>
+                <div class="cta"><a class="btn btn-primary" href="https://open.kakao.com/o/sCHnO8pi" target="_blank" rel="noopener">카톡 상담</a></div>
+                <div class="contact-note">
+                    <h3>공통 조건</h3>
+                    <ul class="terms">
+                        <li>광고 운영 대행은 하지 않으며 광고비는 별도입니다.</li>
+                        <li>업종별 광고 표시 기준(예: 학원·의료)은 고객님이 확인해 주시면 그에 맞춰 문구를 작성합니다. 아이 얼굴이나 개인 정보가 나오는 콘텐츠는 고객님이 동의를 확보합니다.</li>
+                    </ul>
                 </div>
-                <h3>공통 조건</h3>
-                <ul class="terms">
-                    <li>광고 운영 대행은 하지 않으며 광고비는 별도입니다.</li>
-                    <li>업종별 광고 표시 기준(예: 학원·의료)은 고객님이 확인해 주시면 그에 맞춰 문구를 작성합니다. 아이 얼굴이나 개인 정보가 나오는 콘텐츠는 고객님이 동의를 확보합니다.</li>
-                </ul>
             </div>
         </section>
     </main>
 
-    <footer>
-        <div class="wrap">
-            <p>이혜진 · 1인 마케터 · 개인 프리랜서</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div>
+                <p class="footer-brand">이혜진</p>
+                <p class="footer-line">이혜진 · 1인 마케터 · 개인 프리랜서</p>
+            </div>
+            <ul class="footer-links"><li><a href="../">홈</a></li><li><a href="../services/">SNS 마케팅</a></li><li><a href="../video/">영상 편집</a></li><li><a href="../planning/">기획</a></li></ul>
             <p id="last-updated" class="fine" hidden></p>
         </div>
     </footer>
