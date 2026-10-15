@@ -95,16 +95,18 @@ a { color: inherit; }
 .hero-copy h1 { margin-bottom: 24px; }
 .hero-page h1 { margin-bottom: 20px; }
 
-/* 손님이 오는 길(홈): 좁아지는 막대 */
-.funnel { list-style: none; display: grid; gap: 8px; }
-.funnel li { display: flex; align-items: center; min-height: 56px; padding: 0 20px; background: var(--ink); color: var(--paper); font-weight: 700; width: var(--w); border-radius: var(--radius); }
-.funnel li:nth-child(1) { --w: 100%; }
-.funnel li:nth-child(2) { --w: 88%; }
-.funnel li:nth-child(3) { --w: 76%; }
-.funnel li:nth-child(4) { --w: 64%; }
-.funnel li:nth-child(5) { --w: 52%; background: var(--cobalt); color: var(--on-cobalt); }
+/* 손님이 오는 길(홈): 번호가 붙은 세로 타임라인 */
 .hero-art { margin: 0; }
-.hero-art figcaption { margin-bottom: 14px; font-size: 0.9rem; font-weight: 700; color: var(--muted); }
+.hero-art figcaption { margin-bottom: 18px; font-size: 0.95rem; font-weight: 700; color: var(--muted); }
+.journey { list-style: none; position: relative; }
+.journey li { position: relative; display: grid; grid-template-columns: 40px 1fr; gap: 0 16px; padding-bottom: 22px; }
+.journey li::before { content: ""; position: absolute; left: 19px; top: 40px; bottom: 0; width: 2px; background: var(--ink); }
+.journey li.last { padding-bottom: 0; }
+.journey li.last::before { display: none; }
+.j-no { display: flex; align-items: center; justify-content: center; width: 40px; height: 40px; border: 2px solid var(--ink); border-radius: 50%; background: var(--paper); font-weight: 900; }
+.journey li.last .j-no { background: var(--cobalt); border-color: var(--cobalt); color: #ffffff; }
+.journey strong { display: block; font-size: 1.15rem; line-height: 1.4; padding-top: 6px; }
+.journey div span { display: block; color: var(--muted); font-size: 0.98rem; line-height: 1.55; }
 
 /* ---------- 홈: 하는 일 ---------- */
 .service-list { list-style: none; border-top: 2px solid var(--ink); }
@@ -128,10 +130,13 @@ a { color: inherit; }
 .cta-band p { font-size: 1.15rem; max-width: 32em; opacity: 0.9; }
 
 /* ---------- 서브 페이지 ---------- */
-.path-flow { list-style: none; display: grid; grid-template-columns: 1fr; gap: 28px; }
-.path-flow li { position: relative; padding: 18px 20px; border: 2px solid #ffffff; border-radius: var(--radius); font-family: var(--font-display); font-weight: 900; font-size: 1.35rem; text-align: center; }
-.path-flow li:not(:last-child)::after { content: ""; position: absolute; left: 50%; bottom: -21px; width: 12px; height: 12px; border-right: 3px solid #ffffff; border-bottom: 3px solid #ffffff; transform: translateX(-50%) rotate(45deg); }
-.path-flow li:last-child { background: #ffffff; color: var(--cobalt); }
+.path-flow { list-style: none; display: grid; grid-template-columns: 1fr; gap: 0; }
+.path-flow li { position: relative; display: grid; grid-template-columns: 48px 1fr; align-items: center; gap: 0 16px; padding-bottom: 28px; }
+.path-flow li.last { padding-bottom: 0; }
+.path-flow li:not(.last)::before { content: ""; position: absolute; left: 23px; top: 48px; bottom: 0; width: 2px; background: rgba(255, 255, 255, 0.7); }
+.p-no { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; border: 2px solid #ffffff; border-radius: 50%; font-weight: 900; font-size: 1.2rem; }
+.path-flow li.last .p-no { background: #ffffff; color: var(--cobalt); }
+.p-name { font-weight: 900; font-size: 1.35rem; letter-spacing: -0.02em; }
 
 /* 역할 표 */
 .roles { width: 100%; border-collapse: collapse; }
@@ -279,9 +284,10 @@ dialog.lightbox::backdrop { background: rgba(0, 0, 0, 0.7); }
 @media (min-width: 640px) {
     :root { --gutter: 32px; }
     .works-grid { grid-template-columns: repeat(2, 1fr); }
-    .path-flow { grid-template-columns: repeat(5, 1fr); gap: 36px; }
-    .path-flow li { display: flex; align-items: center; justify-content: center; min-height: 96px; font-size: 1.2rem; }
-    .path-flow li:not(:last-child)::after { left: auto; right: -26px; bottom: auto; top: 50%; transform: translateY(-50%) rotate(-45deg); }
+    .path-flow { grid-template-columns: repeat(5, 1fr); }
+    .path-flow li { grid-template-columns: 1fr; justify-items: start; gap: 14px; padding-bottom: 0; }
+    .path-flow li:not(.last)::before { left: 56px; right: 8px; top: 23px; bottom: auto; width: auto; height: 2px; }
+    .path-flow li:not(.last)::after { content: ""; position: absolute; right: 8px; top: 17px; width: 10px; height: 10px; border-right: 2px solid rgba(255, 255, 255, 0.9); border-top: 2px solid rgba(255, 255, 255, 0.9); transform: rotate(45deg); }
     .slot-list { grid-template-columns: repeat(2, 1fr); }
     .spec-list { grid-template-columns: repeat(3, 1fr); column-gap: 32px; border-top: 0; }
     .spec-list li { border-top: 2px solid var(--ink); }
