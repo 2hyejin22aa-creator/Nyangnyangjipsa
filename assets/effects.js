@@ -117,37 +117,32 @@
     /* ---------- 마우스 커서 + 자석 버튼 (마우스 기기에서만) ---------- */
     if (!fine) return;
 
-    var ring = el('div', 'cursor-ring');
-    var dot = el('div', 'cursor-dot');
-    ring.setAttribute('aria-hidden', 'true');
-    dot.setAttribute('aria-hidden', 'true');
-    document.body.appendChild(ring);
-    document.body.appendChild(dot);
+    var orb = el('div', 'cursor-orb');
+    orb.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(orb);
     root.classList.add('has-cursor');
 
-    var mx = -100, my = -100, rx = -100, ry = -100, shown = false;
+    var mx = -100, my = -100, ox = -100, oy = -100, shown = false;
     function loop() {
-        rx += (mx - rx) * 0.18;
-        ry += (my - ry) * 0.18;
-        ring.style.transform = 'translate(' + rx + 'px,' + ry + 'px)';
-        dot.style.transform = 'translate(' + mx + 'px,' + my + 'px)';
+        ox += (mx - ox) * 0.2;
+        oy += (my - oy) * 0.2;
+        orb.style.transform = 'translate(' + ox + 'px,' + oy + 'px)';
         window.requestAnimationFrame(loop);
     }
     window.requestAnimationFrame(loop);
 
     document.addEventListener('mousemove', function (event) {
         mx = event.clientX; my = event.clientY;
-        if (!shown) { shown = true; rx = mx; ry = my; root.classList.add('cursor-on'); }
+        if (!shown) { shown = true; ox = mx; oy = my; root.classList.add('cursor-on'); }
         var target = event.target;
         var zoom = target.closest && target.closest('.zoom');
         var link = target.closest && target.closest('a, button, summary');
-        ring.classList.toggle('is-zoom', !!zoom);
-        ring.classList.toggle('is-link', !zoom && !!link);
-        dot.classList.toggle('is-hidden', !!zoom);
+        orb.classList.toggle('is-zoom', !!zoom);
+        orb.classList.toggle('is-link', !zoom && !!link);
     }, { passive: true });
     document.addEventListener('mouseleave', function () { shown = false; root.classList.remove('cursor-on'); });
-    document.addEventListener('mousedown', function () { ring.classList.add('is-down'); });
-    document.addEventListener('mouseup', function () { ring.classList.remove('is-down'); });
+    document.addEventListener('mousedown', function () { orb.classList.add('is-down'); });
+    document.addEventListener('mouseup', function () { orb.classList.remove('is-down'); });
 
     // 주요 버튼이 마우스 쪽으로 살짝 끌려옴
     document.addEventListener('mousemove', function (event) {

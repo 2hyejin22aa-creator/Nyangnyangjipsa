@@ -59,7 +59,7 @@ python3 -m http.server 8000
 예시 (`slots`의 `services/place-compare` 항목):
 
 ```json
-{ "id": "services/place-compare", "page": "services", "section": "달라지는 점", "type": "compare",
+{ "id": "services/place-compare", "page": "services", "section": "Before & After", "type": "compare",
   "files": ["assets/media/place-before.jpg", "assets/media/place-after.jpg"],
   "alt": "이미지 설명", "caption": "캡션 한 줄", "width": 1200, "height": 800 }
 ```

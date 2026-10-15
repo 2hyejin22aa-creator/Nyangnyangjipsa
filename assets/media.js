@@ -7,7 +7,7 @@
     var ROOT = new URL('../', script.src);
     var MEDIA_URL = new URL('data/media.json', ROOT).href;
     var MAX_VIDEOS = 3; // 릴스 샘플 영상 최대 개수
-    var COMPARE_LABELS = ['전', '후'];
+    var COMPARE_LABELS = ['Before', 'After'];
 
     function el(tag, className, text) {
         var node = document.createElement(tag);

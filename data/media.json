@@ -3,7 +3,7 @@
     {
       "id": "services/place-compare",
       "page": "services",
-      "section": "달라지는 점",
+      "section": "Before & After",
       "type": "compare",
       "files": [],
       "alt": "",
@@ -12,13 +12,13 @@
     {
       "id": "services/insta-compare",
       "page": "services",
-      "section": "달라지는 점",
+      "section": "Before & After",
       "type": "compare",
       "files": [
         "assets/media/case-insta-before.jpg",
         "assets/media/case-insta-after.jpg"
       ],
-      "alt": "영어 키즈공간 인스타그램 프로필 화면 (연락처 가림)",
+      "alt": "영어 키즈공간 인스타그램 프로필 화면",
       "caption": "인스타그램 프로필 소개글·링크 정리"
     },
     {
@@ -73,14 +73,14 @@
       "type": "image",
       "file": "assets/media/case-search-1.jpg",
       "channel": "검색 노출",
-      "alt": "네이버 모바일 검색 결과에서 업체 블로그 글이 노출된 화면 (키워드·업체명 일부 가림)",
+      "alt": "네이버 모바일 검색 결과에서 업체 블로그 글이 노출된 화면",
       "caption": "메인 키워드 검색 결과에 블로그 글 노출"
     },
     {
       "type": "image",
       "file": "assets/media/case-search-2.jpg",
       "channel": "검색 노출",
-      "alt": "네이버 검색 결과 상단에 업체 블로그 글이 노출된 화면 (키워드·업체명 일부 가림)",
+      "alt": "네이버 검색 결과 상단에 업체 블로그 글이 노출된 화면",
       "caption": "메인 키워드 검색 결과에 블로그 글 노출"
     },
     {
