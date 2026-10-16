@@ -64,6 +64,25 @@
         });
     }
 
+    // 콘텐츠 제작 형식 카드의 가격 행: JSON에 steps가 있는 항목만 "작업 과정 보기" 접힘을 붙임 (문구는 JSON 그대로)
+    function renderSteps(d) {
+        each('.fmt-prices li', function (li) {
+            var token = li.querySelector('[data-money]');
+            if (!token) return;
+            var parts = token.getAttribute('data-money').split('|');
+            var row = findByName(d, parts[0], parts[1]);
+            if (!row || !Array.isArray(row.steps) || !row.steps.length) return;
+
+            var box = el('details', 'fmt-steps');
+            box.appendChild(el('summary', null, '작업 과정 보기'));
+            var list = el('ol', 'fmt-steps-list');
+            row.steps.forEach(function (text) { list.appendChild(el('li', null, text)); });
+            box.appendChild(list);
+            if (row.needs) box.appendChild(el('p', 'fmt-needs', '받아야 할 것: ' + row.needs));
+            li.appendChild(box);
+        });
+    }
+
     // <table data-pricing-table="setup,options" data-category="sns"> → 해당 카테고리 항목만 표로 그림
     function renderTables(d) {
         each('[data-pricing-table]', function (table) {
@@ -183,6 +202,7 @@
             data = d;
             fillTokens(d);
             renderTables(d);
+            renderSteps(d);
             fillNotes(d);
             renderLastUpdated(d);
             listeners.forEach(function (callback) { callback(d); });

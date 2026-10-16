@@ -586,20 +586,24 @@ h2 em { font-style: normal; color: var(--accent); }
 
 /* ---------- 콘텐츠 제작: 형식 카드 ---------- */
 .fmt-grid { display: grid; grid-template-columns: 1fr; gap: 16px; }
+.fmt-col { display: contents; }
+.fmt-blog { order: 1; } .fmt-cardnews { order: 2; } .fmt-reels { order: 3; } .fmt-banner { order: 4; }
 .fmt-card { display: flex; flex-direction: column; gap: 4px; }
 .fmt-role { font-size: 0.82rem; font-weight: 700; color: var(--accent); }
 .fmt-card h3 { margin: 0 0 4px; }
 .fmt-card .fmt-spec { margin: 0 0 12px; color: var(--muted); font-size: 0.95rem; }
-.fmt-prices { list-style: none; margin: auto 0 0; padding: 0; border-top: 1px solid var(--line); }
-.fmt-prices li { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); }
-.fmt-prices li:last-child { border-bottom: 0; padding-bottom: 0; }
+.fmt-prices { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--line); }
+.fmt-prices > li { display: grid; grid-template-columns: 1fr auto; column-gap: 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line); }
+.fmt-prices > li:last-child { border-bottom: 0; padding-bottom: 0; }
 .fmt-name { font-size: 0.97rem; }
 .fmt-money { font-weight: 900; color: var(--navy); white-space: nowrap; }
 .fmt-note { grid-column: 1 / -1; margin-top: 2px; font-size: 0.85rem; color: var(--muted); }
 .fmt-note:empty { display: none; }
 .fmt-spec[hidden] { display: none; }
 @media (min-width: 800px) {
-    .fmt-grid { grid-template-columns: repeat(2, 1fr); }
+    .fmt-grid { grid-template-columns: repeat(2, 1fr); align-items: start; }
+    .fmt-col { display: flex; flex-direction: column; gap: 16px; }
+    .fmt-card { order: 0; }
 }
 
 /* ---------- 작업물 일부: 등장 애니메이션 (효과가 켜진 경우에만 .reveal이 붙음) ---------- */
@@ -615,3 +619,15 @@ h2 em { font-style: normal; color: var(--accent); }
 @media (prefers-reduced-motion: reduce) {
     .works-grid li.reveal.in figure img, .works-grid li.reveal figcaption, [data-gallery-section] .section-head.reveal h2 em { transition: none; }
 }
+
+/* 가격 행 아래 "작업 과정 보기" 접힘 */
+.fmt-steps { grid-column: 1 / -1; margin-top: 4px; }
+.fmt-steps summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 6px 0; cursor: pointer; list-style: none; font-size: 0.9rem; font-weight: 700; color: var(--accent); -webkit-tap-highlight-color: transparent; }
+.fmt-steps summary::-webkit-details-marker { display: none; }
+.fmt-steps summary::before { content: "\25B6"; font-size: 0.7rem; transition: transform 0.2s ease; }
+.fmt-steps[open] summary::before { transform: rotate(90deg); }
+.fmt-steps summary:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 4px; }
+.fmt-steps-list { margin: 2px 0 6px; padding: 12px 14px 12px 34px; background: var(--soft); border-radius: 8px; font-size: 0.92rem; }
+.fmt-steps-list li { padding: 3px 0; }
+.fmt-needs { margin: 0 0 6px; font-size: 0.88rem; font-weight: 700; color: var(--navy); }
+@media (prefers-reduced-motion: reduce) { .fmt-steps summary::before { transition: none; } }
