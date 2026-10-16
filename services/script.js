@@ -5,9 +5,10 @@
     var formatMoney = Pricing.formatMoney;
 
     // 패키지 카드 3개: 이름 / 대상 / 월 금액 / 단건 합계(listPrice) / 구성 (모두 JSON)
-    function buildPackageCard(pkg) {
+    function buildPackageCard(pkg, index) {
         var box = el('article', 'pkg-card' + (pkg.recommended ? ' recommended' : ''));
         box.id = 'pkg-' + pkg.id;
+        box.style.setProperty('--i', index + 1);
         if (pkg.recommended) box.appendChild(el('span', 'pkg-flag', '추천'));
         box.appendChild(el('h3', 'pkg-name', pkg.name));
         box.appendChild(el('p', 'audience', pkg.audience));
@@ -26,10 +27,62 @@
         return box;
     }
 
+    // 카드 아래 "구성별 금액 보기": 구성 / 수량 / 단건 가격 / 금액 표 (모두 pkg.lines → Pricing.resolveLines 결과)
+    function buildLines(pkg, index) {
+        if (!Array.isArray(pkg.lineRows) || !pkg.lineRows.length) return null;
+        var box = el('details', 'pkg-lines');
+        box.style.setProperty('--i', index + 1);
+        box.appendChild(el('summary', null, '구성별 금액 보기'));
+
+        var table = el('table', 'lines-table');
+        var head = el('tr');
+        ['구성', '수량', '단건 가격', '금액'].forEach(function (name, i) {
+            var th = el('th', i === 0 ? null : 'num', name);
+            th.scope = 'col';
+            head.appendChild(th);
+        });
+        table.appendChild(el('thead')).appendChild(head);
+
+        var body = el('tbody');
+        function addRow(cells, className) {
+            var tr = el('tr', className);
+            cells.forEach(function (text, i) {
+                var cell = i === 0 ? el('th', null, text) : el('td', 'num', text);
+                if (i === 0) cell.scope = 'row';
+                tr.appendChild(cell);
+            });
+            body.appendChild(tr);
+        }
+        pkg.lineRows.forEach(function (row) {
+            if (row.included) addRow([row.label, '-', '-', '포함'], 'is-included');
+            else addRow([row.label, String(row.qty), formatMoney(row.unit), formatMoney(row.amount)]);
+        });
+        if (typeof pkg.listPrice === 'number') addRow(['단건 합계', '', '', formatMoney(pkg.listPrice)], 'is-total');
+        addRow(['패키지 금액', '', '', formatMoney(pkg.price)], 'is-total is-pkg');
+        table.appendChild(body);
+
+        var wrap = el('div', 'lines-wrap');
+        wrap.appendChild(table);
+        box.appendChild(wrap);
+
+        var note = el('p', 'lines-note');
+        note.appendChild(document.createTextNode('각 항목의 작업 과정은 '));
+        var link = el('a', null, '콘텐츠 제작 탭');
+        link.href = '../content/';
+        note.appendChild(link);
+        note.appendChild(document.createTextNode('에서 볼 수 있습니다.'));
+        box.appendChild(note);
+        return box;
+    }
+
     function renderPackages(data) {
         var host = document.getElementById('packages-list');
         var grid = el('div', 'pkg-cards');
-        data.packages.forEach(function (pkg) { grid.appendChild(buildPackageCard(pkg)); });
+        data.packages.forEach(function (pkg, i) { grid.appendChild(buildPackageCard(pkg, i)); });
+        data.packages.forEach(function (pkg, i) {
+            var lines = buildLines(pkg, i);
+            if (lines) grid.appendChild(lines);
+        });
         host.appendChild(grid);
     }
 

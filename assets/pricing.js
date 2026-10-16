@@ -131,11 +131,40 @@
         }
     }
 
-    function showError() {
+    function showError(message) {
         var node = document.getElementById('load-error');
         if (!node) return;
-        node.textContent = '가격 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
+        node.textContent = typeof message === 'string' ? message : '가격 정보를 불러오지 못했습니다. 잠시 후 다시 시도해 주세요.';
         node.hidden = false;
+    }
+
+    // 패키지 구성(lines)에서 단건 합계(listPrice)와 구성별 금액 행을 계산: ref는 singles(기본)·options·setup의 name과 일치해야 함
+    // 일치하지 않으면 오류 목록을 돌려주고 그 패키지는 합계를 계산하지 않음
+    function resolveLines(d) {
+        var errors = [];
+        (d.packages || []).forEach(function (pkg) {
+            if (!Array.isArray(pkg.lines)) return;
+            var rows = [], total = 0, failed = false;
+            pkg.lines.forEach(function (line) {
+                if (line.ref) {
+                    var from = line.from || 'singles';
+                    var item = findByName(d, from, line.ref);
+                    if (!item) {
+                        failed = true;
+                        errors.push(pkg.name + ': "' + line.ref + '" 항목을 ' + from + '에서 찾을 수 없습니다');
+                        return;
+                    }
+                    var qty = Number(line.qty) || 1;
+                    rows.push({ label: line.ref, qty: qty, unit: item.price, amount: item.price * qty, included: false });
+                    total += item.price * qty;
+                } else if (line.label) {
+                    rows.push({ label: line.label, included: true });
+                }
+            });
+            pkg.lineRows = rows;
+            if (failed) delete pkg.listPrice; else pkg.listPrice = total;
+        });
+        return errors;
     }
 
     var PLAN_MONTHS = 3; // 3개월 플랜 개월 수
@@ -183,6 +212,7 @@
     window.Pricing = {
         formatMoney: formatMoney,
         planCalc: planCalc,
+        resolveLines: resolveLines,
         rangeMan: rangeMan,
         manOne: manOne,
         el: el,
@@ -200,6 +230,11 @@
         })
         .then(function (d) {
             data = d;
+            var lineErrors = resolveLines(d);
+            if (lineErrors.length) {
+                if (window.console) console.error('[pricing] 패키지 구성 오류:\n' + lineErrors.join('\n'));
+                showError('패키지 구성 금액을 계산하지 못했습니다: ' + lineErrors.join(' / '));
+            }
             fillTokens(d);
             renderTables(d);
             renderSteps(d);

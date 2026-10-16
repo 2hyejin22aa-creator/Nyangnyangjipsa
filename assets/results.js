@@ -31,6 +31,9 @@
         var article = el('article', 'stat-card');
         var head = el('header', 'stat-head');
         head.appendChild(el('h3', null, company.label));
+        // 선택 필드: 업종 · 기간 · 한 일 한 줄 (data/results.json의 context). 비어 있으면 표시하지 않음
+        var context = typeof company.context === 'string' ? company.context.trim() : '';
+        if (context) head.appendChild(el('p', 'stat-context', context));
         var sub = [company.title, company.subtitle].filter(Boolean).join(' · ');
         if (sub) head.appendChild(el('p', null, sub));
         article.appendChild(head);

@@ -12,7 +12,8 @@
           "value": 3661,
           "change": 253
         }
-      ]
+      ],
+      "context": ""
     },
     {
       "label": "업체 B",
@@ -51,7 +52,8 @@
           "value": 89,
           "change": 37
         }
-      ]
+      ],
+      "context": ""
     },
     {
       "label": "업체 C",
@@ -76,7 +78,8 @@
           "value": 13,
           "change": 160
         }
-      ]
+      ],
+      "context": ""
     }
   ]
 }

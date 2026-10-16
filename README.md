@@ -48,10 +48,16 @@ python3 -m http.server 8000
   - `video`: 릴스·클립 관련 항목 (화면에서는 `/content/`의 형식 카드가 `data-money`로 이름을 찾아 금액을 읽음)
   - `plan`: `/planning/` 표
 - `lastUpdated`를 `YYYY-MM-DD` 형식의 날짜로 바꾸면 푸터에 "가격 기준일"이 표시됩니다.
-- `packages`는 3개(`lite`, `basic`, `plus`)입니다. `price`는 월 금액, `listPrice`는 단건·옵션으로 따로 맡길 때의 합계(= 단건·옵션 가격을 더한 값)입니다. `recommended: true`인 패키지에 "추천" 표시가 붙고 3개월 플랜 박스의 기본 선택이 됩니다.
+- `packages`는 3개(`lite`, `basic`, `plus`)입니다. `price`는 월 금액입니다. 단건·옵션으로 따로 맡길 때의 합계는 적지 않고 `lines`에서 자동 계산합니다. `lines`의 각 줄은 `{"ref":"항목 이름","qty":수량}`(기본은 `singles`, `options`면 `"from":"options"`) 또는 `{"label":"문구","included":true}`(금액 칸에 "포함")입니다. `ref`가 단건·옵션 이름과 다르면 화면 위쪽에 오류가 표시되고 브라우저 콘솔에도 기록됩니다. `recommended: true`인 패키지에 "추천" 표시가 붙고 3개월 플랜 박스의 기본 선택이 됩니다. `items`는 카드에 보이는 구성 문구이고, "구성별 금액 보기" 표는 `lines`로 그립니다.
 - `plan`은 3개월 **선결제** 전용입니다(월 단위로 나눠 내는 3개월 옵션은 없음). `waiver`(면제 세팅비), `prepayTotal`(선결제 총액), `waiverDetail`(면제 항목 문구)은 패키지 `id`별로 적습니다. 월 환산액·절약액·중도 해지 정산 예시·혜택 4칸의 "N~M만원"은 모두 이 값에서 계산합니다. 화면 문구에는 숫자를 적지 않습니다.
 - `contentSpec`은 `/content/` 형식 카드(블로그·카드뉴스·릴스·배너)에 보이는 제작 기준 한 줄입니다(`blog`, `cardnews`, `reels`, `banner`). 글자 수·분량·수정 횟수 같은 숫자는 여기서만 고칩니다. 키를 지우면 그 줄은 숨겨집니다.
 - 항목(`singles`, `options`, `setup`)에 `steps`(문자열 배열)와 `needs`(문자열)를 적으면 `/content/` 가격 행 아래에 "작업 과정 보기" 접힘이 생깁니다. `steps`는 번호 목록으로, `needs`는 "받아야 할 것: …" 한 줄로 그대로 표시됩니다. `steps`가 없는 항목에는 접힘이 나오지 않습니다.
+
+## 성과 데이터 · 소개 · 링크 미리보기
+
+- `data/results.json`의 각 업체에 선택 항목 `context`(예: 업종 · 기간 · 한 일 한 줄)를 적으면 업체 이름 아래 작은 글씨로 보입니다. 비워 두면 표시하지 않습니다. 통계 카드 아래의 안내 한 줄은 HTML에 고정되어 있습니다.
+- `data/profile.json`의 `headline`과 `lines`가 홈 "소개" 영역에 표시됩니다. 비어 있으면 영역이 숨겨집니다. 사진·이름은 넣지 않습니다.
+- 파비콘은 `assets/favicon.svg`, 링크 미리보기 이미지는 `assets/og.png`(1200×630, 흰 배경에 `brandName`)입니다. 각 페이지 `<head>`의 `og:title`, `og:description`은 그 페이지의 `<title>`, `description`과 같은 값입니다. `brandName`을 바꾸면 `og.png`와 `favicon.svg`도 같이 다시 만들어야 하고, `og:image` 주소는 배포 주소(현재 GitHub Pages)로 적혀 있어 도메인을 바꾸면 함께 고쳐야 합니다.
 
 ## 새 이미지 추가 방법
 
@@ -76,7 +82,7 @@ python3 -m http.server 8000
 예시 (`slots`의 `services/place-compare` 항목):
 
 ```json
-{ "id": "services/place-compare", "page": "services", "section": "Before & After", "type": "compare",
+{ "id": "services/place-compare", "page": "services", "section": "정리 전 · 후", "type": "compare",
   "files": ["assets/media/place-before.jpg", "assets/media/place-after.jpg"],
   "alt": "이미지 설명", "caption": "캡션 한 줄", "width": 1200, "height": 800 }
 ```
