@@ -601,3 +601,17 @@ h2 em { font-style: normal; color: var(--accent); }
 @media (min-width: 800px) {
     .fmt-grid { grid-template-columns: repeat(2, 1fr); }
 }
+
+/* ---------- 작업물 일부: 등장 애니메이션 (효과가 켜진 경우에만 .reveal이 붙음) ---------- */
+.works-grid li.reveal:not(.in) { transform: translateY(44px) scale(0.96); }
+.works-grid li.reveal.in figure img { transition: transform 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) calc(var(--d, 0ms) + 150ms); }
+.works-grid li.reveal.in figure:hover img { transition: transform 0.6s ease; }
+.works-grid li.reveal:not(.in) figure img { transform: scale(1.14); }
+.works-grid li.reveal figcaption { transition: opacity 0.6s ease calc(var(--d, 0ms) + 350ms), transform 0.6s ease calc(var(--d, 0ms) + 350ms); }
+.works-grid li.reveal:not(.in) figcaption { opacity: 0; transform: translateY(12px); }
+[data-gallery-section] .section-head h2 em { background: linear-gradient(var(--accent), var(--accent)) no-repeat 0 100% / 100% 4px; padding-bottom: 2px; }
+[data-gallery-section] .section-head.reveal h2 em { transition: background-size 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s; }
+[data-gallery-section] .section-head.reveal:not(.in) h2 em { background-size: 0 4px; }
+@media (prefers-reduced-motion: reduce) {
+    .works-grid li.reveal.in figure img, .works-grid li.reveal figcaption, [data-gallery-section] .section-head.reveal h2 em { transition: none; }
+}
